@@ -23,6 +23,8 @@ class Sizer extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       return OrientationBuilder(builder: (context, orientation) {
         SizeUtils.setScreenSize(constraints, orientation);
+        print(orientation);
+        print(SizeUtils.deviceType);
         return builder(context, orientation, SizeUtils.deviceType);
       });
     });
@@ -36,8 +38,8 @@ class SizeUtils {
   /// мобильный телефон или планшет.
   static late DeviceType deviceType;
 
-   static late double height;
-   static late double width;
+  static late double height;
+  static late double width;
 
   static void setScreenSize(
     BoxConstraints constraints,
@@ -74,6 +76,7 @@ extension ResponsiveExtension on num {
     var width = h;
     return height < width ? height.toDoubleValue() : width.toDoubleValue();
   }
+
   //размер шрифта в соответсвии с областью просмотра
   double get fSize => adaptSize;
 }

@@ -1,14 +1,11 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
-import 'package:hottel_1/x_presentation/i0_hotell_screen/models/framenine_item_model.dart';
+import 'package:hottel_1/x_presentation/i0_hotell_screen/models/discription_item_model.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 
 // ignore: must_be_immutable
-class FramenineItemWidget extends StatelessWidget {
-  FramenineItemWidget(
+class DiscriptionItemWidget extends StatelessWidget {
+  DiscriptionItemWidget(
     this.framenineItemModelObj, {
     Key? key,
     this.onSelectedChipView1,
@@ -16,7 +13,7 @@ class FramenineItemWidget extends StatelessWidget {
           key: key,
         );
 
-  FramenineItemModel framenineItemModelObj;
+  DiscriptionItemModel framenineItemModelObj;
 
   Function(bool)? onSelectedChipView1;
 
@@ -44,7 +41,10 @@ class FramenineItemWidget extends StatelessWidget {
       shape: (framenineItemModelObj.isSelected ?? false)
           ? RoundedRectangleBorder(
               side: BorderSide(
-                color: basicTheme().colorScheme.onPrimaryContainer.withOpacity(0.6),
+                color: basicTheme()
+                    .colorScheme
+                    .onPrimaryContainer
+                    .withOpacity(0.6),
                 width: 1.h,
               ),
               borderRadius: BorderRadius.circular(
