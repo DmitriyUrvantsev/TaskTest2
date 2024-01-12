@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:hottel_1/x_presentation/i0_hotell_screen/hotell_screen.dart';
+import 'package:hottel_1/x_presentation/i0_hotel_screen/hotel_screen.dart';
 import 'package:hottel_1/x_presentation/i1_apartment_screen/i1_apartment_screen.dart';
-import '../x_presentation/i0_hotell_screen/provider/i0_provider.dart';
-
+import '../x_presentation/i0_hotel_screen/provider/i0_provider.dart';
 
 abstract class AppNavigationRoutes {
-  static const hotell = '/';
+  static const hotel = '/';
   static const apartmentScreen = '/apartment';
   static const reservationScreen = '/apartment/reservationScreen';
   static const paidScreen = '/apartment/reservationScreen/paidScreen';
@@ -14,15 +13,14 @@ abstract class AppNavigationRoutes {
 
 class MainNavigation {
   // String initialRoute(bool isAuth) => isAuth
-  //     ? AppNavigationRoutes.hotell
-  //     : AppNavigationRoutes.hotell;
+  //     ? AppNavigationRoutes.hotel
+  //     : AppNavigationRoutes.hotel;
 
-final initialRoute = AppNavigationRoutes.hotell;
+  final initialRoute = AppNavigationRoutes.hotel;
 
   final routes = <String, Widget Function(BuildContext)>{
-    AppNavigationRoutes.hotell: (context) => ChangeNotifierProvider(
-      create: (context) => K0Provider(),
-    child: const HotellScreen()),
+    AppNavigationRoutes.hotel: (context) => ChangeNotifierProvider(
+        create: (context) => I0Provider(), child: const HotelScreen()),
   };
 
 //----------------наша функция где можно передать arg ---------------------------------
@@ -31,10 +29,10 @@ final initialRoute = AppNavigationRoutes.hotell;
 
     switch (settings.name) {
       case AppNavigationRoutes.apartmentScreen:
-       // final movieId = settings.arguments as int;
+        // final movieId = settings.arguments as int;
         return MaterialPageRoute(
             builder: (context) => ApartmentScreen(
-                 // movieId: movieId,
+                // movieId: movieId,
                 ));
       //----------------//
       // case AppNavigationRoutes.movieScreenDetailsTrailer:

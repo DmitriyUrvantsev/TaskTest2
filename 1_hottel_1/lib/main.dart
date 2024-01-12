@@ -5,7 +5,6 @@ import 'package:hottel_1/x_routes/app_routes.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_theme/x_provider/theme_provider.dart';
 
-
 // import 'package:flutter/services.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';
 // import 'core/app_export.dart';
@@ -51,7 +50,7 @@ class MyApp extends StatelessWidget {
             //       selectedItemColor: Colors.white,
             //       unselectedItemColor: Colors.grey.shade700),
             // ),
-        
+
             // localizationsDelegates: const [
             //   GlobalMaterialLocalizations.delegate,
             //   GlobalWidgetsLocalizations.delegate,
@@ -83,7 +82,7 @@ class MyApp extends StatelessWidget {
 //             builder: (context, provider, child) {
 //               return MaterialApp(
 //                 theme: theme,
-//                 title: 'urvandimon_s_hotell',
+//                 title: 'urvandimon_s_hotel',
 //                 navigatorKey: NavigatorService.navigatorKey,
 //                 debugShowCheckedModeBanner: false,
 //                 localizationsDelegates: [

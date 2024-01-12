@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
-import 'package:hottel_1/x_presentation/i0_hotell_screen/models/three_item_model.dart';
+import 'package:hottel_1/x_presentation/i0_hotel_screen/models/three_item_model.dart';
 import '../../../x_core/x_utils/image_constant.dart';
 import '../../../x_widgets/custom_image_view.dart';
 

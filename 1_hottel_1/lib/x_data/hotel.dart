@@ -1,5 +1,9 @@
-class Hotell {
-  int? id;
+
+import 'package:json_annotation/json_annotation.dart';
+
+
+class Hotel {
+  int? id; 
   String? name;
   String? adress;
   int? minimalPrice;
@@ -9,7 +13,7 @@ class Hotell {
   List<String>? imageUrls;
   AboutTheHotel? aboutTheHotel;
 
-  Hotell(
+  Hotel(
       {this.id,
       this.name,
       this.adress,
@@ -20,8 +24,9 @@ class Hotell {
       this.imageUrls,
       this.aboutTheHotel});
 
-  Hotell.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
+
+  Hotel.fromJson(Map<String, dynamic> json) {
+    id = json['id'] as int;
     name = json['name'];
     adress = json['adress'];
     minimalPrice = json['minimal_price'];
@@ -49,7 +54,7 @@ class Hotell {
     }
     return data;
   }
-}
+ }
 
 class AboutTheHotel {
   String? description;

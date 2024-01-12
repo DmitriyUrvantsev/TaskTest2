@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hottel_1/x_core/app_export.dart';
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
-import 'package:hottel_1/x_presentation/i0_hotell_screen/models/discription_item_model.dart';
-import 'package:hottel_1/x_presentation/i0_hotell_screen/models/three_item_model.dart';
-import 'package:hottel_1/x_presentation/i0_hotell_screen/provider/i0_provider.dart';
-import 'package:hottel_1/x_presentation/i0_hotell_screen/widgets/discription_item_widget.dart';
-import 'package:hottel_1/x_presentation/i0_hotell_screen/widgets/three_item_widget.dart';
+import 'package:hottel_1/x_data/hotel.dart';
+import 'package:hottel_1/x_presentation/i0_hotel_screen/models/discription_item_model.dart';
+import 'package:hottel_1/x_presentation/i0_hotel_screen/models/three_item_model.dart';
+import 'package:hottel_1/x_presentation/i0_hotel_screen/provider/i0_provider.dart';
+import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/discription_item_widget.dart';
+import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/three_item_widget.dart';
+import 'package:hottel_1/x_servises/api_client.dart';
 import 'package:hottel_1/x_theme/custom_text_style.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_widgets/custom_elevated_button.dart';
@@ -18,8 +20,8 @@ import '../../x_theme/app_decoration.dart';
 import '../../x_widgets/x_app_bar/appbar_title.dart';
 import '../../x_widgets/x_app_bar/custom_app_bar.dart';
 
-// class HotellScreen extends StatelessWidget {
-//   const HotellScreen({super.key});
+// class HotelScreen extends StatelessWidget {
+//   const HotelScreen({super.key});
 
 //   @override
 //   Widget build(BuildContext context) {
@@ -27,16 +29,41 @@ import '../../x_widgets/x_app_bar/custom_app_bar.dart';
 //   }
 // }
 
-class HotellScreen extends StatefulWidget {
-  const HotellScreen({super.key});
+class HotelScreen extends StatefulWidget {
+  const HotelScreen({super.key});
 
   @override
-  State<HotellScreen> createState() => _HotellScreenState();
+  State<HotelScreen> createState() => _HotelScreenState();
 }
 
-class _HotellScreenState extends State<HotellScreen> {
+class _HotelScreenState extends State<HotelScreen> {
+  final i0provider = I0Provider();
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   i0provider.loadHotelData();
+  // }
+  // @override
+  // void didChangeDependencies() {
+  //   super.didChangeDependencies();
+  //   final read = context.read<I0Provider>();
+  //   final watch = context.watch<I0Provider>();
+  //   if (watch.hotel == null) {
+  //   i0provider.loadHotelData();
+  //   print(i0provider.hotel);
+  //   // print(read.hotel);
+  //   //  print(watch.hotel);
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
+    final read = context.read<I0Provider>();
+
+    print(read.hotel?.name ?? 'Пусто');
+
     return Scaffold(
         appBar: _buildAppBar(context),
         body: SizedBox(
@@ -48,7 +75,7 @@ class _HotellScreenState extends State<HotellScreen> {
                     child: Column(children: [
                       _castomSliderWidget(context),
                       SizedBox(height: 23.v),
-                      _descriptionWidget(context)
+                      _descriptionWidget(context, read),
                     ])))),
         bottomNavigationBar: _buildBarsBars(context));
   }
@@ -85,7 +112,7 @@ Widget _castomSliderWidget(BuildContext context) {
                 width: double.infinity,
                 //343.h,
                 child: Stack(alignment: Alignment.bottomCenter, children: [
-                  Consumer<K0Provider>(builder: (context, provider, child) {
+                  Consumer<I0Provider>(builder: (context, provider, child) {
                     //==================================================
                     return CarouselSlider.builder(
                         options: CarouselOptions(
@@ -108,7 +135,7 @@ Widget _castomSliderWidget(BuildContext context) {
                   //==================================================
                   Align(
                       alignment: Alignment.bottomCenter,
-                      child: Consumer<K0Provider>(
+                      child: Consumer<I0Provider>(
                           builder: (context, provider, child) {
                         //print('${provider.sliderIndex}');
                         return Container(
@@ -193,7 +220,7 @@ Widget _castomSliderWidget(BuildContext context) {
 
 //!================================Description=============================================
 /// Section Widget
-Widget _descriptionWidget(BuildContext context) {
+Widget _descriptionWidget(BuildContext context, I0Provider read) {
   return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
       decoration: AppDecoration.fillWhiteA.copyWith(
@@ -207,7 +234,7 @@ Widget _descriptionWidget(BuildContext context) {
             Text("Об отеле", //! возможно из API
                 style: basicTheme().textTheme.titleLarge),
             SizedBox(height: 15.v),
-            Consumer<K0Provider>(builder: (context, provider, child) {
+            Consumer<I0Provider>(builder: (context, provider, child) {
               return Wrap(
                   runSpacing: 8.v,
                   spacing: 8.h,
@@ -225,9 +252,9 @@ Widget _descriptionWidget(BuildContext context) {
             //==================================================
             SizedBox(
                 width: 340.h,
-                child: Text(
-                    "Отель длодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлор длодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлордлодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлордлодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлордлодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлордлодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлордлодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлордлодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлордлодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлордлодолдлод лотдтдло лтодотдл лотдлтдлдлд лотлор",
-                    //! данные из Api
+                child: Text('',
+                    // read.hotel?.aboutTheHotel?.description
+                    //     as String, //! данные из Api
                     maxLines: 4,
                     overflow: TextOverflow.ellipsis,
                     style: CustomTextStyles.bodyLargeSecondaryContainer_1

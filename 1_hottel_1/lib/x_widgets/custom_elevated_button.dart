@@ -3,8 +3,6 @@ import 'package:hottel_1/x_core/x_utils/size_utils.dart';
 import 'package:hottel_1/x_theme/custom_text_style.dart';
 import 'package:hottel_1/x_widgets/base_button.dart';
 
-
-
 class CustomElevatedButton extends BaseButton {
   CustomElevatedButton({
     Key? key,
