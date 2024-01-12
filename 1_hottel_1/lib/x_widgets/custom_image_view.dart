@@ -50,7 +50,7 @@ class CustomImageView extends StatelessWidget {
   Widget _buildWidget() {
     return Padding(
       padding: margin ?? EdgeInsets.zero,
-      child: InkWell(
+      child: InkWell(   //!========= чет не работает вроде инка
         onTap: onTap,
         child: _buildCircleImage(),
       ),
@@ -77,14 +77,14 @@ class CustomImageView extends StatelessWidget {
           border: border,
           borderRadius: radius,
         ),
-        child: _buildImageView(),
+        child: buildImageView(),
       );
     } else {
-      return _buildImageView();
+      return buildImageView();
     }
   }
 
-  Widget _buildImageView() {
+  Widget buildImageView() { //!=================== _
     if (imagePath != null) {
       switch (imagePath!.imageType) {
         case ImageType.svg:

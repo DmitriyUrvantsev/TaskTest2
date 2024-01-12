@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hottel_1/x_core/app_export.dart';
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
 import 'package:hottel_1/x_presentation/i0_hotell_screen/models/discription_item_model.dart';
@@ -9,6 +10,7 @@ import 'package:hottel_1/x_presentation/i0_hotell_screen/widgets/discription_ite
 import 'package:hottel_1/x_presentation/i0_hotell_screen/widgets/three_item_widget.dart';
 import 'package:hottel_1/x_theme/custom_text_style.dart';
 import 'package:hottel_1/x_theme/theme.dart';
+import 'package:hottel_1/x_widgets/custom_elevated_button.dart';
 import 'package:hottel_1/x_widgets/custom_image_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../x_core/x_utils/size_utils.dart';
@@ -36,19 +38,19 @@ class _HotellScreenState extends State<HotellScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: _buildAppBar(context),
-      body: SizedBox(
-          width: SizeUtils.width,
-          child: SingleChildScrollView(
-              child: Padding(
-                  padding: EdgeInsets.only(bottom: 5.v),
-                  child: Column(children: [
-                    _castomSliderWidget(context),
-                    SizedBox(height: 23.v),
-                    _discriptionWidget(context)
-                  ])))),
-      //! bottomNavigationBar: _buildBarsBars(context)
-    );
+        appBar: _buildAppBar(context),
+        body: SizedBox(
+            width: double.infinity,
+            //!SizeUtils.width,
+            child: SingleChildScrollView(
+                child: Padding(
+                    padding: EdgeInsets.only(bottom: 5.v),
+                    child: Column(children: [
+                      _castomSliderWidget(context),
+                      SizedBox(height: 23.v),
+                      _descriptionWidget(context)
+                    ])))),
+        bottomNavigationBar: _buildBarsBars(context));
   }
 }
 
@@ -67,16 +69,21 @@ PreferredSizeWidget _buildAppBar(BuildContext context) {
 //!====================================Slider=========================================
 Widget _castomSliderWidget(BuildContext context) {
   return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16.h),
-      decoration: AppDecoration.fillWhiteA
-          .copyWith(borderRadius: BorderRadiusStyle.customBorderBL12),
+      padding: EdgeInsets.symmetric(
+          horizontal: 10.h, vertical: 15.v), //! vertical: 3.v
+      //margin: EdgeInsets.symmetric(horizontal: 16.h),
+      decoration: AppDecoration.fillWhiteA.copyWith(
+        borderRadius: BorderRadiusStyle.customBorderBL12,
+        //color: Colors.amber[100]
+      ),
       child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
                 height: 257.v,
-                width: 343.h,
+                width: double.infinity,
+                //343.h,
                 child: Stack(alignment: Alignment.bottomCenter, children: [
                   Consumer<K0Provider>(builder: (context, provider, child) {
                     //==================================================
@@ -135,7 +142,7 @@ Widget _castomSliderWidget(BuildContext context) {
                   //==================================================
                 ])),
             SizedBox(height: 16.v),
-            //==================================================
+
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 3.v),
                 decoration: AppDecoration.fillAmberA
@@ -165,30 +172,34 @@ Widget _castomSliderWidget(BuildContext context) {
                 style: CustomTextStyles.titleSmallPrimary),
             SizedBox(height: 15.v),
 
-            Padding(
-                padding: EdgeInsets.only(right: 26.h),
-                child: Row(children: [
-                  Text('Стоимость', //! данные из Api
-                      style: basicTheme().textTheme.headlineLarge),
-                  Expanded(
-                    child: Padding(
-                        padding: EdgeInsets.only(left: 8.h, top: 14.v),
-                        child: Text('доп. информация', //! данные из Api
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: basicTheme().textTheme.bodyLarge)),
-                  )
-                ]))
+            //Padding(
+            //padding: EdgeInsets.only(right: 26.h),
+            //child:
+            Row(children: [
+              Text('Стоимость', //! данные из Api
+                  style: basicTheme().textTheme.headlineLarge),
+              Expanded(
+                child: Padding(
+                    padding: EdgeInsets.only(left: 8.h, top: 14.v),
+                    child: Text('доп. информация....', //! данные из Api
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: basicTheme().textTheme.bodyLarge)),
+              )
+            ])
+            //)
           ]));
 }
 
-//!=============================================================================
+//!================================Description=============================================
 /// Section Widget
-Widget _discriptionWidget(BuildContext context) {
+Widget _descriptionWidget(BuildContext context) {
   return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
-      decoration: AppDecoration.fillWhiteA
-          .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
+      decoration: AppDecoration.fillWhiteA.copyWith(
+        borderRadius: BorderRadiusStyle.roundedBorder12,
+        //color: Colors.blue[100]
+      ),
       child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -223,61 +234,49 @@ Widget _discriptionWidget(BuildContext context) {
                         .copyWith(height: 1.20))),
             SizedBox(height: 13.v),
 
-            //!==================================================
-            // CustomImageView(
-            //   imagePath: 'assets/images/iimg_image_20_1.png',
-            //   // height: 24.adaptSize,
-            //   // width: 24.adaptSize,
-            //   // margin: EdgeInsets.symmetric(vertical: 7.v)
-            // ),
-
-            // Image.asset('assets/images/iimg_image_20_1.png'),
-            // Container(
-            //   child: Image(image: AssetImage('assets/images/img_settings.svg')),
-            // ),
-            ////!==================================================
-
-            //==================================================
+            //!==============================CastomListTile===========================
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 14.v),
-                decoration: AppDecoration.fillGray50
-                    .copyWith(borderRadius: BorderRadiusStyle.roundedBorder15),
+                decoration: AppDecoration.fillGray50.copyWith(
+                  borderRadius: BorderRadiusStyle.roundedBorder15,
+                ),
                 child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      _buildFour(context,
+                      _castomListTitle(context,
                           checkmark: ImageConstant.imgSettings,
-                          titleMediumOnSecondaryContainer: "lbl3",
-                          titleSmall: "msg2"),
+                          titleMediumOnSecondaryContainer: "Удобства",
+                          titleSmall: "Самое необходимое"),
                       SizedBox(height: 9.v),
                       Divider(indent: 38.h),
                       SizedBox(height: 8.v),
-                      _buildFour(context,
+                      _castomListTitle(context,
                           checkmark: ImageConstant.imgCheckmark,
-                          titleMediumOnSecondaryContainer: "lbl4",
-                          titleSmall: "msg2"),
+                          titleMediumOnSecondaryContainer: "Что включено",
+                          titleSmall: "Самое необходимое"),
                       SizedBox(height: 9.v),
                       Divider(indent: 38.h),
                       SizedBox(height: 8.v),
-                      _buildFour(context,
+                      _castomListTitle(context,
                           checkmark: ImageConstant.imgClose,
-                          titleMediumOnSecondaryContainer: "lbl5",
-                          titleSmall: "msg2")
+                          titleMediumOnSecondaryContainer: "Что не включено",
+                          titleSmall: "Самое необходимое")
                     ]))
           ]));
 }
 
-// /// Section Widget
-// Widget _buildBarsBars(BuildContext context) {
-//   return Container(
-//       margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 28.v),
-//       decoration: AppDecoration.outlineGray,
-//       child: CustomElevatedButton(text: "lbl6".tr));
-// }
+//!==============================CastomListTile===========================
+
+Widget _buildBarsBars(BuildContext context) {
+  return Container(
+      margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 28.v),
+      decoration: AppDecoration.outlineGray,
+      child: CustomElevatedButton(text: 'К выбору номера'));
+}
 
 // /// Common widget
-Widget _buildFour(
+Widget _castomListTitle(
   BuildContext context, {
   required String checkmark,
   required String titleMediumOnSecondaryContainer,
@@ -288,6 +287,7 @@ Widget _buildFour(
         imagePath: checkmark,
         height: 24.adaptSize,
         width: 24.adaptSize,
+        color: basicTheme().colorScheme.secondaryContainer,
         margin: EdgeInsets.symmetric(vertical: 7.v)),
     Padding(
         padding: EdgeInsets.only(left: 12.h),
@@ -304,10 +304,15 @@ Widget _buildFour(
         ])),
     const Spacer(),
     CustomImageView(
-        imagePath: ImageConstant.imgArrowRight,
-        height: 24.adaptSize,
-        width: 24.adaptSize,
-        margin: EdgeInsets.symmetric(vertical: 7.v))
+      imagePath: ImageConstant.imgArrowRight,
+      height: 24.adaptSize,
+      width: 24.adaptSize,
+      color: basicTheme().colorScheme.secondaryContainer,
+      margin: EdgeInsets.symmetric(vertical: 7.v),
+      onTap: () {
+        //!!!!в задании не указанно
+      },
+    )
   ]);
 }
 
