@@ -5,6 +5,4 @@ class I0Model {
   List<ThreeItemModel> threeItemList =
       List.generate(10, (index) => ThreeItemModel());
 
-  // List<DiscriptionItemModel> framenineItemList =
-  //     List.generate(4, (index) => DiscriptionItemModel());
 }

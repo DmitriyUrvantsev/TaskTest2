@@ -29,10 +29,10 @@ class MainNavigation {
 
     switch (settings.name) {
       case AppNavigationRoutes.apartmentScreen:
-        // final movieId = settings.arguments as int;
+         final nameHotel = settings.arguments as String;
         return MaterialPageRoute(
             builder: (context) => ApartmentScreen(
-                // movieId: movieId,
+                 nameHotel: nameHotel,
                 ));
       //----------------//
       // case AppNavigationRoutes.movieScreenDetailsTrailer:

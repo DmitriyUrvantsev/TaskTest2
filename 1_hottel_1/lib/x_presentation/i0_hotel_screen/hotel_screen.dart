@@ -35,7 +35,6 @@ class HotelScreen extends StatelessWidget {
   }
 }
 
-//!Center(child: Text('${read.hotel?.adress}'));
 class HotelScreenBody extends StatelessWidget {
   const HotelScreenBody({
     super.key,
@@ -57,7 +56,7 @@ class HotelScreenBody extends StatelessWidget {
                       SizedBox(height: 23.v),
                       _descriptionWidget(context, read),
                     ])))),
-        bottomNavigationBar: _buildBarsBars(context));
+        bottomNavigationBar: _buildBarsBars(context, read));
   }
 }
 
@@ -66,11 +65,7 @@ class HotelScreenBody extends StatelessWidget {
 
 PreferredSizeWidget _buildAppBar(BuildContext context) {
   return CustomAppBar(
-      height: 56.v,
-      centerTitle: true,
-      title: AppbarTitle(text: 'Отель'
-          //!-----"lbl".tr
-          ));
+      height: 56.v, centerTitle: true, title: AppbarTitle(text: 'Отель'));
 }
 
 //!====================================Slider=========================================
@@ -114,8 +109,7 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
                             alignment: Alignment.center,
                             child: CustomImageView(
                               //! потом подумать есди будет время//
-                              imagePath:
-                                  read.hotel?.imageUrls?[index] ??
+                              imagePath: read.hotel?.imageUrls?[index] ??
                                   ImageConstant.imgImage20,
                               //"https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg",
                               //!"https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg", - битая ссылка
@@ -196,7 +190,7 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
             TextButton(
               onPressed: () {},
               child: Text('${read.hotel?.adress} ', //! адреc
-                  overflow: TextOverflow.ellipsis,
+
                   maxLines: 1,
                   style: CustomTextStyles.titleSmallPrimary),
             ),
@@ -301,11 +295,15 @@ Widget _descriptionWidget(BuildContext context, I0Provider read) {
           ]));
 }
 
-Widget _buildBarsBars(BuildContext context) {
+Widget _buildBarsBars(BuildContext context, I0Provider read) {
+  final nameHotel = read.hotel?.name?? '';
   return Container(
       margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 28.v),
       decoration: AppDecoration.outlineGray,
-      child: CustomElevatedButton(text: 'К выбору номера'));
+      child: CustomElevatedButton(
+        text: 'К выбору номера',
+        onPressed: () => read.showApartmenScreen(context, nameHotel),
+      ));
 }
 
 // /// Common widget
