@@ -46,20 +46,17 @@ class ApartmentScreen extends StatelessWidget {
   /// Section AppBar
   PreferredSizeWidget _buildAppBar(BuildContext context, nameHotel, read) {
     return CustomAppBar(
-
-
-        leadingWidth: 48.h,
-        leading: AppbarLeadingCircleimage(
-            imagePath: ImageConstant.imgArrowLeft,
-
-            margin: EdgeInsets.only(left: 16.h, top: 14.v, bottom: 11.v),
-            onTap: () {
-              read.onTapBack(context);
-            }),
-        centerTitle: true,
-        title: AppbarTitle(text: nameHotel),
-
-        styleType: Style.bgFill, );
+      leadingWidth: 48.h,
+      leading: AppbarLeadingCircleimage(
+          imagePath: ImageConstant.imgArrowLeft,
+          margin: EdgeInsets.only(left: 16.h, top: 14.v, bottom: 11.v),
+          onTap: () {
+            read.onTapBack(context);
+          }),
+      centerTitle: true,
+      title: AppbarTitle(text: nameHotel),
+      styleType: Style.bgFill,
+    );
   }
 }
 
@@ -69,86 +66,107 @@ class ApartmentScreenBody extends StatelessWidget {
   const ApartmentScreenBody({
     super.key,
     required this.read,
-    
   });
 
   final Screen1Provider read;
-  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        
         body: SizedBox(
             width: SizeUtils.width,
             //!==========================================
             //!==========================================
             //!==========================================
-            child: SingleChildScrollView(
-                padding: EdgeInsets.only(top: 8.v),
-                child: Column(children: [
-                  Container(
-                      padding: EdgeInsets.all(16.h),
-                      decoration: AppDecoration.fillWhiteA.copyWith(
-                          borderRadius: BorderRadiusStyle.roundedBorder12),
-                      child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _buildSliderSection(context), //!++++++++
-                            SizedBox(height: 7.v),
-                            Container(
-                                width: 337.h,
-                                margin: EdgeInsets.only(right: 5.h),
-                                child: Text("msg3",
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: basicTheme()
-                                        .textTheme
-                                        .titleLarge!
-                                        .copyWith(height: 1.20))),
-                            SizedBox(height: 4.v),
+            child: Padding(
+              padding: EdgeInsets.only(top: 8.v),
+              child: Column(children: [
+                //!==========================
+                ListView.builder(
+                  itemCount: read.apartment?.rooms?.length ?? 0, //!
+                  itemBuilder: (BuildContext context, int indexRooms) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      child: Container(
+                          padding: EdgeInsets.all(16.h),
+                          decoration: AppDecoration.fillWhiteA.copyWith(
+                              borderRadius:
+                                  BorderRadiusStyle.roundedBorder12),
+                          child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment:
+                                  CrossAxisAlignment.start,
+                              children: [
+                                _buildSliderSection(
+                                    context, indexRooms), //!++++++++
+                                SizedBox(height: 7.v),
+                                Container(
+                                    width: 337.h,
+                                    margin: EdgeInsets.only(right: 5.h),
+                                    child: Text(
+                                        read.apartment?.rooms?[indexRooms]
+                                                .name ??
+                                            '', //!наименование
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: basicTheme()
+                                            .textTheme
+                                            .titleLarge!
+                                            .copyWith(height: 1.20))),
 
-                            _buildChipViewSection(context), //!++++++++
-                            SizedBox(height: 16.v),
-                            Padding(
-                                padding: EdgeInsets.only(right: 29.h),
-                                child: _buildRowSection(context,
-                                    priceText: "lbl_186_600", title: "msg_7")),
-                            SizedBox(height: 15.v),
-                            CustomElevatedButton(text: "lbl9")
-                          ])),
-                  SizedBox(height: 8.v),
-                  Container(
-                      padding: EdgeInsets.all(16.h),
-                      decoration: AppDecoration.fillWhiteA.copyWith(
-                          borderRadius: BorderRadiusStyle.roundedBorder12),
-                      child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _buildStackSection(context),
-                            SizedBox(height: 8.v),
-                            SizedBox(
-                                width: 343.h,
-                                child: Text("msg5",
-                                    maxLines: null,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: basicTheme()
-                                        .textTheme
-                                        .titleLarge!
-                                        .copyWith(height: 1.20))),
-                            SizedBox(height: 8.v),
-                            _buildChipViewSection1(context),
-                            SizedBox(height: 16.v),
-                            Padding(
-                                padding: EdgeInsets.only(right: 29.h),
-                                child: _buildRowSection(context,
-                                    priceText: "lbl_194_200", title: "msg_7")),
-                            SizedBox(height: 16.v),
-                            _buildButtonsPrimary(context)
-                          ]))
-                ]))));
+                                SizedBox(height: 4.v),
+
+                                // _buildConditionsSection(
+                                //     context, index), //!++++++++
+                                SizedBox(height: 16.v),
+                                Padding(
+                                    padding: EdgeInsets.only(right: 29.h),
+                                    child: _buildRowSection(context,
+                                        priceText: '${read.apartment?.rooms?[indexRooms]
+                                                .price}',
+                                        title: "msg_7")),
+                                SizedBox(height: 15.v),
+                                CustomElevatedButton(text: "lbl9")
+                              ])),
+                    );
+                  },
+                ),
+
+                SizedBox(height: 8.v),
+
+                // Container(
+                //     padding: EdgeInsets.all(16.h),
+                //     decoration: AppDecoration.fillWhiteA.copyWith(
+                //         borderRadius: BorderRadiusStyle.roundedBorder12),
+                //     child: Column(
+                //         mainAxisSize: MainAxisSize.min,
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         children: [
+                //           _buildStackSection(context),
+                //           SizedBox(height: 8.v),
+                //           SizedBox(
+                //               width: 343.h,
+                //               child: Text("msg5",
+                //                   maxLines: null,
+                //                   overflow: TextOverflow.ellipsis,
+                //                   style: basicTheme()
+                //                       .textTheme
+                //                       .titleLarge!
+                //                       .copyWith(height: 1.20))),
+                //           SizedBox(height: 8.v),
+                //           _buildChipViewSection1(context),
+                //           SizedBox(height: 16.v),
+                //           Padding(
+                //               padding: EdgeInsets.only(right: 29.h),
+                //               child: _buildRowSection(context,
+                //                   priceText: "lbl_194_200", title: "msg_7")),
+                //           SizedBox(height: 16.v),
+                //           _buildButtonsPrimary(context)
+                //         ]))
+              ]),
+            )
+            )
+            );
   }
 
   /// Section AppBar
@@ -166,8 +184,10 @@ class ApartmentScreenBody extends StatelessWidget {
   //       styleType: Style.bgFill);
   // }
 
+
+
   /// Section Slider
-  Widget _buildSliderSection(BuildContext context) {
+  Widget _buildSliderSection(BuildContext context, indexRooms) {
     return SizedBox(
         height: 257.v,
         width: 343.h,
@@ -184,15 +204,15 @@ class ApartmentScreenBody extends StatelessWidget {
                     onPageChanged: (index, reason) {
                       provider.sliderIndex = index;
                     }),
-                itemCount: read.apartment?.rooms?.length ?? 0,
+                itemCount: read.apartment?.rooms?[indexRooms].imageUrls?.length ?? 0,//!========
                 //!provider.k1ModelObj.oneItemList.length,
                 itemBuilder: (context, index, realIndex) {
                   //! OneItemModel model = provider.k1ModelObj.oneItemList[index];
                   return Align(
                     alignment: Alignment.center,
                     child: CustomImageView(
-                      imagePath: read.apartment!.rooms![index].imageUrls
-                          ?.first, //!!!!!!!!!
+                      imagePath: read.apartment!.rooms![indexRooms].imageUrls?[index]?? '',//!========
+                         
                       height: 257.v,
                       width: 343.h,
                       radius: BorderRadius.circular(
@@ -231,17 +251,19 @@ class ApartmentScreenBody extends StatelessWidget {
   }
 
   /// Section все вкючено
-  Widget _buildChipViewSection(BuildContext context) {
+  Widget _buildConditionsSection(BuildContext context, index) {
     return Consumer<Screen1Provider>(builder: (context, provider, child) {
       return Wrap(
           runSpacing: 8.v,
           spacing: 8.h,
-          children: List<Widget>.generate(2,
+          children: List<Widget>.generate(
+              read.apartment?.rooms?[index].peculiarities?.length ?? 0, //!====
+              //2,
               //provider.k1ModelObj.chipviewsectionItemList.length,
-              (index) {
+              (i) {
             // ChipviewsectionItemModel model =
             //     provider.k1ModelObj.chipviewsectionItemList[index];
-            return Text('111111111111');
+            return Text('${read.apartment?.rooms?[index].peculiarities?[i]}');//!====
             // ChipviewsectionItemWidget(model,
             //     onSelectedChipView1: (value) {
             //   provider.onSelectedChipView1(index, value);
@@ -324,6 +346,4 @@ class ApartmentScreenBody extends StatelessWidget {
                       .withOpacity(1))))
     ]);
   }
-
- 
 }
