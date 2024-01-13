@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hottel_1/x_core/app_export.dart';
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
 import 'package:hottel_1/x_data/hotel.dart';
-import 'package:hottel_1/x_presentation/i0_hotel_screen/models/discription_item_model.dart';
+//import 'package:hottel_1/x_presentation/i0_hotel_screen/models/discription_item_model.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/models/three_item_model.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/provider/i0_provider.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/discription_item_widget.dart';
@@ -115,7 +115,7 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
                             child: CustomImageView(
                               //! потом подумать есди будет время//
                               imagePath:
-                                  //read.hotel?.imageUrls?[index] ??
+                                  read.hotel?.imageUrls?[index] ??
                                   ImageConstant.imgImage20,
                               //"https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg",
                               //!"https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg", - битая ссылка
