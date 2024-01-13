@@ -7,8 +7,6 @@ import 'package:hottel_1/x_servises/api_client.dart';
 
 // ignore_for_file: must_be_immutable
 class Screen1Provider extends ChangeNotifier {
- 
- 
   final _apiClient = ApiClient();
   Apartment? _apartment;
   Apartment? get apartment => _apartment;
@@ -19,8 +17,6 @@ class Screen1Provider extends ChangeNotifier {
   Screen1Provider() {
     loadApartmentData();
   }
-
-
 
 //!=======================================================
   Future<void> loadApartmentData() async {
@@ -51,5 +47,9 @@ class Screen1Provider extends ChangeNotifier {
     });
     scr1ModelObj.chipviewsection2ItemList[index].isSelected = value;
     notifyListeners();
+  }
+
+  void onTapBack(context) {
+    Navigator.pop(context);
   }
 }

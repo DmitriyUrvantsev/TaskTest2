@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
 import 'package:hottel_1/x_theme/app_decoration.dart';
+import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_widgets/custom_image_view.dart';
-
 
 // ignore: must_be_immutable
 class AppbarLeadingCircleimage extends StatelessWidget {
@@ -31,6 +31,7 @@ class AppbarLeadingCircleimage extends StatelessWidget {
       child: Padding(
         padding: margin ?? EdgeInsets.zero,
         child: CustomImageView(
+          color: Colors.black,
           imagePath: imagePath,
           height: 32.adaptSize,
           width: 32.adaptSize,
