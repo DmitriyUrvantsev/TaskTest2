@@ -112,8 +112,10 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
                           //     provider.k0ModelObj.threeItemList[index];
                           return Align(
                             alignment: Alignment.center,
-                            child: CustomImageView(  //! потом подумать есди будет время//
-                              imagePath: read.hotel?.imageUrls?[index] ??
+                            child: CustomImageView(
+                              //! потом подумать есди будет время//
+                              imagePath:
+                                  //read.hotel?.imageUrls?[index] ??
                                   ImageConstant.imgImage20,
                               //"https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg",
                               //!"https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg", - битая ссылка
@@ -144,11 +146,9 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
                             margin: EdgeInsets.only(bottom: 8.v),
                             child: Center(
                               child: AnimatedSmoothIndicator(
-
                                   activeIndex: provider.sliderIndex,
-                                  count:
-                                  read.hotel?.imageUrls?.length ?? 0,
-                                     //provider.k0ModelObj.threeItemList.length,
+                                  count: read.hotel?.imageUrls?.length ?? 0,
+                                  //provider.k0ModelObj.threeItemList.length,
                                   axisDirection: Axis.horizontal,
                                   effect: ScrollingDotsEffect(
                                       spacing: 5,
@@ -192,10 +192,15 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
             Text('${read.hotel?.name} ', //! Название отеля
                 style: basicTheme().textTheme.titleLarge),
             SizedBox(height: 6.v),
-            Text('${read.hotel?.adress} ', //! адре
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: CustomTextStyles.titleSmallPrimary),
+
+            TextButton(
+              onPressed: () {},
+              child: Text('${read.hotel?.adress} ', //! адреc
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: CustomTextStyles.titleSmallPrimary),
+            ),
+
             SizedBox(height: 15.v),
 
             //Padding(
@@ -218,7 +223,7 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
           ]));
 }
 
-//!================================Description=============================================
+//!================================Description "Об отеле"=============================================
 /// Section Widget
 Widget _descriptionWidget(BuildContext context, I0Provider read) {
   return Container(
@@ -231,28 +236,31 @@ Widget _descriptionWidget(BuildContext context, I0Provider read) {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Об отеле", 
-                style: basicTheme().textTheme.titleLarge),
+            Text("Об отеле", style: basicTheme().textTheme.titleLarge),
             SizedBox(height: 15.v),
             Consumer<I0Provider>(builder: (context, provider, child) {
               return Wrap(
                   runSpacing: 8.v,
                   spacing: 8.h,
                   children: List<Widget>.generate(
-                      provider.k0ModelObj.framenineItemList.length, (index) {
-                    DiscriptionItemModel model =
-                        provider.k0ModelObj.framenineItemList[index];
-                    return DiscriptionItemWidget(model,
-                        onSelectedChipView1: (value) {
-                      provider.onSelectedChipView1(index, value);
-                    });
+                      read.hotel?.aboutTheHotel?.peculiarities?.length ?? 0,
+                      (index) {
+                    //DiscriptionItemModel
+                    String? model =
+                        read.hotel?.aboutTheHotel?.peculiarities?[index];
+                    return DiscriptionItemWidget(
+                      model,
+                      //! длина строк в API длинее чем в фигме и из-за этого в две строки не помещается
+                      //?поэтому я сократил длинные строки до 15 символов
+                    );
                   }));
             }),
             SizedBox(height: 11.v),
             //==================================================
             SizedBox(
                 width: 340.h,
-                child: Text('${read.hotel?.adress}', //!+++++++++++++++
+                child: Text(
+                    '${read.hotel?.aboutTheHotel?.description}', //!+++++++++++++++
 
                     maxLines: 4,
                     overflow: TextOverflow.ellipsis,
@@ -260,7 +268,8 @@ Widget _descriptionWidget(BuildContext context, I0Provider read) {
                         .copyWith(height: 1.20))),
             SizedBox(height: 13.v),
 
-            //!==============================CastomListTile===========================
+//!==============================CastomListTile===========================
+
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 14.v),
                 decoration: AppDecoration.fillGray50.copyWith(
@@ -291,8 +300,6 @@ Widget _descriptionWidget(BuildContext context, I0Provider read) {
                     ]))
           ]));
 }
-
-//!==============================CastomListTile===========================
 
 Widget _buildBarsBars(BuildContext context) {
   return Container(

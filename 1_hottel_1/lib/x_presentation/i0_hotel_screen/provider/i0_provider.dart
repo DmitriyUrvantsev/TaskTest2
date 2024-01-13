@@ -8,7 +8,6 @@ class I0Provider extends ChangeNotifier {
   final _apiClient = ApiClient();
   Hotel? _hotel;
   Hotel? get hotel => _hotel;
-  
 
   I0Model k0ModelObj = I0Model();
   int sliderIndex = 0;
@@ -17,17 +16,15 @@ class I0Provider extends ChangeNotifier {
     loadHotelData();
   }
 
-
 //!=======================================================
 
   Future<void> loadHotelData() async {
-  try {
-    _hotel = await _apiClient.getHotelPost();
+    try {
+      _hotel = await _apiClient.getHotelPost();
 
-    notifyListeners();
-  } catch (e) {}
+      notifyListeners();
+    } catch (e) {}
   }
-
 
 //------------------------
   void changeSliderIndex(index) {
@@ -38,15 +35,15 @@ class I0Provider extends ChangeNotifier {
   }
 
 //------------------------
-  void onSelectedChipView1(
-    int index,
-    bool value,
-  ) {
-    // print(index);
-    k0ModelObj.framenineItemList.forEach((element) {
-      element.isSelected = false;
-    });
-    k0ModelObj.framenineItemList[index].isSelected = value;
-    notifyListeners();
-  }
+  // void onSelectedChipView1(
+  //   int index,
+  //   bool value,
+  // ) {
+  //   // print(index);
+  //   k0ModelObj.framenineItemList.forEach((element) {
+  //     element.isSelected = false;
+  //   });
+  //   k0ModelObj.framenineItemList[index].isSelected = value;
+  //   notifyListeners();
+  // }
 }

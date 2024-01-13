@@ -8,14 +8,14 @@ class DiscriptionItemWidget extends StatelessWidget {
   DiscriptionItemWidget(
     this.framenineItemModelObj, {
     Key? key,
-    this.onSelectedChipView1,
+    // this.onSelectedChipView1,
   }) : super(
           key: key,
         );
 
-  DiscriptionItemModel framenineItemModelObj;
+  String? framenineItemModelObj;
 
-  Function(bool)? onSelectedChipView1;
+  //Function(bool)? onSelectedChipView1;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,10 @@ class DiscriptionItemWidget extends StatelessWidget {
       showCheckmark: false,
       labelPadding: EdgeInsets.zero,
       label: Text(
-        framenineItemModelObj.widget!,
+        framenineItemModelObj!.length > 15
+            ? //! потом сделай доп проверку на null но вроде его там не должно быть
+            framenineItemModelObj?.substring(0, 15) ?? ''
+            : framenineItemModelObj ?? '',
         style: TextStyle(
           color: basicTheme().colorScheme.onPrimaryContainer.withOpacity(1),
           fontSize: 16.fSize,
@@ -35,30 +38,29 @@ class DiscriptionItemWidget extends StatelessWidget {
           fontWeight: FontWeight.w500,
         ),
       ),
-      selected: (framenineItemModelObj.isSelected ?? false),
+      //selected: (framenineItemModelObj.isSelected ?? false),
       backgroundColor: PrimaryColors().gray50,
       selectedColor: PrimaryColors().gray50,
-      shape: (framenineItemModelObj.isSelected ?? false)
-          ? RoundedRectangleBorder(
-              side: BorderSide(
-                color: basicTheme()
-                    .colorScheme
-                    .onPrimaryContainer
-                    .withOpacity(0.6),
-                width: 1.h,
-              ),
-              borderRadius: BorderRadius.circular(
-                5.h,
-              ),
-            )
-          : RoundedRectangleBorder(
-              side: BorderSide.none,
-              borderRadius: BorderRadius.circular(
-                5.h,
-              ),
-            ),
+      shape:
+          //(framenineItemModelObj.isSelected ?? false)
+          //  ?
+          RoundedRectangleBorder(
+        side: BorderSide(
+          color: basicTheme().colorScheme.onPrimaryContainer.withOpacity(0.6),
+          width: 1.h,
+        ),
+        borderRadius: BorderRadius.circular(
+          5.h,
+        ),
+      ),
+      // : RoundedRectangleBorder(
+      //     side: BorderSide.none,
+      //     borderRadius: BorderRadius.circular(
+      //       5.h,
+      //     ),
+      //   ),
       onSelected: (value) {
-        onSelectedChipView1?.call(value);
+        //====== не нужно пока
       },
     );
   }
