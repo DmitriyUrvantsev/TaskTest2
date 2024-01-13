@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
 //             builder: (context, provider, child) {
 //               return MaterialApp(
 //                 theme: theme,
-//                 title: 'urvandimon_s_hotel',
+//                 title: 'urvandimon_s_hotell',
 //                 navigatorKey: NavigatorService.navigatorKey,
 //                 debugShowCheckedModeBanner: false,
 //                 localizationsDelegates: [

@@ -5,7 +5,7 @@ import 'package:hottel_1/x_routes/app_routes.dart';
 import 'package:hottel_1/x_servises/api_client.dart';
 
 // ignore_for_file: must_be_immutable
-class I0Provider extends ChangeNotifier {
+class Screen0Provider extends ChangeNotifier {
   final _apiClient = ApiClient();
   Hotel? _hotel;
   Hotel? get hotel => _hotel;
@@ -13,7 +13,7 @@ class I0Provider extends ChangeNotifier {
   I0Model k0ModelObj = I0Model();
   int sliderIndex = 0;
 
-  I0Provider() {
+  Screen0Provider() {
     loadHotelData();
   }
 
@@ -37,7 +37,6 @@ class I0Provider extends ChangeNotifier {
 
 //------------------------
   void showApartmenScreen(context, nameHotel) async {
-    
     Navigator.of(context)
         .pushNamed(AppNavigationRoutes.apartmentScreen, arguments: nameHotel);
   }

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hottel_1/x_presentation/i1_apartment_screen/scr1_apartment_screen.dart';
+import 'package:hottel_1/x_presentation/i1_apartment_screen/x_provider/scr1_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/hotel_screen.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/i1_apartment_screen.dart';
 import '../x_presentation/i0_hotel_screen/provider/i0_provider.dart';
 
 abstract class AppNavigationRoutes {
@@ -20,8 +21,14 @@ class MainNavigation {
 
   final routes = <String, Widget Function(BuildContext)>{
     AppNavigationRoutes.hotel: (context) => ChangeNotifierProvider(
-        create: (context) => I0Provider(), child: const HotelScreen()),
+        create: (context) => Screen0Provider(), child: const HotelScreen()),
+
+        
   };
+
+
+
+
 
 //----------------наша функция где можно передать arg ---------------------------------
   Route<Object> onGenerateRoutes(RouteSettings settings) {
@@ -29,11 +36,14 @@ class MainNavigation {
 
     switch (settings.name) {
       case AppNavigationRoutes.apartmentScreen:
-         final nameHotel = settings.arguments as String;
+        final nameHotel = settings.arguments as String;
         return MaterialPageRoute(
-            builder: (context) => ApartmentScreen(
-                 nameHotel: nameHotel,
-                ));
+            builder: (context) => ChangeNotifierProvider(
+              create: (context) => Screen1Provider(),
+              child: ApartmentScreen(
+                    nameHotel: nameHotel,
+                  ),
+            ));
       //----------------//
       // case AppNavigationRoutes.movieScreenDetailsTrailer:
       //   final arguments = settings.arguments;

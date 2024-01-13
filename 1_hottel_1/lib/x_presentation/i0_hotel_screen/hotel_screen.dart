@@ -25,8 +25,8 @@ class HotelScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final read = context.read<I0Provider>();
-    final watch = context.watch<I0Provider>();
+    final read = context.read<Screen0Provider>();
+    final watch = context.watch<Screen0Provider>();
     return Scaffold(
       body: read.hotel == null
           ? Center(child: CircularProgressIndicator())
@@ -40,7 +40,7 @@ class HotelScreenBody extends StatelessWidget {
     super.key,
     required this.read,
   });
-  final I0Provider read;
+  final Screen0Provider read;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ PreferredSizeWidget _buildAppBar(BuildContext context) {
 }
 
 //!====================================Slider=========================================
-Widget _castomSliderWidget(BuildContext context, I0Provider read) {
+Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
   return Container(
       padding: EdgeInsets.symmetric(
           horizontal: 10.h, vertical: 15.v), //! vertical: 3.v
@@ -87,7 +87,8 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
                 width: double.infinity,
                 //343.h,
                 child: Stack(alignment: Alignment.bottomCenter, children: [
-                  Consumer<I0Provider>(builder: (context, provider, child) {
+                  Consumer<Screen0Provider>(
+                      builder: (context, provider, child) {
                     //==================================================
                     return CarouselSlider.builder(
                         options: CarouselOptions(
@@ -130,7 +131,7 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
 //====================================AnimatedSmoothIndicator=========================
                   Align(
                       alignment: Alignment.bottomCenter,
-                      child: Consumer<I0Provider>(
+                      child: Consumer<Screen0Provider>(
                           builder: (context, provider, child) {
                         return Container(
                             decoration: AppDecoration.fillWhiteA.copyWith(
@@ -219,7 +220,7 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
 
 //!================================Description "Об отеле"=============================================
 /// Section Widget
-Widget _descriptionWidget(BuildContext context, I0Provider read) {
+Widget _descriptionWidget(BuildContext context, Screen0Provider read) {
   return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
       decoration: AppDecoration.fillWhiteA.copyWith(
@@ -232,7 +233,7 @@ Widget _descriptionWidget(BuildContext context, I0Provider read) {
           children: [
             Text("Об отеле", style: basicTheme().textTheme.titleLarge),
             SizedBox(height: 15.v),
-            Consumer<I0Provider>(builder: (context, provider, child) {
+            Consumer<Screen0Provider>(builder: (context, provider, child) {
               return Wrap(
                   runSpacing: 8.v,
                   spacing: 8.h,
@@ -295,8 +296,8 @@ Widget _descriptionWidget(BuildContext context, I0Provider read) {
           ]));
 }
 
-Widget _buildBarsBars(BuildContext context, I0Provider read) {
-  final nameHotel = read.hotel?.name?? '';
+Widget _buildBarsBars(BuildContext context, Screen0Provider read) {
+  final nameHotel = read.hotel?.name ?? '';
   return Container(
       margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 28.v),
       decoration: AppDecoration.outlineGray,
