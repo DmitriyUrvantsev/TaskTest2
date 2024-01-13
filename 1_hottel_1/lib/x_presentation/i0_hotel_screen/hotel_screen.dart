@@ -34,13 +34,13 @@ class HotelScreen extends StatelessWidget {
     );
   }
 }
+
 //!Center(child: Text('${read.hotel?.adress}'));
 class HotelScreenBody extends StatelessWidget {
   const HotelScreenBody({
     super.key,
     required this.read,
   });
-
   final I0Provider read;
 
   @override
@@ -49,12 +49,11 @@ class HotelScreenBody extends StatelessWidget {
         appBar: _buildAppBar(context),
         body: SizedBox(
             width: double.infinity,
-            //!SizeUtils.width,
             child: SingleChildScrollView(
                 child: Padding(
                     padding: EdgeInsets.only(bottom: 5.v),
                     child: Column(children: [
-                      _castomSliderWidget(context),
+                      _castomSliderWidget(context, read),
                       SizedBox(height: 23.v),
                       _descriptionWidget(context, read),
                     ])))),
@@ -75,7 +74,7 @@ PreferredSizeWidget _buildAppBar(BuildContext context) {
 }
 
 //!====================================Slider=========================================
-Widget _castomSliderWidget(BuildContext context) {
+Widget _castomSliderWidget(BuildContext context, I0Provider read) {
   return Container(
       padding: EdgeInsets.symmetric(
           horizontal: 10.h, vertical: 15.v), //! vertical: 3.v
@@ -157,24 +156,26 @@ Widget _castomSliderWidget(BuildContext context) {
                     .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   CustomImageView(
-                      imagePath: ImageConstant.imgStar22,
+                      imagePath:
+                          ImageConstant.imgStar22, //!++++++++++++++++++++++++
                       height: 15.adaptSize,
                       width: 15.adaptSize,
+                      color: PrimaryColors().amberA700,
                       radius: BorderRadius.circular(1.h),
                       margin: EdgeInsets.symmetric(vertical: 3.v)),
                   Padding(
                       padding: EdgeInsets.only(left: 2.h, top: 2.v),
                       child: Text(
-                          'Превосходно', //! добавить звезду и оценку из API
+                          '${read.hotel?.rating} ${read.hotel?.ratingName}',
                           style: CustomTextStyles.titleMediumAmberA700))
                 ])),
             //==================================================
 
             SizedBox(height: 9.v),
-            Text('Название отеля', //! данные из Api
+            Text('${read.hotel?.name} ', //! Название отеля
                 style: basicTheme().textTheme.titleLarge),
             SizedBox(height: 6.v),
-            Text("Местоположение отеля", //! данные из Api
+            Text('${read.hotel?.adress} ', //! адре
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
                 style: CustomTextStyles.titleSmallPrimary),
@@ -184,12 +185,12 @@ Widget _castomSliderWidget(BuildContext context) {
             //padding: EdgeInsets.only(right: 26.h),
             //child:
             Row(children: [
-              Text('Стоимость', //! данные из Api
+              Text('от ${read.hotel?.minimalPrice} ₽', //! стоимость
                   style: basicTheme().textTheme.headlineLarge),
               Expanded(
                 child: Padding(
                     padding: EdgeInsets.only(left: 8.h, top: 14.v),
-                    child: Text('доп. информация....', //! данные из Api
+                    child: Text('${read.hotel?.priceForIt}', //! за тур с перелетом
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: basicTheme().textTheme.bodyLarge)),
@@ -233,10 +234,8 @@ Widget _descriptionWidget(BuildContext context, I0Provider read) {
             //==================================================
             SizedBox(
                 width: 340.h,
-                child: Text('${read.hotel?.adress}',
-                //!Center(child: Text('${read.hotel?.adress}'));
-                    // read.hotel?.aboutTheHotel?.description
-                    //     as String, //! данные из Api
+                child: Text('${read.hotel?.adress}', //!+++++++++++++++
+
                     maxLines: 4,
                     overflow: TextOverflow.ellipsis,
                     style: CustomTextStyles.bodyLargeSecondaryContainer_1
@@ -324,5 +323,3 @@ Widget _castomListTitle(
     )
   ]);
 }
-
-
