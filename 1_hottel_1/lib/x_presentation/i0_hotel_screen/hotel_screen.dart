@@ -20,50 +20,31 @@ import '../../x_theme/app_decoration.dart';
 import '../../x_widgets/x_app_bar/appbar_title.dart';
 import '../../x_widgets/x_app_bar/custom_app_bar.dart';
 
-// class HotelScreen extends StatelessWidget {
-//   const HotelScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(body: Container(child: Center(child: Text('hotel'))));
-//   }
-// }
-
-class HotelScreen extends StatefulWidget {
+class HotelScreen extends StatelessWidget {
   const HotelScreen({super.key});
-
-  @override
-  State<HotelScreen> createState() => _HotelScreenState();
-}
-
-class _HotelScreenState extends State<HotelScreen> {
-  final i0provider = I0Provider();
-
-  // @override
-  // void initState() {
-  //   // TODO: implement initState
-  //   super.initState();
-  //   i0provider.loadHotelData();
-  // }
-  // @override
-  // void didChangeDependencies() {
-  //   super.didChangeDependencies();
-  //   final read = context.read<I0Provider>();
-  //   final watch = context.watch<I0Provider>();
-  //   if (watch.hotel == null) {
-  //   i0provider.loadHotelData();
-  //   print(i0provider.hotel);
-  //   // print(read.hotel);
-  //   //  print(watch.hotel);
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
     final read = context.read<I0Provider>();
+    final watch = context.watch<I0Provider>();
+    return Scaffold(
+      body: read.hotel == null
+          ? Center(child: CircularProgressIndicator())
+          : HotelScreenBody(read: read),
+    );
+  }
+}
+//!Center(child: Text('${read.hotel?.adress}'));
+class HotelScreenBody extends StatelessWidget {
+  const HotelScreenBody({
+    super.key,
+    required this.read,
+  });
 
-    print(read.hotel?.name ?? 'Пусто');
+  final I0Provider read;
 
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
         appBar: _buildAppBar(context),
         body: SizedBox(
@@ -252,7 +233,8 @@ Widget _descriptionWidget(BuildContext context, I0Provider read) {
             //==================================================
             SizedBox(
                 width: 340.h,
-                child: Text('',
+                child: Text('${read.hotel?.adress}',
+                //!Center(child: Text('${read.hotel?.adress}'));
                     // read.hotel?.aboutTheHotel?.description
                     //     as String, //! данные из Api
                     maxLines: 4,
@@ -343,4 +325,4 @@ Widget _castomListTitle(
   ]);
 }
 
-// }
+
