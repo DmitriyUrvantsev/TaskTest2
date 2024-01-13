@@ -8,7 +8,7 @@ import 'package:hottel_1/x_presentation/i0_hotel_screen/models/discription_item_
 import 'package:hottel_1/x_presentation/i0_hotel_screen/models/three_item_model.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/provider/i0_provider.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/discription_item_widget.dart';
-import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/three_item_widget.dart';
+//import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/three_item_widget.dart';
 import 'package:hottel_1/x_servises/api_client.dart';
 import 'package:hottel_1/x_theme/custom_text_style.dart';
 import 'package:hottel_1/x_theme/theme.dart';
@@ -105,22 +105,38 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
                             onPageChanged: (index, reason) {
                               provider.changeSliderIndex(index);
                             }),
-                        itemCount: provider.k0ModelObj.threeItemList.length,
+                        itemCount: read.hotel?.imageUrls?.length ?? 0,
+                        //provider.k0ModelObj.threeItemList.length,
                         itemBuilder: (context, index, realIndex) {
-                          ThreeItemModel model =
-                              provider.k0ModelObj.threeItemList[index];
-                          return ThreeItemWidget(model); //! данные из Api
+                          // ThreeItemModel model =
+                          //     provider.k0ModelObj.threeItemList[index];
+                          return Align(
+                            alignment: Alignment.center,
+                            child: CustomImageView(  //! потом подумать есди будет время//
+                              imagePath: read.hotel?.imageUrls?[index] ??
+                                  ImageConstant.imgImage20,
+                              //"https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg",
+                              //!"https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg", - битая ссылка
+                              //!"https://deluxe.voyage/useruploads/articles/article_1eb0a64d00.jpg", - битая ссылка
+
+                              fit: BoxFit.fill,
+                              height: 257.v,
+                              width: 343.h,
+                              radius: BorderRadius.circular(
+                                15.h,
+                              ),
+                            ),
+                          );
+
+                          //ThreeItemWidget(model); //! данные из Api
                         });
                   }),
-                  //==================================================
+//====================================AnimatedSmoothIndicator=========================
                   Align(
                       alignment: Alignment.bottomCenter,
                       child: Consumer<I0Provider>(
                           builder: (context, provider, child) {
-                        //print('${provider.sliderIndex}');
                         return Container(
-
-                            //color: PrimaryColors().whiteA700,
                             decoration: AppDecoration.fillWhiteA.copyWith(
                                 borderRadius: BorderRadiusStyle.roundedBorder5),
                             height: 17.v,
@@ -128,9 +144,11 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
                             margin: EdgeInsets.only(bottom: 8.v),
                             child: Center(
                               child: AnimatedSmoothIndicator(
+
                                   activeIndex: provider.sliderIndex,
                                   count:
-                                      provider.k0ModelObj.threeItemList.length,
+                                  read.hotel?.imageUrls?.length ?? 0,
+                                     //provider.k0ModelObj.threeItemList.length,
                                   axisDirection: Axis.horizontal,
                                   effect: ScrollingDotsEffect(
                                       spacing: 5,
@@ -156,8 +174,7 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
                     .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   CustomImageView(
-                      imagePath:
-                          ImageConstant.imgStar22, //!++++++++++++++++++++++++
+                      imagePath: ImageConstant.imgStar22,
                       height: 15.adaptSize,
                       width: 15.adaptSize,
                       color: PrimaryColors().amberA700,
@@ -190,10 +207,11 @@ Widget _castomSliderWidget(BuildContext context, I0Provider read) {
               Expanded(
                 child: Padding(
                     padding: EdgeInsets.only(left: 8.h, top: 14.v),
-                    child: Text('${read.hotel?.priceForIt}', //! за тур с перелетом
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                        style: basicTheme().textTheme.bodyLarge)),
+                    child:
+                        Text('${read.hotel?.priceForIt}', //! за тур с перелетом
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                            style: basicTheme().textTheme.bodyLarge)),
               )
             ])
             //)
@@ -213,7 +231,7 @@ Widget _descriptionWidget(BuildContext context, I0Provider read) {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Об отеле", //! возможно из API
+            Text("Об отеле", 
                 style: basicTheme().textTheme.titleLarge),
             SizedBox(height: 15.v),
             Consumer<I0Provider>(builder: (context, provider, child) {

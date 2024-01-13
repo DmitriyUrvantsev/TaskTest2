@@ -11,7 +11,7 @@ class I0Provider extends ChangeNotifier {
   
 
   I0Model k0ModelObj = I0Model();
-  int sliderIndex = 3;
+  int sliderIndex = 0;
 
   I0Provider() {
     loadHotelData();
