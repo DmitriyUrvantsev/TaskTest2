@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
-import 'package:hottel_1/x_presentation/i0_hotel_screen/models/discription_item_model.dart';
+import 'package:hottel_1/x_presentation/i1_apartment_screen/x_models/chipviewsection_item_model.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 
 // ignore: must_be_immutable
-class DiscriptionItemWidget extends StatelessWidget {
-  DiscriptionItemWidget(
+class ConditionItemWidget extends StatelessWidget {
+  ConditionItemWidget(
     this.framenineItemModelObj, {
     Key? key,
-    // this.onSelectedChipView1,
   }) : super(
           key: key,
         );
 
   String? framenineItemModelObj;
-
-  //Function(bool)? onSelectedChipView1;
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +24,7 @@ class DiscriptionItemWidget extends StatelessWidget {
       showCheckmark: false,
       labelPadding: EdgeInsets.zero,
       label: Text(
-        framenineItemModelObj!.length > 15
-            ? //! потом сделай доп проверку на null но вроде его там не должно быть
-            framenineItemModelObj?.substring(0, 15) ?? ''
-            : framenineItemModelObj ?? '',
+        framenineItemModelObj ?? '',
         style: TextStyle(
           color: basicTheme().colorScheme.onPrimaryContainer.withOpacity(1),
           fontSize: 16.fSize,
@@ -38,28 +32,17 @@ class DiscriptionItemWidget extends StatelessWidget {
           fontWeight: FontWeight.w500,
         ),
       ),
-      //selected: (framenineItemModelObj.isSelected ?? false),
       backgroundColor: PrimaryColors().gray50,
       selectedColor: PrimaryColors().gray50,
-      shape:
-          //(framenineItemModelObj.isSelected ?? false)
-          //  ?
-          RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         side: BorderSide(
           color: PrimaryColors().whiteA700,
-          //colorScheme.onPrimaryContainer.withOpacity(0.6),
           width: 1.h,
         ),
         borderRadius: BorderRadius.circular(
           5.h,
         ),
       ),
-      // : RoundedRectangleBorder(
-      //     side: BorderSide.none,
-      //     borderRadius: BorderRadius.circular(
-      //       5.h,
-      //     ),
-      //   ),
       onSelected: (value) {
         //====== не нужно пока
       },

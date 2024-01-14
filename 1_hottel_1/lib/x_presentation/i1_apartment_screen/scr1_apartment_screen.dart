@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/discription_item_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -11,8 +12,8 @@ import 'package:hottel_1/x_presentation/i1_apartment_screen/x_models/chipviewsec
 import 'package:hottel_1/x_presentation/i1_apartment_screen/x_models/one_item_model.dart';
 import 'package:hottel_1/x_presentation/i1_apartment_screen/x_provider/scr1_provider.dart';
 import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/appbar_leading_circleimage.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/chipviewsection2_item_widget.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/chipviewsection_item_widget.dart';
+//import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/chipviewsection2_item_widget.dart';
+import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/condition_item_widget.dart';
 import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/one_item_widget.dart';
 import 'package:hottel_1/x_theme/app_decoration.dart';
 import 'package:hottel_1/x_theme/theme.dart';
@@ -37,7 +38,7 @@ class ApartmentScreen extends StatelessWidget {
     final watch = context.watch<Screen1Provider>();
     return Scaffold(
       appBar: _buildAppBar(context, nameHotel, read),
-      body: read.apartment == null
+      body: watch.apartment == null
           ? Center(child: CircularProgressIndicator())
           : ApartmentScreenBody(read: read),
     );
@@ -76,7 +77,7 @@ class ApartmentScreenBody extends StatelessWidget {
         body: SizedBox(
             width: SizeUtils.width,
             //==========================================
-                        child: Padding(
+            child: Padding(
               padding: EdgeInsets.only(top: 8.v),
               child:
                   //==========================
@@ -110,10 +111,12 @@ class ApartmentScreenBody extends StatelessWidget {
                                           .copyWith(height: 1.20))),
 
                               SizedBox(height: 4.v),
+                              //===========================================
+                              _buildConditionsSection(
+                                  context, indexRooms), //!++++++++
 
-                              // _buildConditionsSection(
-                              //     context, index), //!++++++++
                               SizedBox(height: 16.v),
+                              //===========================================
                               Padding(
                                   padding: EdgeInsets.only(right: 29.h),
                                   child: _buildRowSection(context,
@@ -252,20 +255,19 @@ class ApartmentScreenBody extends StatelessWidget {
   }
 
   /// Section все вкючено
-  Widget _buildConditionsSection(BuildContext context, index) {
+  Widget _buildConditionsSection(BuildContext context, indexRooms) {
     return Consumer<Screen1Provider>(builder: (context, provider, child) {
       return Wrap(
-          runSpacing: 8.v,
+          //runSpacing: 2.v,
           spacing: 8.h,
           children: List<Widget>.generate(
-              read.apartment?.rooms?[index].peculiarities?.length ?? 0, //!====
-              //2,
-              //provider.k1ModelObj.chipviewsectionItemList.length,
+              read.apartment?.rooms?[indexRooms].peculiarities?.length ??
+                  0, //!====
               (i) {
-            // ChipviewsectionItemModel model =
-            //     provider.k1ModelObj.chipviewsectionItemList[index];
-            return Text(
-                '${read.apartment?.rooms?[index].peculiarities?[i]}'); //!====
+            String? model =
+                read.apartment?.rooms?[indexRooms].peculiarities?[i];
+            return ConditionItemWidget(model);
+            //Text('${read.apartment?.rooms?[indexRooms].peculiarities?[i]}'); //!====
             // ChipviewsectionItemWidget(model,
             //     onSelectedChipView1: (value) {
             //   provider.onSelectedChipView1(index, value);
