@@ -31,7 +31,7 @@ class AboutTourist extends StatelessWidget {
         shrinkWrap: true,
         //padding: const EdgeInsets.only(top: 65),
         //keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-        itemCount: 2,
+        itemCount: watch.hideTourist.length,
         //itemExtent: 162,
         itemBuilder: (BuildContext context, int index) {
           // watch.showedMovieAtIndex(index);

@@ -472,6 +472,9 @@ class ReservationScreenBody extends StatelessWidget {
               child: Text("Добавить туриста",
                   style: basicTheme().textTheme.titleLarge)),
           CustomIconButton(
+              onTap: () {
+                read.addNewTourist();
+              },
               height: 32.adaptSize,
               width: 32.adaptSize,
               padding: EdgeInsets.all(4.h),
@@ -513,7 +516,7 @@ class ReservationScreenBody extends StatelessWidget {
   Widget _buildTf(BuildContext context) {
     //!!!!!!!!! переделать в моделе с учетом колва туристов !!!!!!!!!!!!!!!!!!!
     return CustomElevatedButton(
-        text: 
+        text:
             'Оплатить ${(read.apartmentData?.tourPrice as int) + (read.apartmentData?.fuelCharge as int) + (read.apartmentData?.serviceCharge as int)} ₽');
   }
 
