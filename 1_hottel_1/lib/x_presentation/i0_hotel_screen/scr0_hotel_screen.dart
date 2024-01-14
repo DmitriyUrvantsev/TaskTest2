@@ -53,7 +53,7 @@ class HotelScreenBody extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 5.v),
                     child: Column(children: [
                       _castomSliderWidget(context, read),
-                      SizedBox(height: 23.v),
+                      SizedBox(height: 8.v),
                       _descriptionWidget(context, read),
                     ])))),
         bottomNavigationBar: _buildBarsBars(context, read));
