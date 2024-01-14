@@ -63,9 +63,9 @@ class Screen2Provider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void showPaidScreenScreen(context) {
+  void showPaidScreenScreen(context, apartmentID) {
     Navigator.of(context)
-        .pushNamed(AppNavigationRoutes.paidScreen); //, arguments: apartmentID);
+        .pushNamed(AppNavigationRoutes.paidScreen, arguments: apartmentID);
   }
 
   void onTapBack(context) {

@@ -3,6 +3,8 @@ import 'package:hottel_1/x_presentation/scr1_apartment_screen/scr1_apartment_scr
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_provider/scr1_provider.dart';
 import 'package:hottel_1/x_presentation/scr2_reservation_screen/scr2_reservation_screen.dart';
 import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_provider/scr2_provider.dart';
+import 'package:hottel_1/x_presentation/scr3_paid_screen/provider/scr3_provider.dart';
+import 'package:hottel_1/x_presentation/scr3_paid_screen/scr3_paid_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/scr0_hotel_screen.dart';
 import '../x_presentation/i0_hotel_screen/provider/i0_provider.dart';
@@ -54,6 +56,17 @@ class MainNavigation {
             builder: (context) => ChangeNotifierProvider(
                create: (context) => Screen2Provider(),
               child: ReservationScreen(
+                    apartmentID: apartmentID,
+                  ),
+            ));
+ //----------------//
+            case AppNavigationRoutes.paidScreen:
+        final arguments = settings.arguments;
+        final apartmentID = arguments is int ? arguments : 0;
+        return MaterialPageRoute(
+            builder: (context) => ChangeNotifierProvider(
+              create: (context) => Screen3Provider(),
+              child: PaidScreen(
                     apartmentID: apartmentID,
                   ),
             ));

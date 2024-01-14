@@ -14,7 +14,7 @@ import 'package:hottel_1/x_widgets/custom_elevated_button.dart';
 import 'package:hottel_1/x_widgets/custom_floating_text_field.dart';
 import 'package:hottel_1/x_widgets/custom_icon_button.dart';
 import 'package:hottel_1/x_widgets/custom_image_view.dart';
-import 'package:hottel_1/x_widgets/custom_text_form_field.dart';
+//import 'package:hottel_1/x_widgets/custom_text_form_field.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/appbar_title.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/custom_app_bar.dart';
 
@@ -33,7 +33,7 @@ class ReservationScreen extends StatelessWidget {
     return Scaffold(
       body: watch.apartmentData == null
           ? Center(child: CircularProgressIndicator())
-          : ReservationScreenBody(read: read),
+          : ReservationScreenBody(read: read, apartmentID: apartmentID),
     );
   }
 }
@@ -42,8 +42,9 @@ class ReservationScreenBody extends StatelessWidget {
   const ReservationScreenBody({
     Key? key,
     required this.read,
+    required this.apartmentID,
   }) : super(key: key);
-
+  final int apartmentID;
   final Screen2Provider read;
 
   @override
@@ -74,7 +75,7 @@ class ReservationScreenBody extends StatelessWidget {
                             SizedBox(height: 8.v),
                             _buildFour(context),
                             SizedBox(height: 8.v),
-                            _buildFrame2(context)
+                            _buildForPaid(context)
                           ]))))
             ])),
         bottomNavigationBar: _buildBarsBars(context));
@@ -299,133 +300,6 @@ class ReservationScreenBody extends StatelessWidget {
             ]));
   }
 
-  // /// Section Widget
-  // Widget _buildFirstName(BuildContext context) {
-  //   return Selector<Screen2Provider, TextEditingController?>(
-  //       selector: (context, provider) => provider.firstNameController,
-  //       builder: (context, firstNameController, child) {
-  //         return CustomFloatingTextField(
-  //             controller: firstNameController,
-  //             labelText: "Имя",
-  //             labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
-  //             hintText: "Иван");
-  //       });
-  // }
-
-  // /// Section Widget
-  // Widget _buildLastName(BuildContext context) {
-  //   return Selector<Screen2Provider, TextEditingController?>(
-  //       selector: (context, provider) => provider.lastNameController,
-  //       builder: (context, lastNameController, child) {
-  //         return CustomFloatingTextField(
-  //             controller: lastNameController,
-  //             labelText: "Фамилия",
-  //             labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
-  //             hintText: "Иванов");
-  //       });
-  // }
-
-  // /// Section Widget
-  // Widget _buildBirthDate(BuildContext context) {
-  //   return Selector<Screen2Provider, TextEditingController?>(
-  //       selector: (context, provider) => provider.birthDateController,
-  //       builder: (context, birthDateController, child) {
-  //         return CustomTextFormField(
-  //             controller: birthDateController, hintText: "Дата рождения");
-  //       });
-  // }
-
-  // /// Section Widget
-  // Widget _buildNationality(BuildContext context) {
-  //   return Selector<Screen2Provider, TextEditingController?>(
-  //       selector: (context, provider) => provider.nationalityController,
-  //       builder: (context, nationalityController, child) {
-  //         return CustomTextFormField(
-  //             controller: nationalityController, hintText: "Гражданство");
-  //       });
-  // }
-
-  // /// Section Widget
-  // Widget _buildPassportNumber(BuildContext context) {
-  //   return Selector<Screen2Provider, TextEditingController?>(
-  //       selector: (context, provider) => provider.passportNumberController,
-  //       builder: (context, passportNumberController, child) {
-  //         return CustomTextFormField(
-  //             controller: passportNumberController,
-  //             hintText: "Номер загранпаспорта");
-  //       });
-  // }
-
-  // /// Section Widget
-  // Widget _buildPassportExpiry(BuildContext context) {
-  //   return Selector<Screen2Provider, TextEditingController?>(
-  //       selector: (context, provider) => provider.passportExpiryController,
-  //       builder: (context, passportExpiryController, child) {
-  //         return CustomTextFormField(
-  //             controller: passportExpiryController,
-  //             hintText: "Срок действия загранпаспорта",
-  //             textInputAction: TextInputAction.done);
-  //       });
-  // }
-
-  /// Section Widget Инфа о туристе
-  // Widget _buildTuristInfo(BuildContext context, read) {
-  //   return Container(
-  //       // padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 13.v),
-  //       // decoration: AppDecoration.fillWhiteA
-  //       //     .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
-  //       child: Column(
-  //           // mainAxisSize: MainAxisSize.min,
-  //           // mainAxisAlignment: MainAxisAlignment.center,
-  //           children: [
-  //             //==============
-  //             // Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-  //             //   Padding(
-  //             //       padding: EdgeInsets.only(top: 4.v),
-  //             //       child: Text("Первый турист",
-  //             //           style: basicTheme().textTheme.titleLarge)),
-  //             //   CustomIconButton(
-  //             //       height: 32.adaptSize,
-  //             //       width: 32.adaptSize,
-  //             //       padding: EdgeInsets.all(10.h),
-  //             //       onTap: () {
-  //             //         read.toggleShowTourist();
-  //             //       },
-  //             //       child: CustomImageView(
-  //             //         imagePath: ImageConstant.imgArrowRightPrimary32x32,
-  //             //         color: basicTheme().primaryColor,
-  //             //       ))
-  //             // ]),
-  //             //+++++++++++++++++++++++++++++++++++++++
-
-  //             //_buildDropDownTextFeild(context, read),
-  //           ]));
-  // }
-
-  // Widget _buildDropDownTextFeild(BuildContext context, read) {
-  //   return read == null
-  //       ? Column(
-  //           children: [
-  //             SizedBox(height: 17.v),
-  //             _buildFirstName(context),
-  //             SizedBox(height: 8.v),
-  //             _buildLastName(context),
-  //             SizedBox(height: 8.v),
-  //             _buildBirthDate(context),
-  //             SizedBox(height: 8.v),
-  //             _buildNationality(context),
-  //             SizedBox(height: 8.v),
-  //             _buildPassportNumber(context),
-  //             SizedBox(height: 8.v),
-  //             _buildPassportExpiry(context),
-  //             SizedBox(height: 3.v)
-  //           ],
-  //         )
-  //       : SizedBox.shrink();
-  // }
-
-  //!!!!!!!
-
   /// Section Widget инфа о ВТОРОМ Туристе //!!======= дроп даун так же нужно и первого
   Widget _buildThree(BuildContext context) {
     return Container(
@@ -487,7 +361,7 @@ class ReservationScreenBody extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildFrame2(BuildContext context) {
+  Widget _buildForPaid(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
         decoration: AppDecoration.fillWhiteA
@@ -513,9 +387,12 @@ class ReservationScreenBody extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildTf(BuildContext context) {
+  Widget _buildButtonPaid(BuildContext context) {
     //!!!!!!!!! переделать в моделе с учетом колва туристов !!!!!!!!!!!!!!!!!!!
     return CustomElevatedButton(
+        onPressed: () {
+          read.showPaidScreenScreen(context, apartmentID);
+        },
         text:
             'Оплатить ${(read.apartmentData?.tourPrice as int) + (read.apartmentData?.fuelCharge as int) + (read.apartmentData?.serviceCharge as int)} ₽');
   }
@@ -525,7 +402,7 @@ class ReservationScreenBody extends StatelessWidget {
     return Container(
         margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 28.v),
         decoration: AppDecoration.outlineGray,
-        child: _buildTf(context));
+        child: _buildButtonPaid(context));
   }
 
   /// Common widget
