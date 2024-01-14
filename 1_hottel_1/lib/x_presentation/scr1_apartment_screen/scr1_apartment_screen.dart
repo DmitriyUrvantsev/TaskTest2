@@ -119,7 +119,7 @@ class ApartmentScreenBody extends StatelessWidget {
                               //!===========================================
                               _buildRowSection(context,
                                   priceText:
-                                      '${read.apartment?.rooms?[indexRooms].price}',
+                                      '${read.apartment?.rooms?[indexRooms].price} ₽',
                                   title:
                                       //about
                                       '${read.apartment!.rooms![indexRooms].pricePer!}'),

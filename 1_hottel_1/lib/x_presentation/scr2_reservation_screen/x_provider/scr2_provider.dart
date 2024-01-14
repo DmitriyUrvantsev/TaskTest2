@@ -16,11 +16,11 @@ class Screen2Provider extends ChangeNotifier {
   ApartmentData? _apartmentData;
   ApartmentData? get apartmentData => _apartmentData;
   
-  bool _hideTourist = false;
-  bool get hideTourist => _hideTourist;
+  // bool _hideTourist = false;
+  // bool get hideTourist => _hideTourist;
 
-   bool _hideTourist2 = true;
-  bool get hideTourist2 => _hideTourist;
+  List<bool> _hideTourist = [false, true];
+  List<bool>  get hideTourist => _hideTourist;
   final List<String> touristNumber = Screen2Model().touristNumber;
   double sizeListView = 560;
 
@@ -46,9 +46,9 @@ class Screen2Provider extends ChangeNotifier {
     } catch (e) {}
   }
 
-  void toggleShowTourist() {
-    _hideTourist = !_hideTourist;
-    if (_hideTourist == true) {
+  void toggleShowTourist(index) {
+    _hideTourist[index] = !_hideTourist[index];
+    if (_hideTourist[index] == true) {
       sizeListView = sizeListView - 418;
     }else{
       sizeListView = sizeListView + 418;

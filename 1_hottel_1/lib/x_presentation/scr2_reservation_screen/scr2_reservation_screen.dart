@@ -513,8 +513,8 @@ class ReservationScreenBody extends StatelessWidget {
   Widget _buildTf(BuildContext context) {
     //!!!!!!!!! переделать в моделе с учетом колва туристов !!!!!!!!!!!!!!!!!!!
     return CustomElevatedButton(
-        text: //! знак рубль не отражается
-            'Оплатить ${(read.apartmentData?.tourPrice as int) + (read.apartmentData?.fuelCharge as int) + (read.apartmentData?.serviceCharge as int)}');
+        text: 
+            'Оплатить ${(read.apartmentData?.tourPrice as int) + (read.apartmentData?.fuelCharge as int) + (read.apartmentData?.serviceCharge as int)} ₽');
   }
 
   /// Section Widget

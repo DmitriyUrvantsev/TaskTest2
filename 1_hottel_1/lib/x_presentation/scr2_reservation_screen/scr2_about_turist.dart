@@ -63,10 +63,8 @@ class AboutTourisItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final read = context.read<Screen2Provider>();
     final watch = context.watch<Screen2Provider>();
-    bool hideTourist = read.hideTourist;
-    if (index != 0) {
-      hideTourist = true;
-    }
+    bool hideTourist = watch.hideTourist[index];
+
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 13.v),
       decoration: AppDecoration.fillWhiteA
@@ -85,7 +83,7 @@ class AboutTourisItem extends StatelessWidget {
                 width: 32.adaptSize,
                 padding: EdgeInsets.all(10.h),
                 onTap: () {
-                  read.toggleShowTourist();
+                  read.toggleShowTourist(index);
                 },
                 child: CustomImageView(
                   imagePath: hideTourist
@@ -96,7 +94,7 @@ class AboutTourisItem extends StatelessWidget {
           ]),
           Column(
             children: [
-              read.hideTourist
+              hideTourist
                   ? SizedBox.shrink()
                   : Column(
                       children: [
