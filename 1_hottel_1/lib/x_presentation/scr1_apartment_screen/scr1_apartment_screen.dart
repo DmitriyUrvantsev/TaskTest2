@@ -2,20 +2,20 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/discription_item_widget.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/button_condition_widget.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/button_condition_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_models/chipviewsection2_item_model.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_models/chipviewsection_item_model.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_models/one_item_model.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_provider/scr1_provider.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/appbar_leading_circleimage.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_models/chipviewsection2_item_model.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_models/chipviewsection_item_model.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_models/one_item_model.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_provider/scr1_provider.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/appbar_leading_circleimage.dart';
 //import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/chipviewsection2_item_widget.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/condition_item_widget.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/one_item_widget.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/condition_item_widget.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/one_item_widget.dart';
 import 'package:hottel_1/x_theme/app_decoration.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_widgets/custom_elevated_button.dart';
@@ -85,6 +85,7 @@ class ApartmentScreenBody extends StatelessWidget {
                   ListView.builder(
                 itemCount: read.apartment?.rooms?.length ?? 0, //!
                 itemBuilder: (BuildContext context, int indexRooms) {
+                  final apdrtmentID = read.apartment?.rooms?[indexRooms].id;
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Container(
@@ -116,24 +117,24 @@ class ApartmentScreenBody extends StatelessWidget {
                               _buildConditionsSection(
                                   context, indexRooms), //!++++++++
                               //===========================================
-                              //===========================================
 
                               ButtonConditionWidget('Подробнее о номере'),
 
                               SizedBox(height: 16.v),
-                              //===========================================
-                              Padding(
-                                  padding: EdgeInsets.only(right: 29.h),
-                                  child: _buildRowSection(context,
-                                      priceText:
-                                          '${read.apartment?.rooms?[indexRooms].price}',
-                                      title:
-                                          //about
-                                          '${read.apartment!.rooms![indexRooms].pricePer!}')),
+                              //!===========================================
+                              _buildRowSection(context,
+                                  priceText:
+                                      '${read.apartment?.rooms?[indexRooms].price}',
+                                  title:
+                                      //about
+                                      '${read.apartment!.rooms![indexRooms].pricePer!}'),
+                              //!===========================================
                               SizedBox(height: 15.v),
+
                               CustomElevatedButton(
                                 text: 'Выбрать номер',
-                                onPressed: () {},
+                                onPressed: () => read.showReservationScreen(
+                                    context, apdrtmentID),
                               )
                             ])),
                   );
@@ -170,11 +171,12 @@ class ApartmentScreenBody extends StatelessWidget {
                     itemBuilder: (context, index, realIndex) {
                       return Align(
                         alignment: Alignment.center,
-                        child: CustomImageView(
+                        child:
+                            // Placeholder()
+                            CustomImageView(
                           imagePath: read.apartment!.rooms![indexRooms]
                                   .imageUrls?[index] ??
                               '', //!========
-
                           height: 257.v,
                           width: 343.h,
                           fit: BoxFit.fill,
@@ -231,11 +233,6 @@ class ApartmentScreenBody extends StatelessWidget {
             String? model =
                 read.apartment?.rooms?[indexRooms].peculiarities?[i];
             return ConditionItemWidget(model);
-            //Text('${read.apartment?.rooms?[indexRooms].peculiarities?[i]}'); //!====
-            // ChipviewsectionItemWidget(model,
-            //     onSelectedChipView1: (value) {
-            //   provider.onSelectedChipView1(index, value);
-            // });
           }));
     });
   }
@@ -262,26 +259,6 @@ class ApartmentScreenBody extends StatelessWidget {
         ]));
   }
 
-  // /// Section Widget
-  // Widget _buildChipViewSection1(BuildContext context) {
-  //   return Consumer<Screen1Provider>(builder: (context, provider, child) {
-  //     return Wrap(
-  //         runSpacing: 8.v,
-  //         spacing: 8.h,
-  //         children: List<Widget>.generate(2,
-  //             //provider.k1ModelObj.chipviewsection2ItemList.length,
-  //             (index) {
-  //           // Chipviewsection2ItemModel model =
-  //           //     provider.k1ModelObj.chipviewsection2ItemList[index];
-  //           return Text('5555555555');
-  //           // Chipviewsection2ItemWidget(model,
-  //           //     onSelectedChipView2: (value) {
-  //           //   provider.onSelectedChipView2(index, value);
-  //           // });
-  //         }));
-  //   });
-  // }
-
   /// Section Widget
   Widget _buildButtonsPrimary(BuildContext context) {
     return Container(
@@ -307,15 +284,13 @@ class ApartmentScreenBody extends StatelessWidget {
       Padding(
           padding: EdgeInsets.only(left: 9.h, top: 14.v, bottom: 3.v),
           child: Builder(builder: (context) {
-            return Expanded(
-              child: Text(title,
-                  style: basicTheme().textTheme.bodyLarge!.copyWith(
-                      fontSize: 18,
-                      color: basicTheme()
-                          .colorScheme
-                          .onPrimaryContainer
-                          .withOpacity(1))),
-            );
+            return Text(title,
+                style: basicTheme().textTheme.bodyLarge!.copyWith(
+                    fontSize: 18,
+                    color: basicTheme()
+                        .colorScheme
+                        .onPrimaryContainer
+                        .withOpacity(1)));
           }))
     ]);
   }

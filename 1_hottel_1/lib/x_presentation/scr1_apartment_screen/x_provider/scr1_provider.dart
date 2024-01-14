@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_data/apartment.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_models/scr1_model.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_models/scr1_model.dart';
+import 'package:hottel_1/x_routes/app_routes.dart';
 import 'package:hottel_1/x_servises/api_client.dart';
 
 /// current k1ModelObj
@@ -47,6 +48,11 @@ class Screen1Provider extends ChangeNotifier {
     });
     scr1ModelObj.chipviewsection2ItemList[index].isSelected = value;
     notifyListeners();
+  }
+
+  void showReservationScreen(context, apartmentID){
+     Navigator.of(context)
+        .pushNamed(AppNavigationRoutes.reservationScreen, arguments: apartmentID);
   }
 
   void onTapBack(context) {

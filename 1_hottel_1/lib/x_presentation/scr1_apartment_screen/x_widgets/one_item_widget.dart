@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_models/one_item_model.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_models/one_item_model.dart';
 import 'package:hottel_1/x_widgets/custom_image_view.dart';
 
 

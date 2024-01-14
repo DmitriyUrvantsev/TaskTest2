@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/scr1_apartment_screen.dart';
-import 'package:hottel_1/x_presentation/i1_apartment_screen/x_provider/scr1_provider.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/scr1_apartment_screen.dart';
+import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_provider/scr1_provider.dart';
+import 'package:hottel_1/x_presentation/scr2_reservation_screen/scr2_reservation_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/scr0_hotel_screen.dart';
 import '../x_presentation/i0_hotel_screen/provider/i0_provider.dart';
@@ -45,13 +46,13 @@ class MainNavigation {
                   ),
             ));
       //----------------//
-      // case AppNavigationRoutes.movieScreenDetailsTrailer:
-      //   final arguments = settings.arguments;
-      //   final youTubeKey = arguments is String ? arguments : '0';
-      //   return MaterialPageRoute(
-      //       builder: (context) => MovieDetailsTrailerWidget(
-      //             youTubeKey: youTubeKey,
-      //           ));
+      case AppNavigationRoutes.reservationScreen:
+        final arguments = settings.arguments;
+        final apartmentID = arguments is int ? arguments : 0;
+        return MaterialPageRoute(
+            builder: (context) => ReservationScreen(
+                  apartmentID: apartmentID,
+                ));
       default:
         const widget = Text('Navigation Error');
         return MaterialPageRoute(builder: (context) => widget);
