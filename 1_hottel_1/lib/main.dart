@@ -14,7 +14,7 @@ import 'package:hottel_1/x_theme/x_provider/theme_provider.dart';
 // import 'localization/app_localization.dart';
 // import 'routes/app_routes.dart';
 // import 'theme/theme_helper.dart';
-
+//======
 //var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();//!для обработки ошибок
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); //!для асинхронности
