@@ -173,7 +173,7 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                   Padding(
                       padding: EdgeInsets.only(left: 2.h, top: 2.v),
                       child: Text(
-                          '${read.hotel?.rating} ${read.hotel?.ratingName}',
+                          '${read.hotel?.rating} ${read.hotel?.ratingName}',//!Превосходно
                           style: CustomTextStyles.titleMediumAmberA700))
                 ])),
             //==================================================

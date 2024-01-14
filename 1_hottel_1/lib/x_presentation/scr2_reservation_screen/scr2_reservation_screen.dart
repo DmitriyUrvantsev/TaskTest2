@@ -30,7 +30,9 @@ class ReservationScreen extends StatelessWidget {
     final read = context.read<Screen2Provider>();
     final watch = context.watch<Screen2Provider>();
     return Scaffold(
-      body: ReservationScreenBody(read: read,)
+        body: ReservationScreenBody(
+      read: read,
+    )
         // appBar: _buildAppBar(context, nameHotel, read),
         // body: watch.apartment == null
         //     ? Center(child: CircularProgressIndicator())
@@ -45,7 +47,7 @@ class ReservationScreenBody extends StatelessWidget {
     required this.read,
   }) : super(key: key);
 
-   final Screen2Provider read;
+  final Screen2Provider read;
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +63,9 @@ class ReservationScreenBody extends StatelessWidget {
                       child: Padding(
                           padding: EdgeInsets.only(bottom: 5.v),
                           child: Column(children: [
-                            _buildFrame(context),
+                            _buildHotel(context),
                             SizedBox(height: 8.v),
-                            _buildFrame1(context),
+                            _buildDepartureData(context),
                             SizedBox(height: 8.v),
                             _buildOne(context),
                             SizedBox(height: 8.v),
@@ -79,7 +81,7 @@ class ReservationScreenBody extends StatelessWidget {
         bottomNavigationBar: _buildBarsBars(context));
   }
 
-  /// Section Widget
+  /// Section Widget AppBar
   PreferredSizeWidget _buildAppBar(BuildContext context, read) {
     return CustomAppBar(
         leadingWidth: 48.h,
@@ -88,15 +90,14 @@ class ReservationScreenBody extends StatelessWidget {
             margin: EdgeInsets.only(left: 16.h, top: 14.v, bottom: 11.v),
             onTap: () {
               read.onTapBack(context);
-            }
-            ),
+            }),
         centerTitle: true,
         title: AppbarTitle(text: 'Бронирование'),
         styleType: Style.bgFill);
   }
 
-  /// Section Widget
-  Widget _buildFrame(BuildContext context) {
+  /// Section Widget Hotel
+  Widget _buildHotel(BuildContext context) {
     return Container(
         width: double.maxFinite,
         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
@@ -116,24 +117,34 @@ class ReservationScreenBody extends StatelessWidget {
                         imagePath: ImageConstant.imgStar2215x15,
                         height: 15.adaptSize,
                         width: 15.adaptSize,
+                        color: PrimaryColors().amberA700,
                         radius: BorderRadius.circular(1.h),
                         margin: EdgeInsets.symmetric(vertical: 3.v)),
                     Padding(
                         padding: EdgeInsets.only(left: 2.h, top: 2.v),
-                        child: Text("lbl_5",
+                        child: Text(
+                            //!Превосходно
+                            '${read.apartmentData?.horating} ${read.apartmentData?.ratingName}',
                             style: CustomTextStyles.titleMediumAmberA700))
                   ])),
               SizedBox(height: 9.v),
-              Text("msg_steigenberger_makadi",
+              Text('${read.apartmentData?.hotelName}', //!Название Отеля
                   style: basicTheme().textTheme.titleLarge),
               SizedBox(height: 6.v),
-              Text("msg_madinat_makadi",
-                  style: CustomTextStyles.titleSmallPrimary)
+
+//!======================================
+              TextButton(
+                onPressed: () {},
+                child: Text('${read.apartmentData?.hotelAdress} ', //! адреc
+                    maxLines: 1,
+                    style: CustomTextStyles.titleSmallPrimary),
+              ),
             ]));
   }
 
   /// Section Widget
-  Widget _buildFrame1(BuildContext context) {
+  Widget _buildDepartureData(BuildContext context) {
+    //!++++++====== надо переделать, Фигня с этими падингами
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
         decoration: AppDecoration.fillWhiteA
@@ -147,85 +158,80 @@ class ReservationScreenBody extends StatelessWidget {
                   child: Row(children: [
                     Padding(
                         padding: EdgeInsets.only(bottom: 1.v),
-                        child: Text("lbl11",
+                        child: Text('Вылет из',
                             style: basicTheme().textTheme.bodyLarge)),
                     Padding(
                         padding: EdgeInsets.only(left: 76.h),
-                        child: Text("lbl12",
+                        child: Text('${read.apartmentData?.departure} ',
                             style:
                                 CustomTextStyles.bodyLargeSecondaryContainer))
                   ])),
               SizedBox(height: 14.v),
-              Padding(
-                  padding: EdgeInsets.only(right: 89.h),
-                  child: Row(children: [
-                    Text("lbl13", style: basicTheme().textTheme.bodyLarge),
-                    Padding(
-                        padding: EdgeInsets.only(left: 39.h),
-                        child: Text("lbl14",
-                            style:
-                                CustomTextStyles.bodyLargeSecondaryContainer))
-                  ])),
+              Row(children: [
+                Text("Страна, город", style: basicTheme().textTheme.bodyLarge),
+                Padding(
+                    padding: EdgeInsets.only(left: 36.h),
+                    child: Text('${read.apartmentData?.arrivalCountry} ',
+                        style: CustomTextStyles.bodyLargeSecondaryContainer))
+              ]),
               SizedBox(height: 13.v),
               Padding(
-                  padding: EdgeInsets.only(right: 27.h),
+                  padding: EdgeInsets.only(right: 8.h),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
                             padding: EdgeInsets.only(top: 1.v),
-                            child: Text("lbl15",
+                            child: Text('Даты',
                                 style: basicTheme().textTheme.bodyLarge)),
-                        Text("msg_19_09_2023_27_09_2023",
+                        Text(
+                            '${read.apartmentData?.tourDateStart} - ${read.apartmentData?.tourDateStop}',
                             style: CustomTextStyles.bodyLargeSecondaryContainer)
                       ])),
               SizedBox(height: 13.v),
               Row(children: [
-                Text("lbl16", style: basicTheme().textTheme.bodyLarge),
+                Text("Кол-во ночей", style: basicTheme().textTheme.bodyLarge),
                 Padding(
                     padding: EdgeInsets.only(left: 44.h),
-                    child: Text("lbl_72",
+                    child: Text('${read.apartmentData?.numberOfNights}',
                         style: CustomTextStyles.bodyLargeSecondaryContainer))
               ]),
               SizedBox(height: 15.v),
-              Padding(
-                  padding: EdgeInsets.only(right: 55.h),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                            padding: EdgeInsets.only(bottom: 1.v),
-                            child: Text("lbl",
-                                style: basicTheme().textTheme.bodyLarge)),
-                        Text("msg_steigenberger_makadi",
-                            style: CustomTextStyles.bodyLargeSecondaryContainer)
-                      ])),
+              Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                Padding(
+                    padding: EdgeInsets.only(bottom: 1.v),
+                    child:
+                        Text('Отель', style: basicTheme().textTheme.bodyLarge)),
+                Container(
+                  margin: EdgeInsets.only(left: 102.h),
+                  width: 190.v,
+                  child: Text('${read.apartmentData?.hotelName}',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: CustomTextStyles.bodyLargeSecondaryContainer),
+                )
+              ]),
               SizedBox(height: 13.v),
-              Padding(
-                  padding: EdgeInsets.only(right: 26.h),
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                            padding: EdgeInsets.only(top: 1.v, bottom: 19.v),
-                            child: Text("lbl17",
-                                style: basicTheme().textTheme.bodyLarge)),
-                        Container(
-                            width: 176.h,
-                            margin: EdgeInsets.only(left: 91.h),
-                            child: Text("msg3",
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                style: CustomTextStyles
-                                    .bodyLargeSecondaryContainer
-                                    .copyWith(height: 1.20)))
-                      ])),
+              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Padding(
+                    padding: EdgeInsets.only(top: 1.v, bottom: 19.v),
+                    child:
+                        Text("Номер", style: basicTheme().textTheme.bodyLarge)),
+                Container(
+                    width: 185.h,
+                    margin: EdgeInsets.only(left: 96.h),
+                    child: Text('${read.apartmentData?.room}',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: CustomTextStyles.bodyLargeSecondaryContainer
+                            .copyWith(height: 1.20)))
+              ]),
               SizedBox(height: 13.v),
               Row(children: [
-                Text("lbl18", style: basicTheme().textTheme.bodyLarge),
+                Text("Питание", style: basicTheme().textTheme.bodyLarge),
                 Padding(
-                    padding: EdgeInsets.only(left: 79.h),
-                    child: Text("lbl7",
+                    padding: EdgeInsets.only(left: 82.h),
+                    child: Text('${read.apartmentData?.nutrition}',
                         style: CustomTextStyles.bodyLargeSecondaryContainer))
               ])
             ]));
@@ -492,6 +498,4 @@ class ReservationScreenBody extends StatelessWidget {
                   basicTheme().colorScheme.secondaryContainer.withOpacity(1)))
     ]);
   }
-
-
 }

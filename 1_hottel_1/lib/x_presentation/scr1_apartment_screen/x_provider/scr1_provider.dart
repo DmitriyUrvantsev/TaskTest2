@@ -16,14 +16,14 @@ class Screen1Provider extends ChangeNotifier {
   int sliderIndex = 0;
 
   Screen1Provider() {
-    loadApartmentData();
+    loadApartment();
   }
 
 //!=======================================================
-  Future<void> loadApartmentData() async {
+  Future<void> loadApartment() async {
     try {
       _apartment = await _apiClient.getApartmentPost();
-      print('функция -  ${_apartment?.rooms?.length}');
+     // print('функция -  ${_apartment?.rooms?.length}');
       notifyListeners();
     } catch (e) {}
   }

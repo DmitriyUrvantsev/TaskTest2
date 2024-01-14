@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:hottel_1/x_data/apartment.dart';
+import 'package:hottel_1/x_data/apartment_data.dart';
 import 'package:hottel_1/x_data/hotel.dart';
 
 enum ApiClientExeptionType { network, auth, other, sessionExpired }
@@ -40,8 +41,7 @@ class ApiClient {
   //   return posts;
   // }
 
-  Future<Hotel> getHotelPost( ) async {
-   
+  Future<Hotel> getHotelPost() async {
     final url = Uri.parse(
         'https://run.mocky.io/v3/d144777c-a67f-4e35-867a-cacc3b827473');
 
@@ -66,8 +66,7 @@ class ApiClient {
     }
   }
 
-  Future<Apartment> getApartmentPost( ) async {
-   
+  Future<Apartment> getApartmentPost() async {
     final url = Uri.parse(
         'https://run.mocky.io/v3/8b532701-709e-4194-a41c-1a903af00195');
 
@@ -81,6 +80,31 @@ class ApiClient {
       _validateResponse(respons, resultFile); //!ПРОВЕРКА
 
       final result = Apartment.fromJson(resultFile);
+      return result;
+    } //---------------------\\\\\-------
+    on SocketException {
+      throw ApiClientExeption(type: ApiClientExeptionType.network);
+    } on ApiClientExeption {
+      rethrow;
+    } catch (_) {
+      throw ApiClientExeption(type: ApiClientExeptionType.other);
+    }
+  }
+
+  Future<ApartmentData> getApartmentDataPost() async {
+    final url = Uri.parse(
+        'https://run.mocky.io/v3/63866c74-d593-432c-af8e-f279d1a8d2ff');
+
+    try {
+      final request = await client.getUrl(url);
+      final respons = await request.close();
+
+      final jsonMaps = await respons.transform(utf8.decoder).toList();
+      final jsonMap = jsonMaps.join();
+      final resultFile = jsonDecode(jsonMap) as Map<String, dynamic>;
+      _validateResponse(respons, resultFile); //!ПРОВЕРКА
+
+      final result = ApartmentData.fromJson(resultFile);
       return result;
     } //---------------------\\\\\-------
     on SocketException {
