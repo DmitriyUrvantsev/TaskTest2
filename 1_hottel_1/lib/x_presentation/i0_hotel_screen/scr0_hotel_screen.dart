@@ -1,15 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hottel_1/x_core/app_export.dart';
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
-import 'package:hottel_1/x_data/hotel.dart';
 //import 'package:hottel_1/x_presentation/i0_hotel_screen/models/discription_item_model.dart';
-import 'package:hottel_1/x_presentation/i0_hotel_screen/models/three_item_model.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/provider/i0_provider.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/discription_item_widget.dart';
 //import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/three_item_widget.dart';
-import 'package:hottel_1/x_servises/api_client.dart';
 import 'package:hottel_1/x_theme/custom_text_style.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_widgets/custom_elevated_button.dart';

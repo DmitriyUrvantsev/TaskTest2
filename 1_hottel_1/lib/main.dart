@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hottel_1/x_core/app_export.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
 import 'package:hottel_1/x_routes/app_routes.dart';
 import 'package:hottel_1/x_theme/theme.dart';
-import 'package:hottel_1/x_theme/x_provider/theme_provider.dart';
 
 // import 'package:flutter/services.dart';
 // import 'package:flutter_localizations/flutter_localizations.dart';

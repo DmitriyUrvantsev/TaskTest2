@@ -87,8 +87,9 @@ class ReservationScreenBody extends StatelessWidget {
             imagePath: ImageConstant.imgArrowLeft,
             margin: EdgeInsets.only(left: 16.h, top: 14.v, bottom: 11.v),
             onTap: () {
-              onTapArrowLeft(context);
-            }),
+              read.onTapBack(context);
+            }
+            ),
         centerTitle: true,
         title: AppbarTitle(text: 'Бронирование'),
         styleType: Style.bgFill);

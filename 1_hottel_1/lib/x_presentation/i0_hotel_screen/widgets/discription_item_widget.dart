@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
-import 'package:hottel_1/x_presentation/i0_hotel_screen/models/discription_item_model.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 
 // ignore: must_be_immutable
