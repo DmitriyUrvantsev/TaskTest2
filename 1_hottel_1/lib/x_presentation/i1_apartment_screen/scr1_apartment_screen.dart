@@ -60,8 +60,8 @@ class ApartmentScreen extends StatelessWidget {
   }
 }
 
-//===================================================================
-
+//!===================================================================
+//!===================================================================
 class ApartmentScreenBody extends StatelessWidget {
   const ApartmentScreenBody({
     super.key,
@@ -75,98 +75,91 @@ class ApartmentScreenBody extends StatelessWidget {
     return Scaffold(
         body: SizedBox(
             width: SizeUtils.width,
-            //!==========================================
-            //!==========================================
-            //!==========================================
-            child: Padding(
+            //==========================================
+                        child: Padding(
               padding: EdgeInsets.only(top: 8.v),
-              child: Column(children: [
-                //!==========================
-                ListView.builder(
-                  itemCount: read.apartment?.rooms?.length ?? 0, //!
-                  itemBuilder: (BuildContext context, int indexRooms) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4),
-                      child: Container(
-                          padding: EdgeInsets.all(16.h),
-                          decoration: AppDecoration.fillWhiteA.copyWith(
-                              borderRadius:
-                                  BorderRadiusStyle.roundedBorder12),
-                          child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment:
-                                  CrossAxisAlignment.start,
-                              children: [
-                                _buildSliderSection(
-                                    context, indexRooms), //!++++++++
-                                SizedBox(height: 7.v),
-                                Container(
-                                    width: 337.h,
-                                    margin: EdgeInsets.only(right: 5.h),
-                                    child: Text(
-                                        read.apartment?.rooms?[indexRooms]
-                                                .name ??
-                                            '', //!наименование
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: basicTheme()
-                                            .textTheme
-                                            .titleLarge!
-                                            .copyWith(height: 1.20))),
+              child:
+                  //==========================
+                  ListView.builder(
+                itemCount: read.apartment?.rooms?.length ?? 0, //!
+                itemBuilder: (BuildContext context, int indexRooms) {
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Container(
+                        padding: EdgeInsets.all(16.h),
+                        decoration: AppDecoration.fillWhiteA.copyWith(
+                            borderRadius: BorderRadiusStyle.roundedBorder12),
+                        child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _buildSliderSection(
+                                  context, indexRooms), //!++++++++
+                              SizedBox(height: 7.v),
+                              Container(
+                                  width: 337.h,
+                                  margin: EdgeInsets.only(right: 5.h),
+                                  child: Text(
+                                      read.apartment?.rooms?[indexRooms].name ??
+                                          '', //!наименование
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: basicTheme()
+                                          .textTheme
+                                          .titleLarge!
+                                          .copyWith(height: 1.20))),
 
-                                SizedBox(height: 4.v),
+                              SizedBox(height: 4.v),
 
-                                // _buildConditionsSection(
-                                //     context, index), //!++++++++
-                                SizedBox(height: 16.v),
-                                Padding(
-                                    padding: EdgeInsets.only(right: 29.h),
-                                    child: _buildRowSection(context,
-                                        priceText: '${read.apartment?.rooms?[indexRooms]
-                                                .price}',
-                                        title: "msg_7")),
-                                SizedBox(height: 15.v),
-                                CustomElevatedButton(text: "lbl9")
-                              ])),
-                    );
-                  },
-                ),
+                              // _buildConditionsSection(
+                              //     context, index), //!++++++++
+                              SizedBox(height: 16.v),
+                              Padding(
+                                  padding: EdgeInsets.only(right: 29.h),
+                                  child: _buildRowSection(context,
+                                      priceText:
+                                          '${read.apartment?.rooms?[indexRooms].price}',
+                                      title: "msg_7")),
+                              SizedBox(height: 15.v),
+                              CustomElevatedButton(text: "lbl9")
+                            ])),
+                  );
+                },
+              ),
 
-                SizedBox(height: 8.v),
+              //! SizedBox(height: 8.v),
 
-                // Container(
-                //     padding: EdgeInsets.all(16.h),
-                //     decoration: AppDecoration.fillWhiteA.copyWith(
-                //         borderRadius: BorderRadiusStyle.roundedBorder12),
-                //     child: Column(
-                //         mainAxisSize: MainAxisSize.min,
-                //         crossAxisAlignment: CrossAxisAlignment.start,
-                //         children: [
-                //           _buildStackSection(context),
-                //           SizedBox(height: 8.v),
-                //           SizedBox(
-                //               width: 343.h,
-                //               child: Text("msg5",
-                //                   maxLines: null,
-                //                   overflow: TextOverflow.ellipsis,
-                //                   style: basicTheme()
-                //                       .textTheme
-                //                       .titleLarge!
-                //                       .copyWith(height: 1.20))),
-                //           SizedBox(height: 8.v),
-                //           _buildChipViewSection1(context),
-                //           SizedBox(height: 16.v),
-                //           Padding(
-                //               padding: EdgeInsets.only(right: 29.h),
-                //               child: _buildRowSection(context,
-                //                   priceText: "lbl_194_200", title: "msg_7")),
-                //           SizedBox(height: 16.v),
-                //           _buildButtonsPrimary(context)
-                //         ]))
-              ]),
-            )
-            )
-            );
+              // Container(
+              //     padding: EdgeInsets.all(16.h),
+              //     decoration: AppDecoration.fillWhiteA.copyWith(
+              //         borderRadius: BorderRadiusStyle.roundedBorder12),
+              //     child: Column(
+              //         mainAxisSize: MainAxisSize.min,
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           _buildStackSection(context),
+              //           SizedBox(height: 8.v),
+              //           SizedBox(
+              //               width: 343.h,
+              //               child: Text("msg5",
+              //                   maxLines: null,
+              //                   overflow: TextOverflow.ellipsis,
+              //                   style: basicTheme()
+              //                       .textTheme
+              //                       .titleLarge!
+              //                       .copyWith(height: 1.20))),
+              //           SizedBox(height: 8.v),
+              //           _buildChipViewSection1(context),
+              //           SizedBox(height: 16.v),
+              //           Padding(
+              //               padding: EdgeInsets.only(right: 29.h),
+              //               child: _buildRowSection(context,
+              //                   priceText: "lbl_194_200", title: "msg_7")),
+              //           SizedBox(height: 16.v),
+              //           _buildButtonsPrimary(context)
+              //         ]))
+              //]),
+            )));
   }
 
   /// Section AppBar
@@ -184,8 +177,6 @@ class ApartmentScreenBody extends StatelessWidget {
   //       styleType: Style.bgFill);
   // }
 
-
-
   /// Section Slider
   Widget _buildSliderSection(BuildContext context, indexRooms) {
     return SizedBox(
@@ -193,45 +184,55 @@ class ApartmentScreenBody extends StatelessWidget {
         width: 343.h,
         child: Stack(alignment: Alignment.bottomCenter, children: [
           Consumer<Screen1Provider>(builder: (context, provider, child) {
-            return CarouselSlider.builder(
-                options: CarouselOptions(
-                    height: 257.v,
-                    initialPage: 0,
-                    autoPlay: true,
-                    viewportFraction: 1.0,
-                    enableInfiniteScroll: false,
-                    scrollDirection: Axis.horizontal,
-                    onPageChanged: (index, reason) {
-                      provider.sliderIndex = index;
-                    }),
-                itemCount: read.apartment?.rooms?[indexRooms].imageUrls?.length ?? 0,//!========
-                //!provider.k1ModelObj.oneItemList.length,
-                itemBuilder: (context, index, realIndex) {
-                  //! OneItemModel model = provider.k1ModelObj.oneItemList[index];
-                  return Align(
-                    alignment: Alignment.center,
-                    child: CustomImageView(
-                      imagePath: read.apartment!.rooms![indexRooms].imageUrls?[index]?? '',//!========
-                         
-                      height: 257.v,
-                      width: 343.h,
-                      radius: BorderRadius.circular(
-                        15.h,
-                      ),
-                    ),
-                  );
-                });
+            return
+                //============================================
+                CarouselSlider.builder(
+                    options: CarouselOptions(
+                        height: 257.v,
+                        initialPage: 0,
+                        autoPlay: true,
+                        viewportFraction: 1.0,
+                        enableInfiniteScroll: false,
+                        scrollDirection: Axis.horizontal,
+                        onPageChanged: (index, reason) {
+                          provider.sliderIndex = index;
+                        }),
+                    itemCount:
+                        read.apartment?.rooms?[indexRooms].imageUrls?.length ??
+                            0, //!========
+                    itemBuilder: (context, index, realIndex) {
+                      return Align(
+                        alignment: Alignment.center,
+                        child: CustomImageView(
+                          imagePath: read.apartment!.rooms![indexRooms]
+                                  .imageUrls?[index] ??
+                              '', //!========
+
+                          height: 257.v,
+                          width: 343.h,
+                          fit: BoxFit.fill,
+                          radius: BorderRadius.circular(
+                            15.h,
+                          ),
+                        ),
+                      );
+                    });
           }),
+          //===================================================
           Align(
               alignment: Alignment.bottomCenter,
               child: Consumer<Screen1Provider>(
                   builder: (context, provider, child) {
                 return Container(
+                    decoration: AppDecoration.fillWhiteA.copyWith(
+                        borderRadius: BorderRadiusStyle.roundedBorder5),
                     height: 17.v,
                     margin: EdgeInsets.only(bottom: 8.v),
                     child: AnimatedSmoothIndicator(
                         activeIndex: provider.sliderIndex,
-                        count: 2,
+                        count: read.apartment?.rooms?[indexRooms].imageUrls
+                                ?.length ??
+                            0, //!========
                         //!provider.k1ModelObj.oneItemList.length,
                         axisDirection: Axis.horizontal,
                         effect: ScrollingDotsEffect(
@@ -263,7 +264,8 @@ class ApartmentScreenBody extends StatelessWidget {
               (i) {
             // ChipviewsectionItemModel model =
             //     provider.k1ModelObj.chipviewsectionItemList[index];
-            return Text('${read.apartment?.rooms?[index].peculiarities?[i]}');//!====
+            return Text(
+                '${read.apartment?.rooms?[index].peculiarities?[i]}'); //!====
             // ChipviewsectionItemWidget(model,
             //     onSelectedChipView1: (value) {
             //   provider.onSelectedChipView1(index, value);

@@ -143,7 +143,6 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                               child: AnimatedSmoothIndicator(
                                   activeIndex: provider.sliderIndex,
                                   count: read.hotel?.imageUrls?.length ?? 0,
-                                  //provider.k0ModelObj.threeItemList.length,
                                   axisDirection: Axis.horizontal,
                                   effect: ScrollingDotsEffect(
                                       spacing: 5,
