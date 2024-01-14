@@ -127,63 +127,22 @@ class ApartmentScreenBody extends StatelessWidget {
                                   child: _buildRowSection(context,
                                       priceText:
                                           '${read.apartment?.rooms?[indexRooms].price}',
-                                      title: "msg_7")),
+                                      title:
+                                          //about
+                                          '${read.apartment!.rooms![indexRooms].pricePer!}')),
                               SizedBox(height: 15.v),
-                              CustomElevatedButton(text: "lbl9")
+                              CustomElevatedButton(
+                                text: 'Выбрать номер',
+                                onPressed: () {},
+                              )
                             ])),
                   );
                 },
               ),
 
               //! SizedBox(height: 8.v),
-
-              // Container(
-              //     padding: EdgeInsets.all(16.h),
-              //     decoration: AppDecoration.fillWhiteA.copyWith(
-              //         borderRadius: BorderRadiusStyle.roundedBorder12),
-              //     child: Column(
-              //         mainAxisSize: MainAxisSize.min,
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           _buildStackSection(context),
-              //           SizedBox(height: 8.v),
-              //           SizedBox(
-              //               width: 343.h,
-              //               child: Text("msg5",
-              //                   maxLines: null,
-              //                   overflow: TextOverflow.ellipsis,
-              //                   style: basicTheme()
-              //                       .textTheme
-              //                       .titleLarge!
-              //                       .copyWith(height: 1.20))),
-              //           SizedBox(height: 8.v),
-              //           _buildChipViewSection1(context),
-              //           SizedBox(height: 16.v),
-              //           Padding(
-              //               padding: EdgeInsets.only(right: 29.h),
-              //               child: _buildRowSection(context,
-              //                   priceText: "lbl_194_200", title: "msg_7")),
-              //           SizedBox(height: 16.v),
-              //           _buildButtonsPrimary(context)
-              //         ]))
-              //]),
             )));
   }
-
-  /// Section AppBar
-  // PreferredSizeWidget _buildAppBar(BuildContext context, nameHotel) {
-  //   return CustomAppBar(
-  //       leadingWidth: 48.h,
-  //       leading: AppbarLeadingCircleimage(
-  //           imagePath: ImageConstant.imgArrowLeft,
-  //           margin: EdgeInsets.only(left: 16.h, top: 14.v, bottom: 11.v),
-  //           onTap: () {
-  //             onTapArrowLeft(context);
-  //           }),
-  //       centerTitle: true,
-  //       title: AppbarTitle(text: nameHotel),
-  //       styleType: Style.bgFill);
-  // }
 
   /// Section Slider
   Widget _buildSliderSection(BuildContext context, indexRooms) {
@@ -303,25 +262,25 @@ class ApartmentScreenBody extends StatelessWidget {
         ]));
   }
 
-  /// Section Widget
-  Widget _buildChipViewSection1(BuildContext context) {
-    return Consumer<Screen1Provider>(builder: (context, provider, child) {
-      return Wrap(
-          runSpacing: 8.v,
-          spacing: 8.h,
-          children: List<Widget>.generate(2,
-              //provider.k1ModelObj.chipviewsection2ItemList.length,
-              (index) {
-            // Chipviewsection2ItemModel model =
-            //     provider.k1ModelObj.chipviewsection2ItemList[index];
-            return Text('5555555555');
-            // Chipviewsection2ItemWidget(model,
-            //     onSelectedChipView2: (value) {
-            //   provider.onSelectedChipView2(index, value);
-            // });
-          }));
-    });
-  }
+  // /// Section Widget
+  // Widget _buildChipViewSection1(BuildContext context) {
+  //   return Consumer<Screen1Provider>(builder: (context, provider, child) {
+  //     return Wrap(
+  //         runSpacing: 8.v,
+  //         spacing: 8.h,
+  //         children: List<Widget>.generate(2,
+  //             //provider.k1ModelObj.chipviewsection2ItemList.length,
+  //             (index) {
+  //           // Chipviewsection2ItemModel model =
+  //           //     provider.k1ModelObj.chipviewsection2ItemList[index];
+  //           return Text('5555555555');
+  //           // Chipviewsection2ItemWidget(model,
+  //           //     onSelectedChipView2: (value) {
+  //           //   provider.onSelectedChipView2(index, value);
+  //           // });
+  //         }));
+  //   });
+  // }
 
   /// Section Widget
   Widget _buildButtonsPrimary(BuildContext context) {
@@ -347,12 +306,17 @@ class ApartmentScreenBody extends StatelessWidget {
                   basicTheme().colorScheme.secondaryContainer.withOpacity(1))),
       Padding(
           padding: EdgeInsets.only(left: 9.h, top: 14.v, bottom: 3.v),
-          child: Text(title,
-              style: basicTheme().textTheme.bodyLarge!.copyWith(
-                  color: basicTheme()
-                      .colorScheme
-                      .onPrimaryContainer
-                      .withOpacity(1))))
+          child: Builder(builder: (context) {
+            return Expanded(
+              child: Text(title,
+                  style: basicTheme().textTheme.bodyLarge!.copyWith(
+                      fontSize: 18,
+                      color: basicTheme()
+                          .colorScheme
+                          .onPrimaryContainer
+                          .withOpacity(1))),
+            );
+          }))
     ]);
   }
 }
