@@ -2,6 +2,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/discription_item_widget.dart';
+import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/button_condition_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -114,6 +115,10 @@ class ApartmentScreenBody extends StatelessWidget {
                               //===========================================
                               _buildConditionsSection(
                                   context, indexRooms), //!++++++++
+                              //===========================================
+                              //===========================================
+
+                              ButtonConditionWidget('Подробнее о номере'),
 
                               SizedBox(height: 16.v),
                               //===========================================
