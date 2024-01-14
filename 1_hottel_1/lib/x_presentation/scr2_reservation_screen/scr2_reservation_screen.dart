@@ -30,13 +30,10 @@ class ReservationScreen extends StatelessWidget {
     final read = context.read<Screen2Provider>();
     final watch = context.watch<Screen2Provider>();
     return Scaffold(
-        body: ReservationScreenBody(
-      read: read,
-    )
-        // appBar: _buildAppBar(context, nameHotel, read),
-        // body: watch.apartment == null
-        //     ? Center(child: CircularProgressIndicator())
-        //     : ReservationScreenBody(read: read),
+       
+        body: watch.apartmentData == null
+            ? Center(child: CircularProgressIndicator())
+            : ReservationScreenBody(read: read),
         );
   }
 }
@@ -67,9 +64,9 @@ class ReservationScreenBody extends StatelessWidget {
                             SizedBox(height: 8.v),
                             _buildDepartureData(context),
                             SizedBox(height: 8.v),
-                            _buildOne(context),
+                            _buildBuyerInfo(context),
                             SizedBox(height: 8.v),
-                            _buildTwo(context),
+                            _buildTuristInfo(context),
                             SizedBox(height: 8.v),
                             _buildThree(context),
                             SizedBox(height: 8.v),
@@ -142,6 +139,8 @@ class ReservationScreenBody extends StatelessWidget {
             ]));
   }
 
+//!============================================================================
+//!============================================================================
   /// Section Widget
   Widget _buildDepartureData(BuildContext context) {
     //!++++++====== надо переделать, Фигня с этими падингами
@@ -236,6 +235,8 @@ class ReservationScreenBody extends StatelessWidget {
               ])
             ]));
   }
+//!============================================================================
+//!============================================================================
 
   /// Section Widget
   Widget _buildPhoneNumber(BuildContext context) {
@@ -244,27 +245,27 @@ class ReservationScreenBody extends StatelessWidget {
         builder: (context, phoneNumberController, child) {
           return CustomFloatingTextField(
               controller: phoneNumberController,
-              labelText: "lbl19",
-              labelStyle: CustomTextStyles.bodyLargeOnPrimary,
-              hintText: "lbl19");
+              labelText: 'Номер телефона',
+              labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
+              hintText: '+7 (xxx) xxx-xx-xx');
         });
   }
 
-  /// Section Widget
+  /// Section TextField Почта
   Widget _buildEmail(BuildContext context) {
     return Selector<Screen2Provider, TextEditingController?>(
         selector: (context, provider) => provider.emailController,
         builder: (context, emailController, child) {
           return CustomFloatingTextField(
               controller: emailController,
-              labelText: "lbl20",
-              labelStyle: CustomTextStyles.bodyLargeOnPrimary,
-              hintText: "lbl20");
+              labelText: "Почта",
+              labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
+              hintText: 'examplemail.000@mail.ru');
         });
   }
 
-  /// Section Widget
-  Widget _buildOne(BuildContext context) {
+  /// Section Widget инфа о Покупателе
+  Widget _buildBuyerInfo(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 13.v),
         decoration: AppDecoration.fillWhiteA
@@ -275,7 +276,8 @@ class ReservationScreenBody extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 3.v),
-              Text("msg7", style: basicTheme().textTheme.titleLarge),
+              Text('Информация о покупателе',
+                  style: basicTheme().textTheme.titleLarge),
               SizedBox(height: 17.v),
               _buildPhoneNumber(context),
               SizedBox(height: 8.v),
@@ -284,7 +286,8 @@ class ReservationScreenBody extends StatelessWidget {
               Container(
                   width: 331.h,
                   margin: EdgeInsets.only(right: 11.h),
-                  child: Text("msg8",
+                  child: Text(
+                      'Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: basicTheme()
@@ -301,9 +304,9 @@ class ReservationScreenBody extends StatelessWidget {
         builder: (context, firstNameController, child) {
           return CustomFloatingTextField(
               controller: firstNameController,
-              labelText: "lbl23",
-              labelStyle: CustomTextStyles.bodyLargeOnPrimary,
-              hintText: "lbl23");
+              labelText: "Имя",
+              labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
+              hintText: "Иван");
         });
   }
 
@@ -314,9 +317,9 @@ class ReservationScreenBody extends StatelessWidget {
         builder: (context, lastNameController, child) {
           return CustomFloatingTextField(
               controller: lastNameController,
-              labelText: "lbl25",
-              labelStyle: CustomTextStyles.bodyLargeOnPrimary,
-              hintText: "lbl25");
+              labelText: "Фамилия",
+              labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
+              hintText: "Иванов");
         });
   }
 
@@ -326,7 +329,7 @@ class ReservationScreenBody extends StatelessWidget {
         selector: (context, provider) => provider.birthDateController,
         builder: (context, birthDateController, child) {
           return CustomTextFormField(
-              controller: birthDateController, hintText: "lbl26");
+              controller: birthDateController, hintText: "Дата рождения");
         });
   }
 
@@ -336,7 +339,7 @@ class ReservationScreenBody extends StatelessWidget {
         selector: (context, provider) => provider.nationalityController,
         builder: (context, nationalityController, child) {
           return CustomTextFormField(
-              controller: nationalityController, hintText: "lbl27");
+              controller: nationalityController, hintText: "Гражданство");
         });
   }
 
@@ -346,7 +349,8 @@ class ReservationScreenBody extends StatelessWidget {
         selector: (context, provider) => provider.passportNumberController,
         builder: (context, passportNumberController, child) {
           return CustomTextFormField(
-              controller: passportNumberController, hintText: "msg9");
+              controller: passportNumberController,
+              hintText: "Номер загранпаспорта");
         });
   }
 
@@ -357,13 +361,13 @@ class ReservationScreenBody extends StatelessWidget {
         builder: (context, passportExpiryController, child) {
           return CustomTextFormField(
               controller: passportExpiryController,
-              hintText: "msg10",
+              hintText: "Срок действия загранпаспорта",
               textInputAction: TextInputAction.done);
         });
   }
 
-  /// Section Widget
-  Widget _buildTwo(BuildContext context) {
+  /// Section Widget Инфа о туристе
+  Widget _buildTuristInfo(BuildContext context) {
     return Container(
         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 13.v),
         decoration: AppDecoration.fillWhiteA
@@ -375,7 +379,7 @@ class ReservationScreenBody extends StatelessWidget {
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Padding(
                     padding: EdgeInsets.only(top: 4.v),
-                    child: Text("lbl21",
+                    child: Text("Первый турист",
                         style: basicTheme().textTheme.titleLarge)),
                 CustomIconButton(
                     height: 32.adaptSize,
@@ -400,7 +404,7 @@ class ReservationScreenBody extends StatelessWidget {
             ]));
   }
 
-  /// Section Widget
+  /// Section Widget инфа о ВТОРОМ Туристе //!!======= дроп даун так же нужно и первого
   Widget _buildThree(BuildContext context) {
     return Container(
         width: double.maxFinite,
@@ -409,9 +413,12 @@ class ReservationScreenBody extends StatelessWidget {
             .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          //=====================
           Padding(
               padding: EdgeInsets.only(top: 4.v),
-              child: Text("lbl28", style: basicTheme().textTheme.titleLarge)),
+              child: Text("Второй турист",
+                  style: basicTheme().textTheme.titleLarge)),
+          //===================
           Container(
               height: 32.adaptSize,
               width: 32.adaptSize,
@@ -420,9 +427,12 @@ class ReservationScreenBody extends StatelessWidget {
                   .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
               child: CustomImageView(
                   imagePath: ImageConstant.imgArrowRightPrimary6x12,
+                  color: basicTheme().primaryColor,
+                  //color: basicTheme().primaryColor,
                   height: 6.v,
                   width: 12.h,
                   alignment: Alignment.bottomCenter))
+          //===========================
         ]));
   }
 
@@ -437,13 +447,17 @@ class ReservationScreenBody extends StatelessWidget {
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Padding(
               padding: EdgeInsets.only(top: 4.v),
-              child: Text("msg11", style: basicTheme().textTheme.titleLarge)),
+              child: Text("Добавить туриста",
+                  style: basicTheme().textTheme.titleLarge)),
           CustomIconButton(
               height: 32.adaptSize,
               width: 32.adaptSize,
               padding: EdgeInsets.all(4.h),
               decoration: IconButtonStyleHelper.fillPrimaryTL6,
-              child: CustomImageView(imagePath: ImageConstant.imgFrame609))
+              child: CustomImageView(
+                imagePath: ImageConstant.imgFrame609,
+                color: PrimaryColors().whiteA700,
+              ))
         ]));
   }
 
@@ -454,19 +468,31 @@ class ReservationScreenBody extends StatelessWidget {
         decoration: AppDecoration.fillWhiteA
             .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-          _buildSeven(context, titleText: "lbl29", priceText: "lbl_186_600"),
+          //!!!!!!!!! переделать в моделе с учетом колва туристов !!!!!!!!!!!!!!!!!!!
+          _buildSeven(context,
+              titleText: "Тур", priceText: '${read.apartmentData?.tourPrice}'),
           SizedBox(height: 13.v),
-          _buildSeven(context, titleText: "lbl30", priceText: "lbl_9_300"),
+          _buildSeven(context,
+              titleText: "Топливный сбор",
+              priceText: '${read.apartmentData?.fuelCharge}'),
           SizedBox(height: 13.v),
-          _buildSeven(context, titleText: "lbl31", priceText: "lbl_2_136"),
+          _buildSeven(context,
+              titleText: "Сервисный сбор",
+              priceText: '${read.apartmentData?.serviceCharge}'),
           SizedBox(height: 13.v),
-          _buildSeven(context, titleText: "lbl32", priceText: "lbl_198_036")
+          _buildSeven(context,
+              titleText: "К оплате",
+              priceText:
+                  '${(read.apartmentData?.tourPrice as int) + (read.apartmentData?.fuelCharge as int) + (read.apartmentData?.serviceCharge as int)} ₽')
         ]));
   }
 
   /// Section Widget
   Widget _buildTf(BuildContext context) {
-    return CustomElevatedButton(text: "msg_198_036");
+    //!!!!!!!!! переделать в моделе с учетом колва туристов !!!!!!!!!!!!!!!!!!!
+    return CustomElevatedButton(
+        text://! знак рубль не отражается
+            'Оплатить ${(read.apartmentData?.tourPrice as int) + (read.apartmentData?.fuelCharge as int) + (read.apartmentData?.serviceCharge as int)}');
   }
 
   /// Section Widget
