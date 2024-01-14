@@ -5,8 +5,6 @@ import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_models/scr2_mo
 import 'package:hottel_1/x_routes/app_routes.dart';
 import 'package:hottel_1/x_servises/api_client.dart';
 
-
-
 /// A provider class for the Scr2_Screen.
 ///
 /// This provider manages the state of the K2Screen, including the
@@ -14,9 +12,17 @@ import 'package:hottel_1/x_servises/api_client.dart';
 
 // ignore_for_file: must_be_immutable
 class Screen2Provider extends ChangeNotifier {
-    final _apiClient = ApiClient();
+  final _apiClient = ApiClient();
   ApartmentData? _apartmentData;
   ApartmentData? get apartmentData => _apartmentData;
+  
+  bool _hideTourist = false;
+  bool get hideTourist => _hideTourist;
+
+   bool _hideTourist2 = true;
+  bool get hideTourist2 => _hideTourist;
+  final List<String> touristNumber = Screen2Model().touristNumber;
+  double sizeListView = 560;
 
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -29,35 +35,38 @@ class Screen2Provider extends ChangeNotifier {
 
   Screen2Model scr2ModelObj = Screen2Model();
 
-   Screen2Provider() {
+  Screen2Provider() {
     loadApartmentData();
   }
 
-  
-
-
-
- Future<void> loadApartmentData() async {
+  Future<void> loadApartmentData() async {
     try {
       _apartmentData = await _apiClient.getApartmentDataPost();
-      print('функция -  ${_apartmentData?.hotelName}');
       notifyListeners();
     } catch (e) {}
   }
 
+  void toggleShowTourist() {
+    _hideTourist = !_hideTourist;
+    if (_hideTourist == true) {
+      sizeListView = sizeListView - 418;
+    }else{
+      sizeListView = sizeListView + 418;
+    }
+    //print(_hideTourist);
+    notifyListeners();
+  }
 
-   void showPaidScreenScreen(context){
-     Navigator.of(context)
-        .pushNamed(AppNavigationRoutes.paidScreen);//, arguments: apartmentID);
+  void showPaidScreenScreen(context) {
+    Navigator.of(context)
+        .pushNamed(AppNavigationRoutes.paidScreen); //, arguments: apartmentID);
   }
 
   void onTapBack(context) {
     Navigator.pop(context);
   }
 
-
-
-@override
+  @override
   void dispose() {
     super.dispose();
     phoneNumberController.dispose();
@@ -69,7 +78,4 @@ class Screen2Provider extends ChangeNotifier {
     passportNumberController.dispose();
     passportExpiryController.dispose();
   }
-
-
-
 }
