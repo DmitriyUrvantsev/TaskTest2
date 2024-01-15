@@ -1,11 +1,15 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
 import 'package:hottel_1/x_theme/custom_text_style.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 
-
+// ignore: must_be_immutable
 class CustomFloatingTextField extends StatelessWidget {
-  const CustomFloatingTextField({
+   CustomFloatingTextField({
     Key? key,
     this.alignment,
     this.width,
@@ -30,10 +34,14 @@ class CustomFloatingTextField extends StatelessWidget {
     this.borderDecoration,
     this.fillColor,
     this.filled = true,
+    this.prefixText,
+    this.keyboardType,
+    this.inputFormatters,
+    this.maskInput,
     this.validator,
   }) : super(
-          key: key,
-        );
+            key: key,
+          );
 
   final Alignment? alignment;
   final double? width;
@@ -58,8 +66,17 @@ class CustomFloatingTextField extends StatelessWidget {
   final InputBorder? borderDecoration;
   final Color? fillColor;
   final bool? filled;
+  final String? prefixText;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
+  final MaskTextInputFormatter? maskInput;
 
   final FormFieldValidator<String>? validator;
+
+  var maskFormatter = new MaskTextInputFormatter(
+      mask: '+# (###) ###-##-##',
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy);
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +91,8 @@ class CustomFloatingTextField extends StatelessWidget {
   Widget floatingTextFieldWidget(BuildContext context) => SizedBox(
         width: width ?? double.maxFinite,
         child: TextFormField(
+          
+          inputFormatters: inputFormatters,
           scrollPadding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           controller: controller,
@@ -89,11 +108,13 @@ class CustomFloatingTextField extends StatelessWidget {
         ),
       );
   InputDecoration get decoration => InputDecoration(
+    
         hintText: hintText ?? "",
         hintStyle: hintStyle ?? CustomTextStyles.bodyLargeOnPrimary,
         labelText: labelText ?? "",
         labelStyle: labelStyle,
         prefixIcon: prefix,
+        prefixText: prefixText,
         prefixIconConstraints: prefixConstraints,
         suffixIcon: suffix,
         suffixIconConstraints: suffixConstraints,

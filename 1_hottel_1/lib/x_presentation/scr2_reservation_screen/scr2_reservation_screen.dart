@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:hottel_1/x_core/app_export.dart';
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
@@ -17,6 +18,7 @@ import 'package:hottel_1/x_widgets/custom_image_view.dart';
 //import 'package:hottel_1/x_widgets/custom_text_form_field.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/appbar_title.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/custom_app_bar.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 // ignore: must_be_immutable
 class ReservationScreen extends StatelessWidget {
@@ -227,6 +229,9 @@ class ReservationScreenBody extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: CustomTextStyles.bodyLargeSecondaryContainer
                             .copyWith(height: 1.20)))
+              
+                 
+              
               ]),
               SizedBox(height: 13.v),
               Row(children: [
@@ -243,14 +248,28 @@ class ReservationScreenBody extends StatelessWidget {
 
   /// Section Widget
   Widget _buildPhoneNumber(BuildContext context) {
+     var maskFormatter = new MaskTextInputFormatter(
+      mask: '(###) ###-##-##',
+      filter: {"#": RegExp(r'[0-9]')},
+      type: MaskAutoCompletionType.lazy);
     return Selector<Screen2Provider, TextEditingController?>(
         selector: (context, provider) => provider.phoneNumberController,
         builder: (context, phoneNumberController, child) {
           return CustomFloatingTextField(
-              controller: phoneNumberController,
-              labelText: 'Номер телефона',
-              labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
-              hintText: '+7 (xxx) xxx-xx-xx');
+            controller: phoneNumberController,
+            labelText: 'Номер телефона',
+            labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
+            hintText: '(xxx)xxx-xx-xx',
+            prefixText: '+7',
+            autofocus: true,
+            keyboardType: TextInputType.number,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+              maskFormatter
+            ],
+            //maskInput: 
+            
+          );
         });
   }
 
@@ -427,3 +446,7 @@ class ReservationScreenBody extends StatelessWidget {
     ]);
   }
 }
+
+
+
+

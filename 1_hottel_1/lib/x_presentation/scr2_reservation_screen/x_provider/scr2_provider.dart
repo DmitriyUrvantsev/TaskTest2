@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hottel_1/x_data/apartment.dart';
 import 'package:hottel_1/x_data/apartment_data.dart';
 import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_models/scr2_model.dart';
 import 'package:hottel_1/x_routes/app_routes.dart';
