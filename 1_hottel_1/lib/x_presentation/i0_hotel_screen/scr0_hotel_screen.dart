@@ -2,10 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_core/app_export.dart';
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
-//import 'package:hottel_1/x_presentation/i0_hotel_screen/models/discription_item_model.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/provider/i0_provider.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/discription_item_widget.dart';
-//import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/three_item_widget.dart';
 import 'package:hottel_1/x_theme/custom_text_style.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_widgets/custom_elevated_button.dart';
@@ -24,7 +22,7 @@ class HotelScreen extends StatelessWidget {
     final read = context.read<Screen0Provider>();
     final watch = context.watch<Screen0Provider>();
     return Scaffold(
-      body: read.hotel == null
+      body: watch.hotel == null
           ? Center(child: CircularProgressIndicator())
           : HotelScreenBody(read: read),
     );
@@ -98,19 +96,15 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                               provider.changeSliderIndex(index);
                             }),
                         itemCount: read.hotel?.imageUrls?.length ?? 0,
-                        //provider.k0ModelObj.threeItemList.length,
+                        
                         itemBuilder: (context, index, realIndex) {
-                          // ThreeItemModel model =
-                          //     provider.k0ModelObj.threeItemList[index];
+                      
                           return Align(
                             alignment: Alignment.center,
                             child: CustomImageView(
                               //! потом подумать есди будет время//
                               imagePath: read.hotel?.imageUrls?[index] ??
                                   ImageConstant.imgImage20,
-                              //"https://www.atorus.ru/sites/default/files/upload/image/News/56149/Club_Priv%C3%A9_by_Belek_Club_House.jpg",
-                              //!"https://deluxe.voyage/useruploads/articles/The_Makadi_Spa_Hotel_02.jpg", - битая ссылка
-                              //!"https://deluxe.voyage/useruploads/articles/article_1eb0a64d00.jpg", - битая ссылка
 
                               fit: BoxFit.fill,
                               height: 257.v,
@@ -193,9 +187,6 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
 
             SizedBox(height: 15.v),
 
-            //Padding(
-            //padding: EdgeInsets.only(right: 26.h),
-            //child:
             Row(children: [
               Text('от ${read.hotel?.minimalPrice} ₽', //! стоимость
                   style: basicTheme().textTheme.headlineLarge),

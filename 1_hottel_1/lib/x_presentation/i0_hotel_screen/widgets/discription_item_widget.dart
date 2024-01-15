@@ -53,12 +53,7 @@ class DiscriptionItemWidget extends StatelessWidget {
           5.h,
         ),
       ),
-      // : RoundedRectangleBorder(
-      //     side: BorderSide.none,
-      //     borderRadius: BorderRadius.circular(
-      //       5.h,
-      //     ),
-      //   ),
+     
       onSelected: (value) {
         //====== не нужно пока
       },

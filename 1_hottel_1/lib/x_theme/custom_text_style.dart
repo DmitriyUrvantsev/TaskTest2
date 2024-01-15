@@ -61,10 +61,10 @@ class CustomTextStyles {
       .copyWith(color: basicTheme().colorScheme.primary, fontSize: 17);
 }
 
-extension on TextStyle {
-  TextStyle get sFProDisplay {
-    return copyWith(
-      fontFamily: 'SF Pro Display', //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    );
-  }
-}
+// extension on TextStyle {
+//   TextStyle get sFProDisplay {
+//     return copyWith(
+//       fontFamily: 'SF Pro Display', //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//     );
+//   }
+// }

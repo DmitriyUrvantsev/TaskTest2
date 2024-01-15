@@ -18,10 +18,8 @@ class AboutTourist extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final read = context.read<Screen2Provider>();
     final watch = context.watch<Screen2Provider>();
     return Container(
-      // padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 13.v),
       decoration: AppDecoration.fillWhiteA.copyWith(
           borderRadius: BorderRadiusStyle.roundedBorder12,
           color: PrimaryColors().gray100),
@@ -29,15 +27,10 @@ class AboutTourist extends StatelessWidget {
       child: ListView.builder(
         physics: NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        //padding: const EdgeInsets.only(top: 65),
-        //keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      
         itemCount: watch.hideTourist.length,
-        //itemExtent: 162,
         itemBuilder: (BuildContext context, int index) {
-          // watch.showedMovieAtIndex(index);
-          // final movie = watch.listMovies[index];
-          // final posterPath = watch.listMovies[index]?.poster_path;
-          // final relisDate = movie?.release_date;
+          
           return Column(
             children: [
               AboutTourisItem(

@@ -16,30 +16,6 @@ class ApiClientExeption implements Exception {
 class ApiClient {
   final client = HttpClient();
 
-  // Future<Hotel> getPost() async {
-  //   final url = Uri.parse(
-  //       'https://run.mocky.io/v3/d144777c-a67f-4e35-867a-cacc3b827473');
-  //   final request = await client.getUrl(url);
-  //   //собираем наш request(запрос) //!await
-  //   final respons = await request.close();
-  //   //close() - выполняем наш request(запрос) и отправляем на сервер//!await
-  //   //----------------------------------------
-  //   //----------------------------------------
-  //   final jsonStrings = await respons.transform(utf8.decoder).toList();
-  //   //получение ответа сервера в виде: //!СТРИМА - байт(цифры): нужно переделать в СТРИМ строк(Json)(transform(utf8.decoder))
-  //   //можно прослушать этот СТРИМ: respons.transform(utf8.decoder).listen((event) {   });
-  //   //либо преобразовать в массив List: respons.transform(utf8.decoder).toList();
-  //   //! это будет List Json_строк!!!!!, не String!!! ____ //!await!!
-  //   final jsonString = jsonStrings.join();
-  //   //склеиваем в одну строку <dynamic>
-  //   final json = jsonDecode(jsonString) as Map<String, dynamic>;
-  //   //!List<dynamic>;
-  //   //преобразовываем в настоящий файл Json
-
-  //   final posts = json.map((e) => Hotel.fromJson(e));
-  //   //! преобразовываем файл Json в List<Post> posts
-  //   return posts;
-  // }
 
   Future<Hotel> getHotelPost() async {
     final url = Uri.parse(

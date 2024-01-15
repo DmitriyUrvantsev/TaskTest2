@@ -145,8 +145,7 @@ class ReservationScreenBody extends StatelessWidget {
             ]));
   }
 
-//!============================================================================
-//!============================================================================
+
   /// Section Widget
   Widget _buildDepartureData(BuildContext context) {
     //!++++++====== надо переделать, Фигня с этими падингами
@@ -241,8 +240,7 @@ class ReservationScreenBody extends StatelessWidget {
               ])
             ]));
   }
-//!============================================================================
-//!============================================================================
+
 
   /// Section Widget
 
@@ -317,38 +315,7 @@ class ReservationScreenBody extends StatelessWidget {
             ]));
   }
 
-  /// Section Widget инфа о ВТОРОМ Туристе //!!======= дроп даун так же нужно и первого
-  Widget _buildThree(BuildContext context) {
-    return Container(
-        width: double.maxFinite,
-        padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 13.v),
-        decoration: AppDecoration.fillWhiteA
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
-        child:
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-          //=====================
-          Padding(
-              padding: EdgeInsets.only(top: 4.v),
-              child: Text("Второй турист",
-                  style: basicTheme().textTheme.titleLarge)),
-          //===================
-          Container(
-              height: 32.adaptSize,
-              width: 32.adaptSize,
-              padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 12.v),
-              decoration: AppDecoration.fillPrimary1
-                  .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-              child: CustomImageView(
-                  imagePath: ImageConstant.imgArrowRightPrimary6x12,
-                  color: basicTheme().primaryColor,
-                  //color: basicTheme().primaryColor,
-                  height: 6.v,
-                  width: 12.h,
-                  alignment: Alignment.bottomCenter))
-          //===========================
-        ]));
-  }
-
+  
   /// Section Widget
   Widget _buildFour(BuildContext context) {
     return Container(

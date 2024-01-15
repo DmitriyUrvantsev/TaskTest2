@@ -9,7 +9,6 @@ import 'package:hottel_1/x_core/x_utils/image_constant.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_provider/scr1_provider.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/appbar_leading_circleimage.dart';
-//import 'package:hottel_1/x_presentation/i1_apartment_screen/x_widgets/chipviewsection2_item_widget.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/condition_item_widget.dart';
 import 'package:hottel_1/x_theme/app_decoration.dart';
 import 'package:hottel_1/x_theme/theme.dart';
@@ -18,7 +17,6 @@ import 'package:hottel_1/x_widgets/custom_image_view.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/appbar_title.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/custom_app_bar.dart';
 
-import '../../x_theme/custom_text_style.dart';
 
 // ignore: must_be_immutable
 class ApartmentScreen extends StatelessWidget {
@@ -232,38 +230,9 @@ class ApartmentScreenBody extends StatelessWidget {
     });
   }
 
-  /// Section Widget
-  Widget _buildStackSection(BuildContext context) {
-    return SizedBox(
-        height: 257.v,
-        width: 343.h,
-        child: Stack(alignment: Alignment.bottomCenter, children: [
-          CustomImageView(
-              imagePath: ImageConstant.imgImage201,
-              height: 257.v,
-              width: 343.h,
-              radius: BorderRadius.circular(15.h),
-              alignment: Alignment.center),
-          CustomImageView(
-              imagePath: ImageConstant.imgIconsPinsPinsSegment,
-              height: 17.v,
-              width: 75.h,
-              radius: BorderRadius.circular(5.h),
-              alignment: Alignment.bottomCenter,
-              margin: EdgeInsets.only(bottom: 8.v))
-        ]));
-  }
+  
 
-  /// Section Widget
-  Widget _buildButtonsPrimary(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.symmetric(vertical: 15.v),
-        decoration: AppDecoration.fillPrimary
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder15),
-        child: Text("lbl9",
-            textAlign: TextAlign.center,
-            style: CustomTextStyles.titleMediumWhiteA700));
-  }
+
 
   /// Common widget
   Widget _buildRowSection(

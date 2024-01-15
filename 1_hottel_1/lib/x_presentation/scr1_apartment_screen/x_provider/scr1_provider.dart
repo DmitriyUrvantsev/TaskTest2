@@ -4,7 +4,7 @@ import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_models/scr1_mode
 import 'package:hottel_1/x_routes/app_routes.dart';
 import 'package:hottel_1/x_servises/api_client.dart';
 
-/// current k1ModelObj
+
 
 // ignore_for_file: must_be_immutable
 class Screen1Provider extends ChangeNotifier {
@@ -23,8 +23,7 @@ class Screen1Provider extends ChangeNotifier {
   Future<void> loadApartment() async {
     try {
       _apartment = await _apiClient.getApartmentPost();
-     // print('функция -  ${_apartment?.rooms?.length}');
-      notifyListeners();
+          notifyListeners();
     } catch (e) {}
   }
 

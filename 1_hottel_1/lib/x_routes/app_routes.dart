@@ -17,9 +17,7 @@ abstract class AppNavigationRoutes {
 }
 
 class MainNavigation {
-  // String initialRoute(bool isAuth) => isAuth
-  //     ? AppNavigationRoutes.hotel
-  //     : AppNavigationRoutes.hotel;
+
 
   final initialRoute = AppNavigationRoutes.hotel;
 
