@@ -9,7 +9,7 @@ import 'package:hottel_1/x_theme/theme.dart';
 
 // ignore: must_be_immutable
 class CustomFloatingTextField extends StatelessWidget {
-   CustomFloatingTextField({
+  CustomFloatingTextField({
     Key? key,
     this.alignment,
     this.width,
@@ -39,9 +39,10 @@ class CustomFloatingTextField extends StatelessWidget {
     this.inputFormatters,
     this.maskInput,
     this.validator,
+    this.onChanged, this.errorText,
   }) : super(
-            key: key,
-          );
+          key: key,
+        );
 
   final Alignment? alignment;
   final double? width;
@@ -68,8 +69,10 @@ class CustomFloatingTextField extends StatelessWidget {
   final bool? filled;
   final String? prefixText;
   final TextInputType? keyboardType;
+  final Function(String)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
   final MaskTextInputFormatter? maskInput;
+  final String? errorText;
 
   final FormFieldValidator<String>? validator;
 
@@ -91,7 +94,7 @@ class CustomFloatingTextField extends StatelessWidget {
   Widget floatingTextFieldWidget(BuildContext context) => SizedBox(
         width: width ?? double.maxFinite,
         child: TextFormField(
-          
+          onChanged: onChanged,
           inputFormatters: inputFormatters,
           scrollPadding:
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -108,10 +111,10 @@ class CustomFloatingTextField extends StatelessWidget {
         ),
       );
   InputDecoration get decoration => InputDecoration(
-    
         hintText: hintText ?? "",
         hintStyle: hintStyle ?? CustomTextStyles.bodyLargeOnPrimary,
         labelText: labelText ?? "",
+        errorText: errorText,
         labelStyle: labelStyle,
         prefixIcon: prefix,
         prefixText: prefixText,
