@@ -3,7 +3,7 @@ import 'package:hottel_1/x_core/x_utils/size_utils.dart';
 import 'package:hottel_1/x_routes/app_routes.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 
-
+//===
 void main() {
   WidgetsFlutterBinding.ensureInitialized(); //!для асинхронности
   runApp(const MyApp());
