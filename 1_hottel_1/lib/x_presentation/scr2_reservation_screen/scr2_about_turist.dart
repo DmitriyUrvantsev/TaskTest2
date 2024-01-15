@@ -54,7 +54,7 @@ class AboutTourist extends StatelessWidget {
 
 class AboutTourisItem extends StatelessWidget {
   final int index;
-  const AboutTourisItem({
+  AboutTourisItem({
     Key? key,
     required this.index,
   }) : super(key: key);
@@ -99,7 +99,7 @@ class AboutTourisItem extends StatelessWidget {
                   : Column(
                       children: [
                         SizedBox(height: 17.v),
-                        _buildFirstName(context),
+                        _buildFirstName(context, index),
                         SizedBox(height: 8.v),
                         _buildLastName(context),
                         SizedBox(height: 8.v),
@@ -121,71 +121,65 @@ class AboutTourisItem extends StatelessWidget {
   }
 }
 
-/// Section Widget
-Widget _buildFirstName(BuildContext context) {
-  return Selector<Screen2Provider, TextEditingController?>(
-      selector: (context, provider) => provider.firstNameController,
-      builder: (context, firstNameController, child) {
-        return CustomFloatingTextField(
-            controller: firstNameController,
-            labelText: "Имя",
-            labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
-            hintText: "Иван");
-      });
+/// Section Widget Имя
+Widget _buildFirstName(BuildContext context, int index) {
+  return CustomFloatingTextField(
+      
+      labelText: "Имя",
+      validator: (val) => val?.isEmpty ?? false ? 'Введите имя' : null,
+      labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
+      hintText: "Иван");
 }
 
-/// Section Widget
+/// Section Widget Фамилия
 Widget _buildLastName(BuildContext context) {
-  return Selector<Screen2Provider, TextEditingController?>(
-      selector: (context, provider) => provider.lastNameController,
-      builder: (context, lastNameController, child) {
-        return CustomFloatingTextField(
-            controller: lastNameController,
-            labelText: "Фамилия",
-            labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
-            hintText: "Иванов");
-      });
+  return CustomFloatingTextField(
+      
+      labelText: "Фамилия",
+      validator: (val) =>
+          val?.isEmpty ?? false ? 'Введите Фамилию' : null,
+      labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
+      hintText: "Иванов");
 }
 
-/// Section Widget
+/// Section Widget День родения
 Widget _buildBirthDate(BuildContext context) {
-  return Selector<Screen2Provider, TextEditingController?>(
-      selector: (context, provider) => provider.birthDateController,
-      builder: (context, birthDateController, child) {
-        return CustomTextFormField(
-            controller: birthDateController, hintText: "Дата рождения");
-      });
+  return CustomTextFormField(
+     
+      validator: (val) =>
+          val?.isEmpty ?? false ? 'Введите день рождения' : null,
+      textStyle: CustomTextStyles.bodyLargeOnPrimary,
+      hintText: "Дата рождения");
 }
 
-/// Section Widget
+/// Section Widget Гражданство
 Widget _buildNationality(BuildContext context) {
-  return Selector<Screen2Provider, TextEditingController?>(
-      selector: (context, provider) => provider.nationalityController,
-      builder: (context, nationalityController, child) {
-        return CustomTextFormField(
-            controller: nationalityController, hintText: "Гражданство");
-      });
+  return CustomTextFormField(
+      
+      validator: (val) =>
+          val?.isEmpty ?? false ? 'Введите гражданство' : null,
+      textStyle: CustomTextStyles.bodyLargeOnPrimary,
+      hintText: "Гражданство");
 }
 
-/// Section Widget
+/// Section Widget Загранпаспорт
 Widget _buildPassportNumber(BuildContext context) {
-  return Selector<Screen2Provider, TextEditingController?>(
-      selector: (context, provider) => provider.passportNumberController,
-      builder: (context, passportNumberController, child) {
-        return CustomTextFormField(
-            controller: passportNumberController,
-            hintText: "Номер загранпаспорта");
-      });
+  return CustomTextFormField(
+
+      validator: (val) =>
+          val?.isEmpty ?? false ? 'Введите номер загранпаспорта' : null,
+      textStyle: CustomTextStyles.bodyLargeOnPrimary,
+      hintText: "Номер загранпаспорта");
 }
 
-/// Section Widget
+/// Section Widget Срок действия загранпаспорта
 Widget _buildPassportExpiry(BuildContext context) {
-  return Selector<Screen2Provider, TextEditingController?>(
-      selector: (context, provider) => provider.passportExpiryController,
-      builder: (context, passportExpiryController, child) {
-        return CustomTextFormField(
-            controller: passportExpiryController,
-            hintText: "Срок действия загранпаспорта",
-            textInputAction: TextInputAction.done);
-      });
+  return CustomTextFormField(
+    
+    hintText: "Срок действия загранпаспорта",
+    validator: (val) => val?.isEmpty ?? false
+        ? 'Введите гражданство срок действия'
+        : null,
+    textStyle: CustomTextStyles.bodyLargeOnPrimary,
+  );
 }

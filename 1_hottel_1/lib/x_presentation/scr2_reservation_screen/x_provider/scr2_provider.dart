@@ -30,15 +30,9 @@ class Screen2Provider extends ChangeNotifier {
   final List<String> touristNumber = Screen2Model().touristNumber;
   double sizeListView = 560;
 
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
-  TextEditingController birthDateController = TextEditingController();
-  TextEditingController nationalityController = TextEditingController();
-  TextEditingController passportNumberController = TextEditingController();
-  TextEditingController passportExpiryController = TextEditingController();
-
+ 
+  bool? _error;
+  bool? get error => _error;
   Screen2Model scr2ModelObj = Screen2Model();
 
   Screen2Provider() {
@@ -80,24 +74,19 @@ class Screen2Provider extends ChangeNotifier {
   }
 
   void showPaidScreenScreen(context, apartmentID) {
-    Navigator.of(context)
-        .pushNamed(AppNavigationRoutes.paidScreen, arguments: apartmentID);
+    if (formKey.currentState?.validate() ?? false) {
+      Navigator.of(context)
+          .pushNamed(AppNavigationRoutes.paidScreen, arguments: apartmentID);
+    } else {
+      if (error == null) sizeListView = sizeListView + 130;
+      _error = true;
+      notifyListeners();
+    }
   }
 
   void onTapBack(context) {
     Navigator.pop(context);
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    phoneNumberController.dispose();
-    emailController.dispose();
-    firstNameController.dispose();
-    lastNameController.dispose();
-    birthDateController.dispose();
-    nationalityController.dispose();
-    passportNumberController.dispose();
-    passportExpiryController.dispose();
-  }
+ 
 }

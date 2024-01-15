@@ -251,45 +251,37 @@ class ReservationScreenBody extends StatelessWidget {
         mask: '(###) ###-##-##',
         filter: {"#": RegExp(r'[0-9]')},
         type: MaskAutoCompletionType.lazy);
-    return Selector<Screen2Provider, TextEditingController?>(
-        selector: (context, provider) => provider.phoneNumberController,
-        builder: (context, phoneNumberController, child) {
-          return CustomFloatingTextField(
-            controller: phoneNumberController,
-            validator: (val) => val != null
-                ? (val.length < 15 ? 'Введите номер телефона' : null)
-                : null,
+    return CustomFloatingTextField(
+      
+      validator: (val) => val != null
+          ? (val.length < 15 ? 'Введите номер телефона' : null)
+          : null,
 
-            labelText: 'Номер телефона',
-            labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
-            hintText: '(***) ***-**-**',
-            prefixText: '+7',
-            autofocus: true,
-            keyboardType: TextInputType.number,
-            inputFormatters: [
-              FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-              maskFormatter
-            ],
-            //maskInput:
-          );
-        });
+      labelText: 'Номер телефона',
+      labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
+      hintText: '(***) ***-**-**',
+      prefixText: '+7',
+      autofocus: true,
+      keyboardType: TextInputType.number,
+      inputFormatters: [
+        FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+        maskFormatter
+      ],
+      //maskInput:
+    );
   }
 
   /// Section TextField Почта
   Widget _buildEmail(BuildContext context) {
-    return Selector<Screen2Provider, TextEditingController?>(
-        selector: (context, provider) => provider.emailController,
-        builder: (context, emailController, child) {
-          return CustomFloatingTextField(
-              controller: emailController,
-              labelText: "Почта",
-              validator: (val) => read.validateEmail(val),
-              //  (val) => val != null
-              //     ? (val.length < 3 ? 'Введите почту' : null)
-              //     : null,
-              labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
-              hintText: 'examplemail.000@mail.ru');
-        });
+    return CustomFloatingTextField(
+        
+        labelText: "Почта",
+        validator: (val) => read.validateEmail(val),
+        //  (val) => val != null
+        //     ? (val.length < 3 ? 'Введите почту' : null)
+        //     : null,
+        labelStyle: CustomTextStyles.bodyLargeOnPrimaryTransparent,
+        hintText: 'examplemail.000@mail.ru');
   }
 
   /// Section Widget инфа о Покупателе
@@ -416,9 +408,9 @@ class ReservationScreenBody extends StatelessWidget {
     //!!!!!!!!! переделать в моделе с учетом колва туристов !!!!!!!!!!!!!!!!!!!
     return CustomElevatedButton(
         onPressed: () {
-          if (read.formKey.currentState?.validate() ?? false) {
+        
             read.showPaidScreenScreen(context, apartmentID);
-          }
+          
         },
         text:
             'Оплатить ${(read.apartmentData?.tourPrice as int) + (read.apartmentData?.fuelCharge as int) + (read.apartmentData?.serviceCharge as int)} ₽');
