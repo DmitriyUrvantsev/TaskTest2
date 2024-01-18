@@ -20,6 +20,7 @@ class Sizer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return LayoutBuilder(builder: (context, constraints) {
       return OrientationBuilder(builder: (context, orientation) {
         SizeUtils.setScreenSize(constraints, orientation);
@@ -29,6 +30,11 @@ class Sizer extends StatelessWidget {
     });
   }
 }
+
+
+
+
+
 
 class SizeUtils {
   static late BoxConstraints boxConstraints;
