@@ -75,6 +75,7 @@ class ReservationScreenBody extends StatelessWidget {
                           //DepartureData(),
                           _buildDepartureData(context),
                           SizedBox(height: 8.v),
+                          
                           _buildBuyerInfo(context),
                           SizedBox(height: 8.v),
                           AboutTourist(),
