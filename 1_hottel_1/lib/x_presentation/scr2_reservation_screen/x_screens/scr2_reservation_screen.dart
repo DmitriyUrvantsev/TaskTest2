@@ -6,7 +6,9 @@ import 'package:hottel_1/x_core/app_export.dart';
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/appbar_leading_circleimage.dart';
-import 'package:hottel_1/x_presentation/scr2_reservation_screen/scr2_about_turist.dart';
+import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_screens/about_hotel.dart';
+import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_screens/departure_data.dart';
+import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_screens/scr2_about_turist.dart';
 import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_provider/scr2_provider.dart';
 import 'package:hottel_1/x_theme/app_decoration.dart';
 import 'package:hottel_1/x_theme/custom_text_style.dart';
@@ -67,8 +69,10 @@ class ReservationScreenBody extends StatelessWidget {
                         padding: EdgeInsets.only(bottom: 5.v),
                         child: Column(children: [
                           //ValidTest(),
-                          _buildHotel(context),
+                          AboutHotel(),
+                          //_buildHotel(context),
                           SizedBox(height: 8.v),
+                          DepartureData(),
                           _buildDepartureData(context),
                           SizedBox(height: 8.v),
                           _buildBuyerInfo(context),
@@ -99,52 +103,51 @@ class ReservationScreenBody extends StatelessWidget {
         styleType: Style.bgFill);
   }
 
-  /// Section Widget Hotel
-  Widget _buildHotel(BuildContext context) {
-    return Container(
-        width: double.maxFinite,
-        padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
-        decoration: AppDecoration.fillWhiteA
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder15),
-        child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.h, vertical: 3.v),
-                  decoration: AppDecoration.fillAmberA
-                      .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-                  child: Row(mainAxisSize: MainAxisSize.min, children: [
-                    CustomImageView(
-                        imagePath: ImageConstant.imgStar2215x15,
-                        height: 15.adaptSize,
-                        width: 15.adaptSize,
-                        color: PrimaryColors().amberA700,
-                        radius: BorderRadius.circular(1.h),
-                        margin: EdgeInsets.symmetric(vertical: 3.v)),
-                    Padding(
-                        padding: EdgeInsets.only(left: 2.h, top: 2.v),
-                        child: Text(
-                            //!Превосходно
-                            '${read.apartmentData?.horating} ${read.apartmentData?.ratingName}',
-                            style: CustomTextStyles.titleMediumAmberA700))
-                  ])),
-              SizedBox(height: 9.v),
-              Text('${read.apartmentData?.hotelName}', //!Название Отеля
-                  style: basicTheme().textTheme.titleLarge),
-              SizedBox(height: 6.v),
+//   /// Section Widget Hotel
+//   Widget _buildHotel(BuildContext context) {
+//     return Container(
+//         width: double.maxFinite,
+//         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
+//         decoration: AppDecoration.fillWhiteA
+//             .copyWith(borderRadius: BorderRadiusStyle.roundedBorder15),
+//         child: Column(
+//             mainAxisSize: MainAxisSize.min,
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: [
+//               Container(
+//                   padding:
+//                       EdgeInsets.symmetric(horizontal: 10.h, vertical: 3.v),
+//                   decoration: AppDecoration.fillAmberA
+//                       .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
+//                   child: Row(mainAxisSize: MainAxisSize.min, children: [
+//                     CustomImageView(
+//                         imagePath: ImageConstant.imgStar2215x15,
+//                         height: 15.adaptSize,
+//                         width: 15.adaptSize,
+//                         color: PrimaryColors().amberA700,
+//                         radius: BorderRadius.circular(1.h),
+//                         margin: EdgeInsets.symmetric(vertical: 3.v)),
+//                     Padding(
+//                         padding: EdgeInsets.only(left: 2.h, top: 2.v),
+//                         child: Text(
+//                             //!Превосходно
+//                             '${read.apartmentData?.horating} ${read.apartmentData?.ratingName}',
+//                             style: CustomTextStyles.titleMediumAmberA700))
+//                   ])),
+//               SizedBox(height: 9.v),
+//               Text('${read.apartmentData?.hotelName}', //!Название Отеля
+//                   style: basicTheme().textTheme.titleLarge),
+//               SizedBox(height: 6.v),
 
-//!======================================
-              TextButton(
-                onPressed: () {},
-                child: Text('${read.apartmentData?.hotelAdress} ', //! адреc
-                    maxLines: 1,
-                    style: CustomTextStyles.titleSmallPrimary),
-              ),
-            ]));
-  }
-
+// //!======================================
+//               TextButton(
+//                 onPressed: () {},
+//                 child: Text('${read.apartmentData?.hotelAdress} ', //! адреc
+//                     maxLines: 1,
+//                     style: CustomTextStyles.titleSmallPrimary),
+//               ),
+//             ]));
+//   }
 
   /// Section Widget
   Widget _buildDepartureData(BuildContext context) {
@@ -241,7 +244,6 @@ class ReservationScreenBody extends StatelessWidget {
             ]));
   }
 
-
   /// Section Widget
 
   Widget _buildPhoneNumber(BuildContext context) {
@@ -250,7 +252,6 @@ class ReservationScreenBody extends StatelessWidget {
         filter: {"#": RegExp(r'[0-9]')},
         type: MaskAutoCompletionType.lazy);
     return CustomFloatingTextField(
-      
       validator: (val) => val != null
           ? (val.length < 15 ? 'Введите номер телефона' : null)
           : null,
@@ -272,7 +273,6 @@ class ReservationScreenBody extends StatelessWidget {
   /// Section TextField Почта
   Widget _buildEmail(BuildContext context) {
     return CustomFloatingTextField(
-        
         labelText: "Почта",
         validator: (val) => read.validateEmail(val),
         //  (val) => val != null
@@ -315,7 +315,6 @@ class ReservationScreenBody extends StatelessWidget {
             ]));
   }
 
-  
   /// Section Widget
   Widget _buildFour(BuildContext context) {
     return Container(
@@ -375,9 +374,7 @@ class ReservationScreenBody extends StatelessWidget {
     //!!!!!!!!! переделать в моделе с учетом колва туристов !!!!!!!!!!!!!!!!!!!
     return CustomElevatedButton(
         onPressed: () {
-        
-            read.showPaidScreenScreen(context, apartmentID);
-          
+          read.showPaidScreenScreen(context, apartmentID);
         },
         text:
             'Оплатить ${(read.apartmentData?.tourPrice as int) + (read.apartmentData?.fuelCharge as int) + (read.apartmentData?.serviceCharge as int)} ₽');

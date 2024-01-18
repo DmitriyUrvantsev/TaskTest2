@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/scr1_apartment_screen.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_provider/scr1_provider.dart';
-import 'package:hottel_1/x_presentation/scr2_reservation_screen/scr2_reservation_screen.dart';
+import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_screens/scr2_reservation_screen.dart';
 import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_provider/scr2_provider.dart';
 import 'package:hottel_1/x_presentation/scr3_paid_screen/provider/scr3_provider.dart';
 import 'package:hottel_1/x_presentation/scr3_paid_screen/scr3_paid_screen.dart';
