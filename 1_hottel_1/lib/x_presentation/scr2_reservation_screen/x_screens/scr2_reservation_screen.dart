@@ -68,14 +68,10 @@ class ReservationScreenBody extends StatelessWidget {
                     child: Padding(
                         padding: EdgeInsets.only(bottom: 5.v),
                         child: Column(children: [
-                          //ValidTest(),
                           AboutHotel(),
-                          //_buildHotel(context),
                           SizedBox(height: 8.v),
-                          //DepartureData(),
-                          _buildDepartureData(context),
+                          DepartureData(),
                           SizedBox(height: 8.v),
-                          
                           _buildBuyerInfo(context),
                           SizedBox(height: 8.v),
                           AboutTourist(),
@@ -89,6 +85,9 @@ class ReservationScreenBody extends StatelessWidget {
         bottomNavigationBar: _buildBarsBars(context));
   }
 
+  //===========================================================================
+  //===========================================================================
+  //===========================================================================
   /// Section Widget AppBar
   PreferredSizeWidget _buildAppBar(BuildContext context, read) {
     return CustomAppBar(
@@ -104,103 +103,7 @@ class ReservationScreenBody extends StatelessWidget {
         styleType: Style.bgFill);
   }
 
-
-
-  /// Section Widget
-  Widget _buildDepartureData(BuildContext context) {
-    //!++++++====== надо переделать, Фигня с этими падингами
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
-        decoration: AppDecoration.fillWhiteA
-            .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
-        child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                  padding: EdgeInsets.only(right: 77.h),
-                  child: Row(children: [
-                    Padding(
-                        padding: EdgeInsets.only(bottom: 1.v),
-                        child: Text('Вылет из',
-                            style: basicTheme().textTheme.bodyLarge)),
-                    Padding(
-                        padding: EdgeInsets.only(left: 76.h),
-                        child: Text('${read.apartmentData?.departure} ',
-                            style:
-                                CustomTextStyles.bodyLargeSecondaryContainer))
-                  ])),
-              SizedBox(height: 14.v),
-              Row(children: [
-                Text("Страна, город", style: basicTheme().textTheme.bodyLarge),
-                Padding(
-                    padding: EdgeInsets.only(left: 36.h),
-                    child: Text('${read.apartmentData?.arrivalCountry} ',
-                        style: CustomTextStyles.bodyLargeSecondaryContainer))
-              ]),
-              SizedBox(height: 13.v),
-              Padding(
-                  padding: EdgeInsets.only(right: 8.h),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                            padding: EdgeInsets.only(top: 1.v),
-                            child: Text('Даты',
-                                style: basicTheme().textTheme.bodyLarge)),
-                        Text(
-                            '${read.apartmentData?.tourDateStart} - ${read.apartmentData?.tourDateStop}',
-                            style: CustomTextStyles.bodyLargeSecondaryContainer)
-                      ])),
-              SizedBox(height: 13.v),
-              Row(children: [
-                Text("Кол-во ночей", style: basicTheme().textTheme.bodyLarge),
-                Padding(
-                    padding: EdgeInsets.only(left: 44.h),
-                    child: Text('${read.apartmentData?.numberOfNights}',
-                        style: CustomTextStyles.bodyLargeSecondaryContainer))
-              ]),
-              SizedBox(height: 15.v),
-              Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-                Padding(
-                    padding: EdgeInsets.only(bottom: 1.v),
-                    child:
-                        Text('Отель', style: basicTheme().textTheme.bodyLarge)),
-                Container(
-                  margin: EdgeInsets.only(left: 102.h),
-                  width: 190.v,
-                  child: Text('${read.apartmentData?.hotelName}',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: CustomTextStyles.bodyLargeSecondaryContainer),
-                )
-              ]),
-              SizedBox(height: 13.v),
-              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Padding(
-                    padding: EdgeInsets.only(top: 1.v, bottom: 19.v),
-                    child:
-                        Text("Номер", style: basicTheme().textTheme.bodyLarge)),
-                Container(
-                    width: 185.h,
-                    margin: EdgeInsets.only(left: 96.h),
-                    child: Text('${read.apartmentData?.room}',
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: CustomTextStyles.bodyLargeSecondaryContainer
-                            .copyWith(height: 1.20)))
-              ]),
-              SizedBox(height: 13.v),
-              Row(children: [
-                Text("Питание", style: basicTheme().textTheme.bodyLarge),
-                Padding(
-                    padding: EdgeInsets.only(left: 82.h),
-                    child: Text('${read.apartmentData?.nutrition}',
-                        style: CustomTextStyles.bodyLargeSecondaryContainer))
-              ])
-            ]));
-  }
-
+  
   /// Section Widget
 
   Widget _buildPhoneNumber(BuildContext context) {

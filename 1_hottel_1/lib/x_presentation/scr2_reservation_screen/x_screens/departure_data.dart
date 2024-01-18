@@ -18,7 +18,13 @@ class DepartureData extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         _buildNameListDepartureData(),
-        Positioned(left: 163.v, child: _buildDataListDepartureData(read))
+        //_buildDataListDepartureData(read),
+        Positioned(
+            left: 163.v,
+            top: 14.v,
+            child:
+                //_buildNameListDepartureData(),
+                _buildDataListDepartureData(read))
       ],
     ));
   }
@@ -55,7 +61,7 @@ class DepartureData extends StatelessWidget {
                 child: Text('Отель', style: basicTheme().textTheme.bodyLarge)),
             SizedBox(height: 13.v),
             Padding(
-                padding: EdgeInsets.only(top: 1.v, bottom: 19.v),
+                padding: EdgeInsets.only(top: 1.v, bottom: 19),
                 child: Text("Номер", style: basicTheme().textTheme.bodyLarge)),
             SizedBox(height: 13.v),
             Text("Питание", style: basicTheme().textTheme.bodyLarge)
@@ -66,8 +72,7 @@ class DepartureData extends StatelessWidget {
   //===========================================================================
 
   Container _buildDataListDepartureData(read) => Container(
-      //width: 200.v,
-      padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
+      
       decoration: AppDecoration.fillWhiteA
           .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
       child: Column(
@@ -78,9 +83,7 @@ class DepartureData extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 1.v),
                 child: Text('${read.apartmentData?.departure} ', //Вылет из
                     style: CustomTextStyles.bodyLargeSecondaryContainer)),
-
             SizedBox(height: 14.v),
-
             Text('${read.apartmentData?.arrivalCountry} ', //Страна, город
                 style: CustomTextStyles.bodyLargeSecondaryContainer),
             SizedBox(height: 13.v),
@@ -106,19 +109,16 @@ class DepartureData extends StatelessWidget {
               ),
             ),
             SizedBox(height: 13.v),
-            Padding(
-                padding: EdgeInsets.only(top: 1.v, bottom: 19.v),
-                child: SizedBox(
-                  width: 195.v,
-                  child: Text('${read.apartmentData?.room}', //Номер
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: CustomTextStyles.bodyLargeSecondaryContainer
-                          .copyWith(height: 1.20)),
-                )),
+            SizedBox(
+              width: 195.v,
+              child: Text('${read.apartmentData?.room}', //Номер
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: CustomTextStyles.bodyLargeSecondaryContainer
+                      .copyWith(height: 1.20)),
+            ),
             SizedBox(height: 13.v),
             Text('${read.apartmentData?.nutrition}',
                 style: CustomTextStyles.bodyLargeSecondaryContainer)
-
-                ]));
+          ]));
 }
