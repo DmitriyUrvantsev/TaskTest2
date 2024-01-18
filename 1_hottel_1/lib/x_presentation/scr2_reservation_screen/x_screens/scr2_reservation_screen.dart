@@ -72,7 +72,7 @@ class ReservationScreenBody extends StatelessWidget {
                           AboutHotel(),
                           //_buildHotel(context),
                           SizedBox(height: 8.v),
-                          DepartureData(),
+                          //DepartureData(),
                           _buildDepartureData(context),
                           SizedBox(height: 8.v),
                           _buildBuyerInfo(context),
@@ -103,51 +103,7 @@ class ReservationScreenBody extends StatelessWidget {
         styleType: Style.bgFill);
   }
 
-//   /// Section Widget Hotel
-//   Widget _buildHotel(BuildContext context) {
-//     return Container(
-//         width: double.maxFinite,
-//         padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
-//         decoration: AppDecoration.fillWhiteA
-//             .copyWith(borderRadius: BorderRadiusStyle.roundedBorder15),
-//         child: Column(
-//             mainAxisSize: MainAxisSize.min,
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               Container(
-//                   padding:
-//                       EdgeInsets.symmetric(horizontal: 10.h, vertical: 3.v),
-//                   decoration: AppDecoration.fillAmberA
-//                       .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
-//                   child: Row(mainAxisSize: MainAxisSize.min, children: [
-//                     CustomImageView(
-//                         imagePath: ImageConstant.imgStar2215x15,
-//                         height: 15.adaptSize,
-//                         width: 15.adaptSize,
-//                         color: PrimaryColors().amberA700,
-//                         radius: BorderRadius.circular(1.h),
-//                         margin: EdgeInsets.symmetric(vertical: 3.v)),
-//                     Padding(
-//                         padding: EdgeInsets.only(left: 2.h, top: 2.v),
-//                         child: Text(
-//                             //!Превосходно
-//                             '${read.apartmentData?.horating} ${read.apartmentData?.ratingName}',
-//                             style: CustomTextStyles.titleMediumAmberA700))
-//                   ])),
-//               SizedBox(height: 9.v),
-//               Text('${read.apartmentData?.hotelName}', //!Название Отеля
-//                   style: basicTheme().textTheme.titleLarge),
-//               SizedBox(height: 6.v),
 
-// //!======================================
-//               TextButton(
-//                 onPressed: () {},
-//                 child: Text('${read.apartmentData?.hotelAdress} ', //! адреc
-//                     maxLines: 1,
-//                     style: CustomTextStyles.titleSmallPrimary),
-//               ),
-//             ]));
-//   }
 
   /// Section Widget
   Widget _buildDepartureData(BuildContext context) {
