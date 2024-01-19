@@ -109,12 +109,12 @@ class ApartmentScreenBody extends StatelessWidget {
                               //===========================================
                               _buildConditionsSection(
                                   context, indexRooms), //!++++++++
+                              
                               //===========================================
-
                               ButtonConditionWidget('Подробнее о номере'),
-
                               SizedBox(height: 16.v),
-                              //!===========================================
+
+                              //===========================================
                               _buildRowSection(context,
                                   priceText:
                                       '${read.apartment?.rooms?[indexRooms].price} ₽',

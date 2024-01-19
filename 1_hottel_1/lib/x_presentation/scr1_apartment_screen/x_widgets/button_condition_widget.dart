@@ -26,17 +26,19 @@ class ButtonConditionWidget extends StatelessWidget {
       showCheckmark: false,
       labelPadding: EdgeInsets.zero,
       label: SizedBox(
-        width: 180.v,
+        width: 192.v,
         child: Row(
           //mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               '$about',
-              style: CustomTextStyles.titleSmallPrimary17,
+              style: CustomTextStyles.titleSmallPrimary16,
             ),
-            CustomImageView(
-              imagePath: ImageConstant.imgArrowRight,
-              color: basicTheme().primaryColor,
+            Expanded(
+              child: CustomImageView(
+                imagePath: ImageConstant.imgArrowRight,
+                color: basicTheme().primaryColor,
+              ),
             ),
           ],
         ),

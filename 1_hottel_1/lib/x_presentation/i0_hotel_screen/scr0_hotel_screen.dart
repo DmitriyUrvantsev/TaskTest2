@@ -38,6 +38,8 @@ class HotelScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('1.v - ${1.v}');
+    print('1.h - ${1.h}');
     return Scaffold(
         appBar: _buildAppBar(context),
         body: SizedBox(
@@ -78,8 +80,9 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
           children: [
             SizedBox(
                 height: 257.v,
-                width: double.infinity,
-                //343.h,
+                width: 343.h,
+                //double.infinity,
+                //
                 child: Stack(alignment: Alignment.bottomCenter, children: [
                   Consumer<Screen0Provider>(
                       builder: (context, provider, child) {
@@ -96,9 +99,7 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                               provider.changeSliderIndex(index);
                             }),
                         itemCount: read.hotel?.imageUrls?.length ?? 0,
-                        
                         itemBuilder: (context, index, realIndex) {
-                      
                           return Align(
                             alignment: Alignment.center,
                             child: CustomImageView(
@@ -167,7 +168,7 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                   Padding(
                       padding: EdgeInsets.only(left: 2.h, top: 2.v),
                       child: Text(
-                          '${read.hotel?.rating} ${read.hotel?.ratingName}',//!Превосходно
+                          '${read.hotel?.rating} ${read.hotel?.ratingName}', //!Превосходно
                           style: CustomTextStyles.titleMediumAmberA700))
                 ])),
             //==================================================

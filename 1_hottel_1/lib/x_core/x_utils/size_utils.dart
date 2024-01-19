@@ -71,9 +71,9 @@ extension ResponsiveExtension on num {
   double get _height => SizeUtils.height;
 
   // отступы
-  double get h => ((this * _width) / 375); //!375);screenWidth //);
+  double get h => ((this * _width) / _width); //!375);screenWidth //);
 
-  double get v => (this * _height) / (812 - sreenStatusBar);
+  double get v => (this * _height) / (_height- sreenStatusBar);
   //! - sreenStatusBar); //
   //screenHeigh - sreenStatusBar);
 
