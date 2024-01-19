@@ -55,10 +55,10 @@ class CustomTextStyles {
   static get titleSmallPrimary => basicTheme().textTheme.titleSmall!.copyWith(
         color: basicTheme().colorScheme.primary,
       );
-  static get titleSmallPrimary17 => basicTheme()
+  static get titleSmallPrimary16 => basicTheme()
       .textTheme
       .titleSmall!
-      .copyWith(color: basicTheme().colorScheme.primary, fontSize: 17);
+      .copyWith(color: basicTheme().colorScheme.primary, fontSize: 16);
 }
 
 // extension on TextStyle {
