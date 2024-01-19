@@ -6,17 +6,12 @@ import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_theme/x_provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 
-//var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  // Future.wait([
-  //   SystemChrome.setPreferredOrientations([
-  //     DeviceOrientation.portraitUp,
-  //   ]),
-  //   //PrefUtils().init()
-  // ]).then((value) {
+
     runApp(MyApp());
-  //});
+
 }
 
 
