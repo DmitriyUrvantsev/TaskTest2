@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const num screenWidth = 375;
-const num screenHeight = 812;
+// num screenWidth1 = 0;
+// num screenHeight1 = 0;
 const num sreenStatusBar = 0;
 typedef ResponsiveBuild = Widget Function(
   BuildContext context,
@@ -20,21 +20,22 @@ class Sizer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
+    final screenWidth = MediaQuery.of(context).size.width;
+    //screenHeight1 = screenWidth;
+    print('screenWidth $screenWidth');
+    final screenHeight = MediaQuery.of(context).size.height;
+    //screenHeight1 = screenHeight;
+    print('screenHeight $screenHeight');
     return LayoutBuilder(builder: (context, constraints) {
       return OrientationBuilder(builder: (context, orientation) {
-        SizeUtils.setScreenSize(constraints, orientation);
-       
+        SizeUtils.setScreenSize(
+            constraints, orientation, screenWidth, screenHeight);
+
         return builder(context, orientation, SizeUtils.deviceType);
       });
     });
   }
 }
-
-
-
-
-
 
 class SizeUtils {
   static late BoxConstraints boxConstraints;
@@ -46,10 +47,8 @@ class SizeUtils {
   static late double height;
   static late double width;
 
-  static void setScreenSize(
-    BoxConstraints constraints,
-    Orientation currentOrientation,
-  ) {
+  static void setScreenSize(BoxConstraints constraints,
+      Orientation currentOrientation, num screenWidth, num screenHeight) {
     // Sets boxConstraints and orientation
     boxConstraints = constraints;
     orientation = currentOrientation;
@@ -72,8 +71,11 @@ extension ResponsiveExtension on num {
   double get _height => SizeUtils.height;
 
   // отступы
-  double get h => ((this * _width) / screenWidth);
-  double get v => (this * _height) / (screenHeight - sreenStatusBar);
+  double get h => ((this * _width) / 375); //!375);screenWidth //);
+
+  double get v => (this * _height) / (812 - sreenStatusBar);
+  //! - sreenStatusBar); //
+  //screenHeigh - sreenStatusBar);
 
   //минимальный размер картинки в пикс
   double get adaptSize {
