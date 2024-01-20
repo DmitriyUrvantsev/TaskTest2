@@ -26,7 +26,7 @@ class ConditionItemWidget extends StatelessWidget {
         framenineItemModelObj ?? '',
         style: TextStyle(
           color: basicTheme().colorScheme.onPrimaryContainer.withOpacity(1),
-          fontSize: 16.fSize,
+          fontSize: 16.dp,
           fontFamily: 'SF Pro Display',
           fontWeight: FontWeight.w500,
         ),

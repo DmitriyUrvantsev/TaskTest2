@@ -32,8 +32,8 @@ class AppbarLeadingCircleimage extends StatelessWidget {
         child: CustomImageView(
           color: Colors.black,
           imagePath: imagePath,
-          height: 32.adaptSize,
-          width: 32.adaptSize,
+          height: 32.dp,
+          width: 32.dp,
           fit: BoxFit.contain,
           radius: BorderRadius.circular(
             16.h,

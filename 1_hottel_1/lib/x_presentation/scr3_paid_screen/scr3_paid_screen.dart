@@ -41,15 +41,15 @@ class PaidScreenBody extends StatelessWidget {
             padding: EdgeInsets.only(left: 29.h, top: 122.v, right: 29.h),
             child: Column(children: [
               Container(
-                  height: 94.adaptSize,
-                  width: 94.adaptSize,
+                  height: 94.dp,
+                  width: 94.dp,
                   padding: EdgeInsets.all(25.h),
                   decoration: AppDecoration.fillGray
                       .copyWith(borderRadius: BorderRadiusStyle.circleBorder47),
                   child: CustomImageView(
                       imagePath: ImageConstant.imgPartyPopper,
-                      height: 44.adaptSize,
-                      width: 44.adaptSize,
+                      height: 44.dp,
+                      width: 44.dp,
                       alignment: Alignment.center)),
               SizedBox(height: 33.v),
               Text('Ваш заказ принят в работу',

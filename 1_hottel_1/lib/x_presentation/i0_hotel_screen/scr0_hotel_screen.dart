@@ -38,8 +38,8 @@ class HotelScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('1.v - ${1.v}');
-    print('1.h - ${1.h}');
+    // print('1.v - ${1.v}');
+    // print('1.h - ${1.h}');
     return Scaffold(
         appBar: _buildAppBar(context),
         body: SizedBox(
@@ -79,17 +79,17 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-                height: 257.v,
-                width: 343.h,
-                //double.infinity,
-                //
+                height: 257.dp,
+                //width: Device.width,
+                //,
+                //343.h
                 child: Stack(alignment: Alignment.bottomCenter, children: [
                   Consumer<Screen0Provider>(
                       builder: (context, provider, child) {
                     //==================================================
                     return CarouselSlider.builder(
                         options: CarouselOptions(
-                            height: 257.v,
+                            height: 257.dp,
                             initialPage: 0,
                             autoPlay: true,
                             viewportFraction: 1.0,
@@ -108,8 +108,9 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                                   ImageConstant.imgImage20,
 
                               fit: BoxFit.fill,
-                              height: 257.v,
-                              width: 343.h,
+                              height: 257.dp,
+                              width: Device.width,
+                              //343.h,
                               radius: BorderRadius.circular(
                                 15.h,
                               ),
@@ -160,8 +161,8 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
                   CustomImageView(
                       imagePath: ImageConstant.imgStar22,
-                      height: 15.adaptSize,
-                      width: 15.adaptSize,
+                      height: 15.dp,
+                      width: 15.dp,
                       color: PrimaryColors().amberA700,
                       radius: BorderRadius.circular(1.h),
                       margin: EdgeInsets.symmetric(vertical: 3.v)),
@@ -238,9 +239,9 @@ Widget _descriptionWidget(BuildContext context, Screen0Provider read) {
                   }));
             }),
             SizedBox(height: 11.v),
-            //==================================================
+            //================Описание==================================
             SizedBox(
-                width: 340.h,
+                width: Device.width,
                 child: Text(
                     '${read.hotel?.aboutTheHotel?.description}', //!+++++++++++++++
 
@@ -304,8 +305,8 @@ Widget _castomListTitle(
   return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
     CustomImageView(
         imagePath: checkmark,
-        height: 24.adaptSize,
-        width: 24.adaptSize,
+        height: 24.dp,
+        width: 24.dp,
         color: basicTheme().colorScheme.secondaryContainer,
         margin: EdgeInsets.symmetric(vertical: 7.v)),
     Padding(
@@ -324,8 +325,8 @@ Widget _castomListTitle(
     const Spacer(),
     CustomImageView(
       imagePath: ImageConstant.imgArrowRight,
-      height: 24.adaptSize,
-      width: 24.adaptSize,
+      height: 24.dp,
+      width: 24.dp,
       color: basicTheme().colorScheme.secondaryContainer,
       margin: EdgeInsets.symmetric(vertical: 7.v),
       onTap: () {

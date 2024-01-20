@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
+import 'package:hottel_1/x_core/x_utils/x%20_pref_utils.dart%2020-17-13-099.dart';
 import 'package:hottel_1/x_routes/app_routes.dart';
 import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_theme/x_provider/theme_provider.dart';
+//import 'package:hottel_1/x_theme/x_provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 
-void main() {
+// void main() {
+//   WidgetsFlutterBinding.ensureInitialized();
+//     runApp(MyApp());
+// }
+var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
+ void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
+  Future.wait([
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]),
+    PrefUtils().init()//!======================= из новой
+  ]).then((value) {
     runApp(MyApp());
-
+  });
 }
 
 
@@ -57,3 +70,55 @@ class HotelAppWidget extends StatelessWidget {
         onGenerateRoute: mainNavigation.onGenerateRoutes);
   }
 }
+
+//!=============================================================================
+
+// var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
+// void main() {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   Future.wait([
+//     SystemChrome.setPreferredOrientations([
+//       DeviceOrientation.portraitUp,
+//     ]),
+//     PrefUtils().init()
+//   ]).then((value) {
+//     runApp(MyApp());
+//   });
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return FlutterSizer(
+//       builder: (context, orientation, deviceType) {
+//         return ChangeNotifierProvider(
+//           create: (context) => ThemeProvider(),
+//           child: Consumer<ThemeProvider>(
+//             builder: (context, provider, child) {
+//               return MaterialApp(
+//                 theme: theme,
+//                 title: 'urvandimon_s_application4',
+//                 navigatorKey: NavigatorService.navigatorKey,
+//                 debugShowCheckedModeBanner: false,
+//                 localizationsDelegates: [
+//                   AppLocalizationDelegate(),
+//                   GlobalMaterialLocalizations.delegate,
+//                   GlobalWidgetsLocalizations.delegate,
+//                   GlobalCupertinoLocalizations.delegate,
+//                 ],
+//                 supportedLocales: [
+//                   Locale(
+//                     'en',
+//                     '',
+//                   ),
+//                 ],
+//                 initialRoute: AppRoutes.initialRoute,
+//                 routes: AppRoutes.routes,
+//               );
+//             },
+//           ),
+//         );
+//       },
+//     );
+//   }
+// }

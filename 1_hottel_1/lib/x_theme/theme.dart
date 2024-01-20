@@ -44,37 +44,37 @@ class TextThemes {
   static TextTheme textTheme(ColorScheme colorScheme) => TextTheme(
         bodyLarge: TextStyle(
           color: colorScheme.onPrimaryContainer.withOpacity(1),
-          fontSize: 16.fSize,
+          fontSize: 16.dp,
           fontFamily: 'SF Pro Display',
           fontWeight: FontWeight.w400,
         ),
         bodyMedium: TextStyle(
           color: colorScheme.onPrimaryContainer.withOpacity(1),
-          fontSize: 14.fSize,
+          fontSize: 14.dp,
           fontFamily: 'SF Pro Display',
           fontWeight: FontWeight.w400,
         ),
         headlineLarge: TextStyle(
           color: colorScheme.secondaryContainer.withOpacity(1),
-          fontSize: 30.fSize,
+          fontSize: 30.dp,
           fontFamily: 'SF Pro Display',
           fontWeight: FontWeight.w600,
         ),
         titleLarge: TextStyle(
           color: colorScheme.secondaryContainer.withOpacity(1),
-          fontSize: 22.fSize,
+          fontSize: 22.dp,
           fontFamily: 'SF Pro Display',
           fontWeight: FontWeight.w500,
         ),
         titleMedium: TextStyle(
           color: colorScheme.onPrimaryContainer.withOpacity(1),
-          fontSize: 16.fSize,
+          fontSize: 16.dp,
           fontFamily: 'SF Pro Display',
           fontWeight: FontWeight.w500,
         ),
         titleSmall: TextStyle(
           color: PrimaryColors().blueGray400,
-          fontSize: 14.fSize,
+          fontSize: 14.dp,
           fontFamily: 'SF Pro Display',
           fontWeight: FontWeight.w500,
         ),

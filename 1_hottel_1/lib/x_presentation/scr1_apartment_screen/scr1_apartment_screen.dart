@@ -17,7 +17,6 @@ import 'package:hottel_1/x_widgets/custom_image_view.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/appbar_title.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/custom_app_bar.dart';
 
-
 // ignore: must_be_immutable
 class ApartmentScreen extends StatelessWidget {
   String nameHotel;
@@ -69,7 +68,7 @@ class ApartmentScreenBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SizedBox(
-            width: SizeUtils.width,
+            width: Device.width,
             //==========================================
             child: Padding(
               padding: EdgeInsets.only(top: 8.v),
@@ -93,7 +92,7 @@ class ApartmentScreenBody extends StatelessWidget {
                                   context, indexRooms), //!++++++++
                               SizedBox(height: 7.v),
                               Container(
-                                  width: 337.h,
+                                  width: Device.width,
                                   margin: EdgeInsets.only(right: 5.h),
                                   child: Text(
                                       read.apartment?.rooms?[indexRooms].name ??
@@ -109,7 +108,7 @@ class ApartmentScreenBody extends StatelessWidget {
                               //===========================================
                               _buildConditionsSection(
                                   context, indexRooms), //!++++++++
-                              
+
                               //===========================================
                               ButtonConditionWidget('Подробнее о номере'),
                               SizedBox(height: 16.v),
@@ -142,7 +141,6 @@ class ApartmentScreenBody extends StatelessWidget {
   Widget _buildSliderSection(BuildContext context, indexRooms) {
     return SizedBox(
         height: 257.v,
-        width: 343.h,
         child: Stack(alignment: Alignment.bottomCenter, children: [
           Consumer<Screen1Provider>(builder: (context, provider, child) {
             return
@@ -171,7 +169,7 @@ class ApartmentScreenBody extends StatelessWidget {
                                   .imageUrls?[index] ??
                               '', //!========
                           height: 257.v,
-                          width: 343.h,
+                          width: Device.width,
                           fit: BoxFit.fill,
                           radius: BorderRadius.circular(
                             15.h,
@@ -229,10 +227,6 @@ class ApartmentScreenBody extends StatelessWidget {
           }));
     });
   }
-
-  
-
-
 
   /// Common widget
   Widget _buildRowSection(

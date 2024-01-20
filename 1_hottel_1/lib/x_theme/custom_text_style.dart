@@ -10,7 +10,7 @@ class CustomTextStyles {
   // Body text style
   static get bodyLargeBluegray200 => basicTheme().textTheme.bodyLarge!.copyWith(
         color: PrimaryColors().blueGray200,
-        fontSize: 17.fSize,
+        fontSize: 17.dp,
       );
   static get bodyLargeOnPrimary => basicTheme().textTheme.bodyLarge!.copyWith(
         color: basicTheme().colorScheme.onPrimary,
@@ -46,7 +46,7 @@ class CustomTextStyles {
   static get titleMediumSecondaryContainer =>
       basicTheme().textTheme.titleMedium!.copyWith(
             color: basicTheme().colorScheme.secondaryContainer.withOpacity(1),
-            fontSize: 18.fSize,
+            fontSize: 18.dp,
           );
   static get titleMediumWhiteA700 =>
       basicTheme().textTheme.titleMedium!.copyWith(

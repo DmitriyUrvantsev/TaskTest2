@@ -192,8 +192,8 @@ class ReservationScreenBody extends StatelessWidget {
               onTap: () {
                 read.addNewTourist();
               },
-              height: 32.adaptSize,
-              width: 32.adaptSize,
+              height: 32.dp,
+              width: 32.dp,
               padding: EdgeInsets.all(4.h),
               decoration: IconButtonStyleHelper.fillPrimaryTL6,
               child: CustomImageView(

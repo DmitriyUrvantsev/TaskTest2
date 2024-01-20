@@ -72,8 +72,8 @@ class AboutTourisItem extends StatelessWidget {
                 child: Text('${read.touristNumber[index]} турист',
                     style: basicTheme().textTheme.titleLarge)),
             CustomIconButton(
-                height: 32.adaptSize,
-                width: 32.adaptSize,
+                height: 32.dp,
+                width: 32.dp,
                 padding: EdgeInsets.all(10.h),
                 onTap: () {
                   read.toggleShowTourist(index);

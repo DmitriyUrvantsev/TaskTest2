@@ -32,8 +32,8 @@ class AboutHotel extends StatelessWidget {
                   child: Row(mainAxisSize: MainAxisSize.min, children: [
                     CustomImageView(
                         imagePath: ImageConstant.imgStar2215x15,
-                        height: 15.adaptSize,
-                        width: 15.adaptSize,
+                        height: 15.dp,
+                        width: 15.dp,
                         color: PrimaryColors().amberA700,
                         radius: BorderRadius.circular(1.h),
                         margin: EdgeInsets.symmetric(vertical: 3.v)),

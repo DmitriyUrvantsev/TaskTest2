@@ -4,22 +4,25 @@ version: 1.0.0+1
 environment:
   sdk: '>=3.1.0 <4.0.0'
 dependencies:
-  build_runner: ^2.4.8
   cached_network_image: ^3.3.0
   carousel_slider: ^4.2.1
   connectivity_plus: ^5.0.2
+  fluent_ui: ^4.8.5
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_sizer: ^1.0.5
   flutter_svg: ^2.0.9
   intl: ^0.18.0
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
+  localization: ^2.1.1
   mask_text_input_formatter: ^2.7.0
   provider: ^6.1.1
   shared_preferences: ^2.2.2
   smooth_page_indicator: ^1.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
