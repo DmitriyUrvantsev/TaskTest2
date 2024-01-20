@@ -25,12 +25,11 @@ class Screen2Provider extends ChangeNotifier {
   // bool _hideTourist = false;
   // bool get hideTourist => _hideTourist;
 
-  List<bool> _hideTourist = [false, true];
+  List<bool> _hideTourist = [false];
   List<bool> get hideTourist => _hideTourist;
   final List<String> touristNumber = Screen2Model().touristNumber;
-  double sizeListView = 560;
+  double sizeListView = 475;
 
- 
   bool? _error;
   bool? get error => _error;
   Screen2Model scr2ModelObj = Screen2Model();
@@ -87,6 +86,4 @@ class Screen2Provider extends ChangeNotifier {
   void onTapBack(context) {
     Navigator.pop(context);
   }
-
- 
 }
