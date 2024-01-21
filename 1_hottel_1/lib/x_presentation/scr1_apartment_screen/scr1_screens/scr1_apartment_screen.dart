@@ -1,21 +1,15 @@
 //ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/scr1_screens/room_data_widget.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/scr1_screens/slider_section.dart';
-import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/button_condition_widget.dart';
 import 'package:provider/provider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:hottel_1/x_core/x_utils/image_constant.dart';
 import 'package:hottel_1/x_core/x_utils/size_utils.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_provider/scr1_provider.dart';
 import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/appbar_leading_circleimage.dart';
-import 'package:hottel_1/x_presentation/scr1_apartment_screen/x_widgets/condition_item_widget.dart';
 import 'package:hottel_1/x_theme/app_decoration.dart';
-import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_widgets/custom_elevated_button.dart';
-import 'package:hottel_1/x_widgets/custom_image_view.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/appbar_title.dart';
 import 'package:hottel_1/x_widgets/x_app_bar/custom_app_bar.dart';
 
