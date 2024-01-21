@@ -20,19 +20,21 @@ class ButtonConditionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawChip(
       padding: EdgeInsets.symmetric(
-        horizontal: 10.h,
-        vertical: 4.v,
-      ),
+          //horizontal: 10.dp,
+          //vertical: 4.dp,
+          ),
       showCheckmark: false,
-      labelPadding: EdgeInsets.zero,
+      labelPadding: EdgeInsets.symmetric(
+        horizontal: 10.dp,
+      ),
       label: SizedBox(
-        width: 192.v,
+        width: 192.dp,
         child: Row(
           //mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               '$about',
-              style: CustomTextStyles.titleSmallPrimary16,
+              style: CustomTextStyles.titleSmallPrimary17,
             ),
             Expanded(
               child: CustomImageView(
@@ -48,10 +50,10 @@ class ButtonConditionWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(
         side: BorderSide(
           color: PrimaryColors().whiteA700,
-          width: 1.h,
+          width: 1.dp,
         ),
         borderRadius: BorderRadius.circular(
-          5.h,
+          5.dp,
         ),
       ),
       onSelected: (value) {

@@ -15,36 +15,40 @@ class ConditionItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RawChip(
-      padding: EdgeInsets.symmetric(
-        horizontal: 10.h,
-        vertical: 4.v,
-      ),
-      showCheckmark: false,
-      labelPadding: EdgeInsets.zero,
-      label: Text(
-        framenineItemModelObj ?? '',
-        style: TextStyle(
-          color: basicTheme().colorScheme.onPrimaryContainer.withOpacity(1),
-          fontSize: 16.dp,
-          fontFamily: 'SF Pro Display',
-          fontWeight: FontWeight.w500,
+    return SizedBox(
+      height: 29.dp,
+      child: RawChip(
+        // padding: EdgeInsets.symmetric(
+        //     //horizontal: 10.dp,
+        //     //vertical: 4.dp,
+        //     ),
+
+        showCheckmark: false,
+        labelPadding: EdgeInsets.zero,
+        label: Text(
+          framenineItemModelObj ?? '',
+          style: TextStyle(
+            color: basicTheme().colorScheme.onPrimaryContainer.withOpacity(1),
+            fontSize: 16.dp,
+            fontFamily: 'SF Pro Display',
+            fontWeight: FontWeight.w500,
+          ),
         ),
-      ),
-      backgroundColor: PrimaryColors().gray50,
-      selectedColor: PrimaryColors().gray50,
-      shape: RoundedRectangleBorder(
-        side: BorderSide(
-          color: PrimaryColors().whiteA700,
-          width: 1.h,
+        backgroundColor: PrimaryColors().gray50,
+        selectedColor: PrimaryColors().gray50,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: PrimaryColors().whiteA700,
+            width: 1.dp,
+          ),
+          borderRadius: BorderRadius.circular(
+            5.dp,
+          ),
         ),
-        borderRadius: BorderRadius.circular(
-          5.h,
-        ),
+        onSelected: (value) {
+          //====== не нужно пока
+        },
       ),
-      onSelected: (value) {
-        //====== не нужно пока
-      },
     );
   }
 }

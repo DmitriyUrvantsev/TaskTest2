@@ -15,9 +15,10 @@ class CustomTextStyles {
   static get bodyLargeOnPrimary => basicTheme().textTheme.bodyLarge!.copyWith(
         color: basicTheme().colorScheme.onPrimary,
       );
-      static get bodyLargeOnPrimaryTransparent => basicTheme().textTheme.bodyLarge!.copyWith(
-        color: basicTheme().colorScheme.onPrimary.withOpacity(0.5),
-      );
+  static get bodyLargeOnPrimaryTransparent =>
+      basicTheme().textTheme.bodyLarge!.copyWith(
+            color: basicTheme().colorScheme.onPrimary.withOpacity(0.5),
+          );
   static get bodyLargeSecondaryContainer =>
       basicTheme().textTheme.bodyLarge!.copyWith(
             color: basicTheme().colorScheme.secondaryContainer.withOpacity(1),
@@ -59,6 +60,10 @@ class CustomTextStyles {
       .textTheme
       .titleSmall!
       .copyWith(color: basicTheme().colorScheme.primary, fontSize: 16);
+  static get titleSmallPrimary17 => basicTheme()
+      .textTheme
+      .titleSmall!
+      .copyWith(color: basicTheme().colorScheme.primary, fontSize: 17);
 }
 
 // extension on TextStyle {

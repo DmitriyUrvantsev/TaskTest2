@@ -129,9 +129,10 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                             decoration: AppDecoration.fillWhiteA.copyWith(
                                 borderRadius: BorderRadiusStyle.roundedBorder5),
                             height: 17.dp,
-                            width: 75.dp,
                             margin: EdgeInsets.only(bottom: 8.dp),
-                            child: Center(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
                               child: AnimatedSmoothIndicator(
                                   activeIndex: provider.sliderIndex,
                                   count: read.hotel?.imageUrls?.length ?? 0,
@@ -224,7 +225,7 @@ Widget _descriptionWidget(BuildContext context, Screen0Provider read) {
             SizedBox(height: 15.dp),
             Consumer<Screen0Provider>(builder: (context, provider, child) {
               return Wrap(
-                  runSpacing: 8.dp,
+                  //runSpacing: 1.dp,
                   spacing: 8.dp,
                   children: List<Widget>.generate(
                       read.hotel?.aboutTheHotel?.peculiarities?.length ?? 0,
