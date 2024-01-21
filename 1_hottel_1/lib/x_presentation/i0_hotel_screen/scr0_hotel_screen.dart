@@ -39,17 +39,17 @@ class HotelScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // print('1.v - ${1.v}');
-    // print('1.h - ${1.h}');
+    // print('1.dp - ${1.dp}');
     return Scaffold(
         appBar: _buildAppBar(context),
         body: SizedBox(
             width: double.infinity,
             child: SingleChildScrollView(
                 child: Padding(
-                    padding: EdgeInsets.only(bottom: 5.v),
+                    padding: EdgeInsets.only(bottom: 5.dp),
                     child: Column(children: [
                       _castomSliderWidget(context, read),
-                      SizedBox(height: 8.v),
+                      SizedBox(height: 8.dp),
                       _descriptionWidget(context, read),
                     ])))),
         bottomNavigationBar: _buildBarsBars(context, read));
@@ -61,15 +61,15 @@ class HotelScreenBody extends StatelessWidget {
 
 PreferredSizeWidget _buildAppBar(BuildContext context) {
   return CustomAppBar(
-      height: 56.v, centerTitle: true, title: AppbarTitle(text: 'Отель'));
+      height: 56.dp, centerTitle: true, title: AppbarTitle(text: 'Отель'));
 }
 
 //!====================================Slider=========================================
 Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
   return Container(
       padding: EdgeInsets.symmetric(
-          horizontal: 10.h, vertical: 15.v), //! vertical: 3.v
-      //margin: EdgeInsets.symmetric(horizontal: 16.h),
+          horizontal: 10.dp, vertical: 15.dp), //! vertical: 3.dp
+      //margin: EdgeInsets.symmetric(horizontal: 16.dp),
       decoration: AppDecoration.fillWhiteA.copyWith(
         borderRadius: BorderRadiusStyle.customBorderBL12,
         //color: Colors.amber[100]
@@ -82,7 +82,7 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                 height: 257.dp,
                 //width: Device.width,
                 //,
-                //343.h
+                //343.dp
                 child: Stack(alignment: Alignment.bottomCenter, children: [
                   Consumer<Screen0Provider>(
                       builder: (context, provider, child) {
@@ -110,9 +110,9 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                               fit: BoxFit.fill,
                               height: 257.dp,
                               width: Device.width,
-                              //343.h,
+                              //343.dp,
                               radius: BorderRadius.circular(
-                                15.h,
+                                15.dp,
                               ),
                             ),
                           );
@@ -128,9 +128,9 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                         return Container(
                             decoration: AppDecoration.fillWhiteA.copyWith(
                                 borderRadius: BorderRadiusStyle.roundedBorder5),
-                            height: 17.v,
-                            width: 75.h,
-                            margin: EdgeInsets.only(bottom: 8.v),
+                            height: 17.dp,
+                            width: 75.dp,
+                            margin: EdgeInsets.only(bottom: 8.dp),
                             child: Center(
                               child: AnimatedSmoothIndicator(
                                   activeIndex: provider.sliderIndex,
@@ -146,16 +146,17 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                                           .colorScheme
                                           .secondaryContainer
                                           .withOpacity(0.22),
-                                      dotHeight: 7.v,
-                                      dotWidth: 7.h)),
+                                      dotHeight: 7.dp,
+                                      dotWidth: 7.dp)),
                             ));
                       }))
                   //==================================================
                 ])),
-            SizedBox(height: 16.v),
+            SizedBox(height: 16.dp),
 
             Container(
-                padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 3.v),
+                padding:
+                    EdgeInsets.symmetric(horizontal: 10.dp, vertical: 3.dp),
                 decoration: AppDecoration.fillAmberA
                     .copyWith(borderRadius: BorderRadiusStyle.roundedBorder5),
                 child: Row(mainAxisSize: MainAxisSize.min, children: [
@@ -164,20 +165,20 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                       height: 15.dp,
                       width: 15.dp,
                       color: PrimaryColors().amberA700,
-                      radius: BorderRadius.circular(1.h),
-                      margin: EdgeInsets.symmetric(vertical: 3.v)),
+                      radius: BorderRadius.circular(1.dp),
+                      margin: EdgeInsets.symmetric(vertical: 3.dp)),
                   Padding(
-                      padding: EdgeInsets.only(left: 2.h, top: 2.v),
+                      padding: EdgeInsets.only(left: 2.dp, top: 2.dp),
                       child: Text(
                           '${read.hotel?.rating} ${read.hotel?.ratingName}', //!Превосходно
                           style: CustomTextStyles.titleMediumAmberA700))
                 ])),
             //==================================================
 
-            SizedBox(height: 9.v),
+            SizedBox(height: 9.dp),
             Text('${read.hotel?.name} ', //! Название отеля
                 style: basicTheme().textTheme.titleLarge),
-            SizedBox(height: 6.v),
+            SizedBox(height: 6.dp),
 
             TextButton(
               onPressed: () {},
@@ -187,14 +188,14 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
                   style: CustomTextStyles.titleSmallPrimary),
             ),
 
-            SizedBox(height: 15.v),
+            SizedBox(height: 15.dp),
 
             Row(children: [
               Text('от ${read.hotel?.minimalPrice} ₽', //! стоимость
                   style: basicTheme().textTheme.headlineLarge),
               Expanded(
                 child: Padding(
-                    padding: EdgeInsets.only(left: 8.h, top: 14.v),
+                    padding: EdgeInsets.only(left: 8.dp, top: 14.dp),
                     child:
                         Text('${read.hotel?.priceForIt}', //! за тур с перелетом
                             overflow: TextOverflow.ellipsis,
@@ -210,7 +211,7 @@ Widget _castomSliderWidget(BuildContext context, Screen0Provider read) {
 /// Section Widget
 Widget _descriptionWidget(BuildContext context, Screen0Provider read) {
   return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
+      padding: EdgeInsets.symmetric(horizontal: 16.dp, vertical: 15.dp),
       decoration: AppDecoration.fillWhiteA.copyWith(
         borderRadius: BorderRadiusStyle.roundedBorder12,
         //color: Colors.blue[100]
@@ -220,11 +221,11 @@ Widget _descriptionWidget(BuildContext context, Screen0Provider read) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text("Об отеле", style: basicTheme().textTheme.titleLarge),
-            SizedBox(height: 15.v),
+            SizedBox(height: 15.dp),
             Consumer<Screen0Provider>(builder: (context, provider, child) {
               return Wrap(
-                  runSpacing: 8.v,
-                  spacing: 8.h,
+                  runSpacing: 8.dp,
+                  spacing: 8.dp,
                   children: List<Widget>.generate(
                       read.hotel?.aboutTheHotel?.peculiarities?.length ?? 0,
                       (index) {
@@ -238,7 +239,7 @@ Widget _descriptionWidget(BuildContext context, Screen0Provider read) {
                     );
                   }));
             }),
-            SizedBox(height: 11.v),
+            SizedBox(height: 11.dp),
             //================Описание==================================
             SizedBox(
                 width: Device.width,
@@ -249,12 +250,13 @@ Widget _descriptionWidget(BuildContext context, Screen0Provider read) {
                     overflow: TextOverflow.ellipsis,
                     style: CustomTextStyles.bodyLargeSecondaryContainer_1
                         .copyWith(height: 1.20))),
-            SizedBox(height: 13.v),
+            SizedBox(height: 13.dp),
 
 //!==============================CastomListTile===========================
 
             Container(
-                padding: EdgeInsets.symmetric(horizontal: 15.h, vertical: 14.v),
+                padding:
+                    EdgeInsets.symmetric(horizontal: 15.dp, vertical: 14.dp),
                 decoration: AppDecoration.fillGray50.copyWith(
                   borderRadius: BorderRadiusStyle.roundedBorder15,
                 ),
@@ -266,16 +268,16 @@ Widget _descriptionWidget(BuildContext context, Screen0Provider read) {
                           checkmark: ImageConstant.imgSettings,
                           titleMediumOnSecondaryContainer: "Удобства",
                           titleSmall: "Самое необходимое"),
-                      SizedBox(height: 9.v),
-                      Divider(indent: 38.h),
-                      SizedBox(height: 8.v),
+                      SizedBox(height: 9.dp),
+                      Divider(indent: 38.dp),
+                      SizedBox(height: 8.dp),
                       _castomListTitle(context,
                           checkmark: ImageConstant.imgCheckmark,
                           titleMediumOnSecondaryContainer: "Что включено",
                           titleSmall: "Самое необходимое"),
-                      SizedBox(height: 9.v),
-                      Divider(indent: 38.h),
-                      SizedBox(height: 8.v),
+                      SizedBox(height: 9.dp),
+                      Divider(indent: 38.dp),
+                      SizedBox(height: 8.dp),
                       _castomListTitle(context,
                           checkmark: ImageConstant.imgClose,
                           titleMediumOnSecondaryContainer: "Что не включено",
@@ -287,7 +289,7 @@ Widget _descriptionWidget(BuildContext context, Screen0Provider read) {
 Widget _buildBarsBars(BuildContext context, Screen0Provider read) {
   final nameHotel = read.hotel?.name ?? '';
   return Container(
-      margin: EdgeInsets.only(left: 16.h, right: 16.h, bottom: 28.v),
+      margin: EdgeInsets.only(left: 16.dp, right: 16.dp, bottom: 28.dp),
       decoration: AppDecoration.outlineGray,
       child: CustomElevatedButton(
         text: 'К выбору номера',
@@ -308,14 +310,14 @@ Widget _castomListTitle(
         height: 24.dp,
         width: 24.dp,
         color: basicTheme().colorScheme.secondaryContainer,
-        margin: EdgeInsets.symmetric(vertical: 7.v)),
+        margin: EdgeInsets.symmetric(vertical: 7.dp)),
     Padding(
-        padding: EdgeInsets.only(left: 12.h),
+        padding: EdgeInsets.only(left: 12.dp),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(titleMediumOnSecondaryContainer,
               style: CustomTextStyles.titleMediumOnSecondaryContainer.copyWith(
                   color: basicTheme().colorScheme.onSecondaryContainer)),
-          SizedBox(height: 1.v),
+          SizedBox(height: 1.dp),
           Text(titleSmall,
               style: basicTheme()
                   .textTheme
@@ -328,7 +330,7 @@ Widget _castomListTitle(
       height: 24.dp,
       width: 24.dp,
       color: basicTheme().colorScheme.secondaryContainer,
-      margin: EdgeInsets.symmetric(vertical: 7.v),
+      margin: EdgeInsets.symmetric(vertical: 7.dp),
       onTap: () {
         //!!!!в задании не указанно
       },

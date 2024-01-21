@@ -9,7 +9,6 @@ import 'package:hottel_1/x_theme/x_provider/theme_provider.dart';
 //import 'package:hottel_1/x_theme/x_provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 
-
 // void main() {
 //   WidgetsFlutterBinding.ensureInitialized();
 //     runApp(MyApp());
@@ -27,10 +26,7 @@ var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
   });
 }
 
-
-
 class MyApp extends StatelessWidget {
-
 
   const MyApp({Key? key}) : super(key: key);
 
@@ -54,7 +50,7 @@ class MyApp extends StatelessWidget {
 class HotelAppWidget extends StatelessWidget {
   const HotelAppWidget({
     super.key,
-    
+
   });
 
     static final mainNavigation = MainNavigation();
@@ -73,52 +69,63 @@ class HotelAppWidget extends StatelessWidget {
 
 //!=============================================================================
 
-// var globalMessengerKey = GlobalKey<ScaffoldMessengerState>();
+// import 'package:flutter/material.dart';
+// import 'package:flutter_sizer/flutter_sizer.dart';
+
 // void main() {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   Future.wait([
-//     SystemChrome.setPreferredOrientations([
-//       DeviceOrientation.portraitUp,
-//     ]),
-//     PrefUtils().init()
-//   ]).then((value) {
-//     runApp(MyApp());
-//   });
+//   runApp(MyApp());
 // }
 
 // class MyApp extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
 //     return FlutterSizer(
-//       builder: (context, orientation, deviceType) {
-//         return ChangeNotifierProvider(
-//           create: (context) => ThemeProvider(),
-//           child: Consumer<ThemeProvider>(
-//             builder: (context, provider, child) {
-//               return MaterialApp(
-//                 theme: theme,
-//                 title: 'urvandimon_s_application4',
-//                 navigatorKey: NavigatorService.navigatorKey,
-//                 debugShowCheckedModeBanner: false,
-//                 localizationsDelegates: [
-//                   AppLocalizationDelegate(),
-//                   GlobalMaterialLocalizations.delegate,
-//                   GlobalWidgetsLocalizations.delegate,
-//                   GlobalCupertinoLocalizations.delegate,
-//                 ],
-//                 supportedLocales: [
-//                   Locale(
-//                     'en',
-//                     '',
-//                   ),
-//                 ],
-//                 initialRoute: AppRoutes.initialRoute,
-//                 routes: AppRoutes.routes,
-//               );
-//             },
-//           ),
-//         );
+//       builder: (context, orientation, screenType) {
+//         return MaterialApp(
+//             title: 'Flutter Sizer Example',
+//             theme: ThemeData(
+//               primarySwatch: Colors.blue,
+//             ),
+//             home: Home());
 //       },
+//     );
+//   }
+// }
+
+// class Home extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Center(
+//           child: Column(
+//         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//         crossAxisAlignment: CrossAxisAlignment.center,
+//         children: [
+//           Container(
+//             height: 150.dp,
+//             //Adaptive.h(12.5), // or 12.5.h
+//             width: 150.dp, // or Adaptive.w(50)
+//             color: Colors.black,
+//           ),
+//           Text(
+//             "Resolution is -> ${100.0.w}x${100.0.h}",
+//           ),
+//           Text(
+//             "This text is responsive 12dp -> ${12.0.dp}",
+//             style: TextStyle(fontSize: 12.0.dp), // or Adaptive.sp(12)
+//           ),
+//           Text(
+//             "This text is responsive 24dp -> ${24.0.dp}",
+//             style: TextStyle(fontSize: 24.0.dp), // or Adaptive.sp(12)
+//           ),
+//           Device.orientation == Orientation.portrait
+//               ? Text("My Orientation is Portrait")
+//               : Text("My Orientation is Landscape"),
+//           Device.screenType == ScreenType.tablet
+//               ? Text("My Screen's Type is a Tablet")
+//               : Text("My Screen's Type is a Phone")
+//         ],
+//       )),
 //     );
 //   }
 // }
