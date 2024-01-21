@@ -21,8 +21,10 @@ class SliderSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final read = context.read<Screen1Provider>();
     final indexRooms = index;
+    final orientation = Device.orientation;
     return SizedBox(
         height: 257.dp,
+        width: orientation == 'portrait' ? Device.width : 343.dp,
         child: Stack(alignment: Alignment.bottomCenter, children: [
           Consumer<Screen1Provider>(builder: (context, provider, child) {
             return

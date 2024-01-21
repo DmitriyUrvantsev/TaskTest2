@@ -35,7 +35,9 @@ class ApartmentScreen extends StatelessWidget {
 
   /// Section AppBar
   PreferredSizeWidget _buildAppBar(BuildContext context, nameHotel, read) {
+    final orientation = Device.orientation;
     return CustomAppBar(
+      height: orientation == 'portrait' ? null : 45.dp,
       leadingWidth: 48.dp,
       leading: AppbarLeadingCircleimage(
           imagePath: ImageConstant.imgArrowLeft,
@@ -73,6 +75,7 @@ class ApartmentScreenBody extends StatelessWidget {
                   ListView.builder(
                 itemCount: read.apartment?.rooms?.length ?? 0, //!
                 itemBuilder: (BuildContext context, int indexRooms) {
+                  final orientation = Device.orientation;
                   final apdrtmentID = read.apartment?.rooms?[indexRooms].id;
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4),
@@ -84,12 +87,16 @@ class ApartmentScreenBody extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SliderSection(index: indexRooms), //!SliderSection
+                              Center(
+                                  child: SliderSection(
+                                      index: indexRooms)), //!SliderSection
                               SizedBox(height: 7.dp),
                               RoomDataWidget(index: indexRooms),
                               SizedBox(height: 15.dp),
 
                               CustomElevatedButton(
+                                height:
+                                    orientation == 'portrait' ? null : 48.dp,
                                 text: 'Выбрать номер',
                                 onPressed: () => read.showReservationScreen(
                                     context, apdrtmentID),

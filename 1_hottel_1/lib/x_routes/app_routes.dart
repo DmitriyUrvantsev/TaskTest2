@@ -6,7 +6,7 @@ import 'package:hottel_1/x_presentation/scr2_reservation_screen/x_provider/scr2_
 import 'package:hottel_1/x_presentation/scr3_paid_screen/provider/scr3_provider.dart';
 import 'package:hottel_1/x_presentation/scr3_paid_screen/scr3_paid_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:hottel_1/x_presentation/i0_hotel_screen/scr0_hotel_screen.dart';
+import 'package:hottel_1/x_presentation/i0_hotel_screen/scr0_screens/scr0_hotel_screen.dart';
 import '../x_presentation/i0_hotel_screen/provider/i0_provider.dart';
 
 abstract class AppNavigationRoutes {

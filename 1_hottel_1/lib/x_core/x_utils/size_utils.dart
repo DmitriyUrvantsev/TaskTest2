@@ -127,8 +127,7 @@ class Sizer extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       return OrientationBuilder(builder: (context, orientation) {
-        print(orientation);
-        Device.setScreenSize(constraints, orientation);
+             Device.setScreenSize(constraints, orientation);
         return builder(context, orientation, Device.screenType);
         
       });

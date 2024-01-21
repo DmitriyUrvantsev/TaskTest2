@@ -90,20 +90,22 @@ class ReservationScreenBody extends StatelessWidget {
   //===========================================================================
   /// Section Widget AppBar
   PreferredSizeWidget _buildAppBar(BuildContext context, read) {
+    final orientation = Device.orientation;
     return CustomAppBar(
-        leadingWidth: 48.h,
-        leading: AppbarLeadingCircleimage(
-            imagePath: ImageConstant.imgArrowLeft,
-            margin: EdgeInsets.only(left: 16.h, top: 14.v, bottom: 11.v),
-            onTap: () {
-              read.onTapBack(context);
-            }),
-        centerTitle: true,
-        title: AppbarTitle(text: 'Бронирование'),
-        styleType: Style.bgFill);
+      height: orientation == 'portrait' ? null : 45.dp,
+      leadingWidth: 48.dp,
+      leading: AppbarLeadingCircleimage(
+          imagePath: ImageConstant.imgArrowLeft,
+          margin: EdgeInsets.only(left: 16.dp, top: 14.dp, bottom: 11.dp),
+          onTap: () {
+            read.onTapBack(context);
+          }),
+      centerTitle: true,
+      title: AppbarTitle(text: 'Бронирование'),
+      styleType: Style.bgFill,
+    );
   }
 
-  
   /// Section Widget
 
   Widget _buildPhoneNumber(BuildContext context) {
@@ -232,7 +234,9 @@ class ReservationScreenBody extends StatelessWidget {
   /// Section Widget
   Widget _buildButtonPaid(BuildContext context) {
     //!!!!!!!!! переделать в моделе с учетом колва туристов !!!!!!!!!!!!!!!!!!!
+    final orientation = Device.orientation;
     return CustomElevatedButton(
+        height: orientation == 'portrait' ? null : 48.dp,
         onPressed: () {
           read.showPaidScreenScreen(context, apartmentID);
         },
