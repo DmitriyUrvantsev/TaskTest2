@@ -92,17 +92,17 @@ class AboutTourisItem extends StatelessWidget {
                   : Column(
                       children: [
                         SizedBox(height: 17.v),
-                        _buildFirstName(context, index),
+                        _firstName(context, index),
                         SizedBox(height: 8.v),
-                        _buildLastName(context),
+                        _lastName(context),
                         SizedBox(height: 8.v),
-                        _buildBirthDate(context),
+                        _birthDate(context),
                         SizedBox(height: 8.v),
-                        _buildNationality(context),
+                        _nationality(context),
                         SizedBox(height: 8.v),
-                        _buildPassportNumber(context),
+                        _passportNumber(context),
                         SizedBox(height: 8.v),
-                        _buildPassportExpiry(context),
+                        _passportExpiry(context),
                         SizedBox(height: 3.v)
                       ],
                     )
@@ -115,7 +115,7 @@ class AboutTourisItem extends StatelessWidget {
 }
 
 /// Section Widget Имя
-Widget _buildFirstName(BuildContext context, int index) {
+Widget _firstName(BuildContext context, int index) {
   return CustomFloatingTextField(
       
       labelText: "Имя",
@@ -125,7 +125,7 @@ Widget _buildFirstName(BuildContext context, int index) {
 }
 
 /// Section Widget Фамилия
-Widget _buildLastName(BuildContext context) {
+Widget _lastName(BuildContext context) {
   return CustomFloatingTextField(
       
       labelText: "Фамилия",
@@ -136,7 +136,7 @@ Widget _buildLastName(BuildContext context) {
 }
 
 /// Section Widget День родения
-Widget _buildBirthDate(BuildContext context) {
+Widget _birthDate(BuildContext context) {
   return CustomTextFormField(
      
       validator: (val) =>
@@ -146,7 +146,7 @@ Widget _buildBirthDate(BuildContext context) {
 }
 
 /// Section Widget Гражданство
-Widget _buildNationality(BuildContext context) {
+Widget _nationality(BuildContext context) {
   return CustomTextFormField(
       
       validator: (val) =>
@@ -156,7 +156,7 @@ Widget _buildNationality(BuildContext context) {
 }
 
 /// Section Widget Загранпаспорт
-Widget _buildPassportNumber(BuildContext context) {
+Widget _passportNumber(BuildContext context) {
   return CustomTextFormField(
 
       validator: (val) =>
@@ -166,7 +166,7 @@ Widget _buildPassportNumber(BuildContext context) {
 }
 
 /// Section Widget Срок действия загранпаспорта
-Widget _buildPassportExpiry(BuildContext context) {
+Widget _passportExpiry(BuildContext context) {
   return CustomTextFormField(
     
     hintText: "Срок действия загранпаспорта",

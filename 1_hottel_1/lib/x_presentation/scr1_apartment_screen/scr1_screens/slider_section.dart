@@ -21,80 +21,79 @@ class SliderSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final read = context.read<Screen1Provider>();
     final indexRooms = index;
-    final orientation = Device.orientation;
-    return SizedBox(
-        height: 257.dp,
-        width: orientation == 'portrait' ? Device.width : 343.dp,
-        child: Stack(alignment: Alignment.bottomCenter, children: [
-          Consumer<Screen1Provider>(builder: (context, provider, child) {
-            return
-                //============================================
-                CarouselSlider.builder(
-                    options: CarouselOptions(
-                        height: 257.dp,
-                        initialPage: 0,
-                        autoPlay: true,
-                        viewportFraction: 1.0,
-                        enableInfiniteScroll: false,
-                        scrollDirection: Axis.horizontal,
-                        onPageChanged: (index, reason) {
-                          provider.sliderIndex = index;
-                        }),
-                    itemCount:
-                        read.apartment?.rooms?[indexRooms].imageUrls?.length ??
-                            0, //!========
-                    itemBuilder: (context, index, realIndex) {
-                      return Align(
-                        alignment: Alignment.center,
-                        child:
-                            // Placeholder()
-                            CustomImageView(
-                          imagePath: read.apartment!.rooms![indexRooms]
-                                  .imageUrls?[index] ??
-                              '', //!========
-                          height: 267.dp,
-                          width: Device.width,
-                          fit: BoxFit.fill,
-                          radius: BorderRadius.circular(
-                            15.dp,
+    return Center(
+      child: SizedBox(
+          height: 257.dp,
+          width: Device.width,
+          child: Stack(alignment: Alignment.bottomCenter, children: [
+            Consumer<Screen1Provider>(builder: (context, provider, child) {
+              return
+                  //============================================
+                  CarouselSlider.builder(
+                      options: CarouselOptions(
+                          height: 257.dp,
+                          initialPage: 0,
+                          autoPlay: true,
+                          viewportFraction: 1.0,
+                          enableInfiniteScroll: false,
+                          scrollDirection: Axis.horizontal,
+                          onPageChanged: (index, reason) {
+                            provider.sliderIndex = index;
+                          }),
+                      itemCount: read.apartment?.rooms?[indexRooms].imageUrls
+                              ?.length ??
+                          0, //!========
+                      itemBuilder: (context, index, realIndex) {
+                        return Align(
+                          alignment: Alignment.center,
+                          child: CustomImageView(
+                            imagePath: read.apartment!.rooms![indexRooms]
+                                    .imageUrls?[index] ??
+                                '', //!========
+                            height: 267.dp,
+                            width: Device.width,
+                            fit: BoxFit.fill,
+                            radius: BorderRadius.circular(
+                              15.dp,
+                            ),
                           ),
-                        ),
-                      );
-                    });
-          }),
-          //===================================================
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: Consumer<Screen1Provider>(
-                  builder: (context, provider, child) {
-                return Container(
-                    decoration: AppDecoration.fillWhiteA.copyWith(
-                        borderRadius: BorderRadiusStyle.roundedBorder5),
-                    height: 17.dp,
-                    margin: EdgeInsets.only(bottom: 8.dp),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: AnimatedSmoothIndicator(
-                          activeIndex: provider.sliderIndex,
-                          count: read.apartment?.rooms?[indexRooms].imageUrls
-                                  ?.length ??
-                              0, //!========
-                          //!provider.k1ModelObj.oneItemList.length,
-                          axisDirection: Axis.horizontal,
-                          effect: ScrollingDotsEffect(
-                              spacing: 5,
-                              activeDotColor: basicTheme()
-                                  .colorScheme
-                                  .secondaryContainer
-                                  .withOpacity(1),
-                              dotColor: basicTheme()
-                                  .colorScheme
-                                  .secondaryContainer
-                                  .withOpacity(0.22),
-                              dotHeight: 7.dp,
-                              dotWidth: 7.dp)),
-                    ));
-              }))
-        ]));
+                        );
+                      });
+            }),
+            //===================================================
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: Consumer<Screen1Provider>(
+                    builder: (context, provider, child) {
+                  return Container(
+                      decoration: AppDecoration.fillWhiteA.copyWith(
+                          borderRadius: BorderRadiusStyle.roundedBorder5),
+                      height: 17.dp,
+                      margin: EdgeInsets.only(bottom: 8.dp),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: AnimatedSmoothIndicator(
+                            activeIndex: provider.sliderIndex,
+                            count: read.apartment?.rooms?[indexRooms].imageUrls
+                                    ?.length ??
+                                0, //!========
+                            //!provider.k1ModelObj.oneItemList.length,
+                            axisDirection: Axis.horizontal,
+                            effect: ScrollingDotsEffect(
+                                spacing: 5,
+                                activeDotColor: basicTheme()
+                                    .colorScheme
+                                    .secondaryContainer
+                                    .withOpacity(1),
+                                dotColor: basicTheme()
+                                    .colorScheme
+                                    .secondaryContainer
+                                    .withOpacity(0.22),
+                                dotHeight: 7.dp,
+                                dotWidth: 7.dp)),
+                      ));
+                }))
+          ])),
+    );
   }
 }

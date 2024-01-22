@@ -35,7 +35,7 @@ class PaidScreenBody extends StatelessWidget {
     final read = context.read<Screen3Provider>();
     return Scaffold(
         backgroundColor: PrimaryColors().whiteA700,
-        appBar: _buildAppBar(context, read),
+        appBar: _appBar(context, read),
         body: Container(
             width: double.maxFinite,
             padding: EdgeInsets.only(left: 29.h, top: 122.v, right: 29.h),
@@ -75,8 +75,9 @@ class PaidScreenBody extends StatelessWidget {
                 text: 'Супер!', onPressed: () => read.popBack(context))));
   }
 
+//!=============================================================================
   /// Section Widget
-  PreferredSizeWidget _buildAppBar(BuildContext context, read) {
+  PreferredSizeWidget _appBar(BuildContext context, read) {
     return CustomAppBar(
         leadingWidth: 48.h,
         leading: AppbarLeadingCircleimage(

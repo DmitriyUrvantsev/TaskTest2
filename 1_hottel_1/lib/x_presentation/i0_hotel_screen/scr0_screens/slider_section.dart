@@ -19,7 +19,7 @@ class SliderSectionWidget extends StatelessWidget {
     return Container(
         padding: EdgeInsets.symmetric(
             horizontal: 10.dp, vertical: 15.dp), //! vertical: 3.dp
-        //margin: EdgeInsets.symmetric(horizontal: 16.dp),
+
         decoration: AppDecoration.fillWhiteA.copyWith(
           borderRadius: BorderRadiusStyle.customBorderBL12,
         ),
@@ -27,7 +27,7 @@ class SliderSectionWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(child: _sliderSection(read)),
+              _sliderSection(read),
               SizedBox(height: 16.dp),
               _ratingSection(read),
               SizedBox(height: 9.dp),
@@ -43,77 +43,78 @@ class SliderSectionWidget extends StatelessWidget {
 //!=============================================================================
 //!=========================Слайдер=============================================
 
-  SizedBox _sliderSection(Screen0Provider read) {
-    final orientation = Device.orientation;
-    return SizedBox(
-        height: 257.dp,
-        width: orientation == 'portrait' ? Device.width : 343.dp,
-        //,
-        //343.dp
-        child: Stack(alignment: Alignment.bottomCenter, children: [
-          Consumer<Screen0Provider>(builder: (context, provider, child) {
-            //===============================CarouselSlider=================================
-            return CarouselSlider.builder(
-                options: CarouselOptions(
-                    height: 257.dp,
-                    initialPage: 0,
-                    autoPlay: true,
-                    viewportFraction: 1.0,
-                    enableInfiniteScroll: false,
-                    scrollDirection: Axis.horizontal,
-                    onPageChanged: (index, reason) {
-                      provider.changeSliderIndex(index);
-                    }),
-                itemCount: read.hotel?.imageUrls?.length ?? 0,
-                itemBuilder: (context, index, realIndex) {
-                  return Align(
-                    alignment: Alignment.center,
-                    child: CustomImageView(
-                      imagePath: read.hotel?.imageUrls?[index] ??
-                          ImageConstant.imgImage20,
-                      fit: BoxFit.fill,
+  Center _sliderSection(Screen0Provider read) {
+    return Center(
+      child: SizedBox(
+          height: 257.dp,
+          width: Device.width,
+          //,
+          //343.dp
+          child: Stack(alignment: Alignment.bottomCenter, children: [
+            Consumer<Screen0Provider>(builder: (context, provider, child) {
+              //===============================CarouselSlider=================================
+              return CarouselSlider.builder(
+                  options: CarouselOptions(
                       height: 257.dp,
-                      width: Device.width,
-                      //343.dp,
-                      radius: BorderRadius.circular(
-                        15.dp,
+                      initialPage: 0,
+                      autoPlay: true,
+                      viewportFraction: 1.0,
+                      enableInfiniteScroll: false,
+                      scrollDirection: Axis.horizontal,
+                      onPageChanged: (index, reason) {
+                        provider.changeSliderIndex(index);
+                      }),
+                  itemCount: read.hotel?.imageUrls?.length ?? 0,
+                  itemBuilder: (context, index, realIndex) {
+                    return Align(
+                      alignment: Alignment.center,
+                      child: CustomImageView(
+                        imagePath: read.hotel?.imageUrls?[index] ??
+                            ImageConstant.imgImage20,
+                        fit: BoxFit.fill,
+                        height: 257.dp,
+                        width: Device.width,
+                        //343.dp,
+                        radius: BorderRadius.circular(
+                          15.dp,
+                        ),
                       ),
-                    ),
-                  );
-                });
-          }),
-          //====================================AnimatedSmoothIndicator=========================
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: Consumer<Screen0Provider>(
-                  builder: (context, provider, child) {
-                return Container(
-                    decoration: AppDecoration.fillWhiteA.copyWith(
-                        borderRadius: BorderRadiusStyle.roundedBorder5),
-                    height: 17.dp,
-                    margin: EdgeInsets.only(bottom: 8.dp),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                      child: AnimatedSmoothIndicator(
-                          activeIndex: provider.sliderIndex,
-                          count: read.hotel?.imageUrls?.length ?? 0,
-                          axisDirection: Axis.horizontal,
-                          effect: ScrollingDotsEffect(
-                              spacing: 5,
-                              activeDotColor: basicTheme()
-                                  .colorScheme
-                                  .secondaryContainer
-                                  .withOpacity(1),
-                              dotColor: basicTheme()
-                                  .colorScheme
-                                  .secondaryContainer
-                                  .withOpacity(0.22),
-                              dotHeight: 7.dp,
-                              dotWidth: 7.dp)),
-                    ));
-              }))
-          //==================================================
-        ]));
+                    );
+                  });
+            }),
+            //====================================AnimatedSmoothIndicator=========================
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: Consumer<Screen0Provider>(
+                    builder: (context, provider, child) {
+                  return Container(
+                      decoration: AppDecoration.fillWhiteA.copyWith(
+                          borderRadius: BorderRadiusStyle.roundedBorder5),
+                      height: 17.dp,
+                      margin: EdgeInsets.only(bottom: 8.dp),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: AnimatedSmoothIndicator(
+                            activeIndex: provider.sliderIndex,
+                            count: read.hotel?.imageUrls?.length ?? 0,
+                            axisDirection: Axis.horizontal,
+                            effect: ScrollingDotsEffect(
+                                spacing: 5,
+                                activeDotColor: basicTheme()
+                                    .colorScheme
+                                    .secondaryContainer
+                                    .withOpacity(1),
+                                dotColor: basicTheme()
+                                    .colorScheme
+                                    .secondaryContainer
+                                    .withOpacity(0.22),
+                                dotHeight: 7.dp,
+                                dotWidth: 7.dp)),
+                      ));
+                }))
+            //==================================================
+          ])),
+    );
   }
 
 //!=====================Рейтинг секция============================================

@@ -33,7 +33,7 @@ class ApartmentScreen extends StatelessWidget {
     );
   }
 
-  /// Section AppBar
+  /// Section AppBar============================================================
   PreferredSizeWidget _buildAppBar(BuildContext context, nameHotel, read) {
     final orientation = Device.orientation;
     return CustomAppBar(
@@ -52,8 +52,8 @@ class ApartmentScreen extends StatelessWidget {
   }
 }
 
-//!===================================================================
-//!===================================================================
+//!=============================================================================
+//!=============================================================================
 class ApartmentScreenBody extends StatelessWidget {
   const ApartmentScreenBody({
     super.key,
@@ -67,12 +67,9 @@ class ApartmentScreenBody extends StatelessWidget {
     return Scaffold(
         body: SizedBox(
             width: Device.width,
-            //==========================================
             child: Padding(
               padding: EdgeInsets.only(top: 8.dp),
-              child:
-                  //==========================
-                  ListView.builder(
+              child: ListView.builder(
                 itemCount: read.apartment?.rooms?.length ?? 0, //!
                 itemBuilder: (BuildContext context, int indexRooms) {
                   final orientation = Device.orientation;
@@ -87,13 +84,10 @@ class ApartmentScreenBody extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Center(
-                                  child: SliderSection(
-                                      index: indexRooms)), //!SliderSection
+                              SliderSection(index: indexRooms),
                               SizedBox(height: 7.dp),
                               RoomDataWidget(index: indexRooms),
                               SizedBox(height: 15.dp),
-
                               CustomElevatedButton(
                                 height:
                                     orientation == 'portrait' ? null : 48.dp,

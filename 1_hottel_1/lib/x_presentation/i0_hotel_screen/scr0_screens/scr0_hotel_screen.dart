@@ -1,16 +1,9 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:hottel_1/x_core/app_export.dart';
-import 'package:hottel_1/x_core/x_utils/image_constant.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/provider/i0_provider.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/scr0_screens/about_hotel.dart';
 import 'package:hottel_1/x_presentation/i0_hotel_screen/scr0_screens/slider_section.dart';
-import 'package:hottel_1/x_presentation/i0_hotel_screen/widgets/discription_item_widget.dart';
-import 'package:hottel_1/x_theme/custom_text_style.dart';
-import 'package:hottel_1/x_theme/theme.dart';
 import 'package:hottel_1/x_widgets/custom_elevated_button.dart';
-import 'package:hottel_1/x_widgets/custom_image_view.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../x_core/x_utils/size_utils.dart';
 import '../../../x_theme/app_decoration.dart';
 import '../../../x_widgets/x_app_bar/appbar_title.dart';
@@ -48,9 +41,9 @@ class HotelScreenBody extends StatelessWidget {
                 child: Padding(
                     padding: EdgeInsets.only(bottom: 5.dp),
                     child: Column(children: [
-                      SliderSectionWidget(),
+                      const SliderSectionWidget(),
                       SizedBox(height: 8.dp),
-                      AboutHotelWidget(),
+                      const AboutHotelWidget(),
                     ])))),
         bottomNavigationBar: _bottomBarSection(context, read));
   }
@@ -72,7 +65,6 @@ Widget _bottomBarSection(BuildContext context, Screen0Provider read) {
       decoration: AppDecoration.outlineGray,
       child: CustomElevatedButton(
         height: orientation == 'portrait' ? null : 48.dp,
-        
         text: 'К выбору номера',
         onPressed: () => read.showApartmenScreen(context, nameHotel),
       ));

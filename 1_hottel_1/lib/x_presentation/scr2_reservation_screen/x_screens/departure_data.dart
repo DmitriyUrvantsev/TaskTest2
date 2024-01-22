@@ -12,19 +12,12 @@ class DepartureData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final read = context.read<Screen2Provider>();
-    //final watch = context.watch<Screen2Provider>();
     return Container(
         child: Stack(
       alignment: Alignment.center,
       children: [
-        _buildNameListDepartureData(),
-        //_buildDataListDepartureData(read),
-        Positioned(
-            left: 163.v,
-            top: 14.v,
-            child:
-                //_buildNameListDepartureData(),
-                _buildDataListDepartureData(read))
+        _nameListDepartureData(),
+        Positioned(left: 163.v, top: 14.v, child: _dataListDepartureData(read))
       ],
     ));
   }
@@ -33,7 +26,7 @@ class DepartureData extends StatelessWidget {
   //===========================================================================
   //===========================================================================
 
-  Container _buildNameListDepartureData() {
+  Container _nameListDepartureData() {
     return Container(
       width: 375.v,
       padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 15.v),
@@ -71,8 +64,7 @@ class DepartureData extends StatelessWidget {
 
   //===========================================================================
 
-  Container _buildDataListDepartureData(read) => Container(
-      
+  Container _dataListDepartureData(read) => Container(
       decoration: AppDecoration.fillWhiteA
           .copyWith(borderRadius: BorderRadiusStyle.roundedBorder12),
       child: Column(
