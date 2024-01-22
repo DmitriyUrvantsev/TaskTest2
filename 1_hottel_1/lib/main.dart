@@ -11,7 +11,7 @@ import 'package:hottel_1/x_theme/x_provider/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 
-// 1.1
+// 1.1.0
 
  void main() {
   WidgetsFlutterBinding.ensureInitialized();
